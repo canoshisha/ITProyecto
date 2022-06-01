@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-05-2022 a las 13:20:28
--- Versión del servidor: 10.4.21-MariaDB
--- Versión de PHP: 8.0.11
+-- Tiempo de generación: 01-06-2022 a las 10:33:01
+-- Versión del servidor: 10.4.19-MariaDB
+-- Versión de PHP: 8.0.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -239,26 +239,7 @@ ALTER TABLE `prestamo`
 -- Filtros para la tabla `sucursal`
 --
 ALTER TABLE `sucursal`
-  ADD CONSTRAINT `sucursal_ibfk_1` FOREIGN KEY (`nombre banco`) REFERENCES `banco` (`nombre`);
-
---
--- Filtros para la tabla `tarjeta`
---
-ALTER TABLE `tarjeta`
-  ADD CONSTRAINT `tarjeta_ibfk_1` FOREIGN KEY (`IBAN`) REFERENCES `cuenta bancaria` (`IBAN`);
-
---
--- Filtros para la tabla `transferencia`
---
-ALTER TABLE `transferencia`
-  ADD CONSTRAINT `transferencia_ibfk_1` FOREIGN KEY (`IBAN`) REFERENCES `cuenta bancaria` (`IBAN`);
-
---
--- Filtros para la tabla `usuario`
---
-ALTER TABLE `usuario`
-  ADD CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`IBAN`) REFERENCES `cuenta bancaria` (`IBAN`),
-  ADD CONSTRAINT `usuario_ibfk_2` FOREIGN KEY (`id sucursal`) REFERENCES `sucursal` (`id`);
+  ADD CONSTRAINT `sucursal_ibfk_1` FOREIGN KEY (`nombre banco`) REFERENCES `central` (`nombre`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
