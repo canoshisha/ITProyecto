@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-06-2022 a las 10:33:01
+-- Tiempo de generación: 01-06-2022 a las 11:11:56
 -- Versión del servidor: 10.4.19-MariaDB
 -- Versión de PHP: 8.0.6
 
@@ -37,6 +37,13 @@ CREATE TABLE `bizum` (
   `cantidad` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
 
+--
+-- Volcado de datos para la tabla `bizum`
+--
+
+INSERT INTO `bizum` (`id`, `IBAN`, `móvil destinatario`, `fecha`, `cantidad`) VALUES
+(22, 'ES123456789', 689541236, '2022-06-01 10:49:58', 20);
+
 -- --------------------------------------------------------
 
 --
@@ -50,6 +57,13 @@ CREATE TABLE `central` (
   `teléfono` int(9) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
 
+--
+-- Volcado de datos para la tabla `central`
+--
+
+INSERT INTO `central` (`nombre`, `dirección`, `email`, `teléfono`) VALUES
+('IberBank', 'Avenida Dinamarca numero 3', 'iberbank@gmail.com', 654896324);
+
 -- --------------------------------------------------------
 
 --
@@ -60,6 +74,13 @@ CREATE TABLE `cuenta bancaria` (
   `IBAN` varchar(40) COLLATE utf8mb4_spanish2_ci NOT NULL,
   `cantidad` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
+
+--
+-- Volcado de datos para la tabla `cuenta bancaria`
+--
+
+INSERT INTO `cuenta bancaria` (`IBAN`, `cantidad`) VALUES
+('ES123456789', 1500);
 
 -- --------------------------------------------------------
 
@@ -77,6 +98,13 @@ CREATE TABLE `prestamo` (
   `cantidad` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
 
+--
+-- Volcado de datos para la tabla `prestamo`
+--
+
+INSERT INTO `prestamo` (`id`, `IBAN`, `inicio`, `fin`, `mensualidad`, `hipoteca`, `cantidad`) VALUES
+(44, 'ES123456789', '2022-06-02', '2026-06-02', 300, 1, 15000);
+
 -- --------------------------------------------------------
 
 --
@@ -88,6 +116,15 @@ CREATE TABLE `sucursal` (
   `dirección` text COLLATE utf8mb4_spanish2_ci NOT NULL,
   `nombre banco` varchar(15) COLLATE utf8mb4_spanish2_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
+
+--
+-- Volcado de datos para la tabla `sucursal`
+--
+
+INSERT INTO `sucursal` (`id`, `dirección`, `nombre banco`) VALUES
+(4, 'Calle Rojo 5', 'IberBank'),
+(6, 'Calle Verde 3', 'IberBank'),
+(9, 'Calle Azul 9', 'IberBank');
 
 -- --------------------------------------------------------
 
@@ -101,6 +138,13 @@ CREATE TABLE `tarjeta` (
   `ccv` int(3) NOT NULL,
   `IBAN` varchar(40) COLLATE utf8mb4_spanish2_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
+
+--
+-- Volcado de datos para la tabla `tarjeta`
+--
+
+INSERT INTO `tarjeta` (`Numero tarjeta`, `caducidad`, `ccv`, `IBAN`) VALUES
+(658926547, '2026-06-02', 586, 'ES123456789');
 
 -- --------------------------------------------------------
 
@@ -117,6 +161,13 @@ CREATE TABLE `transferencia` (
   `cantidad` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
 
+--
+-- Volcado de datos para la tabla `transferencia`
+--
+
+INSERT INTO `transferencia` (`id`, `IBAN`, `IBAN destinatario`, `fecha inicio`, `fecha fin`, `cantidad`) VALUES
+(789, 'ES123456789', 'ES987654321', '2022-06-01', '2022-06-02', 250);
+
 -- --------------------------------------------------------
 
 --
@@ -131,6 +182,13 @@ CREATE TABLE `usuario` (
   `id sucursal` int(11) NOT NULL,
   `móvil` int(9) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
+
+--
+-- Volcado de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`DNI`, `nombre completo`, `IBAN`, `dirección`, `id sucursal`, `móvil`) VALUES
+('22224568Y', 'Hilario de los Cementos', 'ES123456789', 'Calle Kirgyos 3', 6, 789654123);
 
 --
 -- Índices para tablas volcadas
@@ -199,25 +257,25 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `bizum`
 --
 ALTER TABLE `bizum`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT de la tabla `prestamo`
 --
 ALTER TABLE `prestamo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT de la tabla `sucursal`
 --
 ALTER TABLE `sucursal`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=123456792;
 
 --
 -- AUTO_INCREMENT de la tabla `transferencia`
 --
 ALTER TABLE `transferencia`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=790;
 
 --
 -- Restricciones para tablas volcadas
@@ -240,6 +298,25 @@ ALTER TABLE `prestamo`
 --
 ALTER TABLE `sucursal`
   ADD CONSTRAINT `sucursal_ibfk_1` FOREIGN KEY (`nombre banco`) REFERENCES `central` (`nombre`);
+
+--
+-- Filtros para la tabla `tarjeta`
+--
+ALTER TABLE `tarjeta`
+  ADD CONSTRAINT `tarjeta_ibfk_1` FOREIGN KEY (`IBAN`) REFERENCES `cuenta bancaria` (`IBAN`);
+
+--
+-- Filtros para la tabla `transferencia`
+--
+ALTER TABLE `transferencia`
+  ADD CONSTRAINT `transferencia_ibfk_1` FOREIGN KEY (`IBAN`) REFERENCES `cuenta bancaria` (`IBAN`);
+
+--
+-- Filtros para la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  ADD CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`IBAN`) REFERENCES `cuenta bancaria` (`IBAN`),
+  ADD CONSTRAINT `usuario_ibfk_2` FOREIGN KEY (`id sucursal`) REFERENCES `sucursal` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
