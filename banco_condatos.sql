@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-06-2022 a las 11:11:56
+-- Tiempo de generación: 01-06-2022 a las 12:00:41
 -- Versión del servidor: 10.4.19-MariaDB
 -- Versión de PHP: 8.0.6
 
@@ -32,7 +32,7 @@ USE `banco`;
 CREATE TABLE `bizum` (
   `id` int(11) NOT NULL,
   `IBAN` varchar(40) COLLATE utf8mb4_spanish2_ci NOT NULL,
-  `móvil destinatario` int(9) NOT NULL,
+  `movil destinatario` int(9) NOT NULL,
   `fecha` datetime NOT NULL,
   `cantidad` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
@@ -41,7 +41,7 @@ CREATE TABLE `bizum` (
 -- Volcado de datos para la tabla `bizum`
 --
 
-INSERT INTO `bizum` (`id`, `IBAN`, `móvil destinatario`, `fecha`, `cantidad`) VALUES
+INSERT INTO `bizum` (`id`, `IBAN`, `movil destinatario`, `fecha`, `cantidad`) VALUES
 (22, 'ES123456789', 689541236, '2022-06-01 10:49:58', 20);
 
 -- --------------------------------------------------------
@@ -52,16 +52,16 @@ INSERT INTO `bizum` (`id`, `IBAN`, `móvil destinatario`, `fecha`, `cantidad`) V
 
 CREATE TABLE `central` (
   `nombre` varchar(15) COLLATE utf8mb4_spanish2_ci NOT NULL,
-  `dirección` text COLLATE utf8mb4_spanish2_ci NOT NULL,
+  `direccion` text COLLATE utf8mb4_spanish2_ci NOT NULL,
   `email` varchar(60) COLLATE utf8mb4_spanish2_ci NOT NULL,
-  `teléfono` int(9) NOT NULL
+  `telefono` int(9) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
 
 --
 -- Volcado de datos para la tabla `central`
 --
 
-INSERT INTO `central` (`nombre`, `dirección`, `email`, `teléfono`) VALUES
+INSERT INTO `central` (`nombre`, `direccion`, `email`, `telefono`) VALUES
 ('IberBank', 'Avenida Dinamarca numero 3', 'iberbank@gmail.com', 654896324);
 
 -- --------------------------------------------------------
@@ -113,7 +113,7 @@ INSERT INTO `prestamo` (`id`, `IBAN`, `inicio`, `fin`, `mensualidad`, `hipoteca`
 
 CREATE TABLE `sucursal` (
   `id` int(11) NOT NULL,
-  `dirección` text COLLATE utf8mb4_spanish2_ci NOT NULL,
+  `direccion` text COLLATE utf8mb4_spanish2_ci NOT NULL,
   `nombre banco` varchar(15) COLLATE utf8mb4_spanish2_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
 
@@ -121,7 +121,7 @@ CREATE TABLE `sucursal` (
 -- Volcado de datos para la tabla `sucursal`
 --
 
-INSERT INTO `sucursal` (`id`, `dirección`, `nombre banco`) VALUES
+INSERT INTO `sucursal` (`id`, `direccion`, `nombre banco`) VALUES
 (4, 'Calle Rojo 5', 'IberBank'),
 (6, 'Calle Verde 3', 'IberBank'),
 (9, 'Calle Azul 9', 'IberBank');
@@ -178,16 +178,16 @@ CREATE TABLE `usuario` (
   `DNI` varchar(9) COLLATE utf8mb4_spanish2_ci NOT NULL,
   `nombre completo` varchar(40) COLLATE utf8mb4_spanish2_ci NOT NULL,
   `IBAN` varchar(40) COLLATE utf8mb4_spanish2_ci NOT NULL,
-  `dirección` text COLLATE utf8mb4_spanish2_ci NOT NULL,
+  `direccion` text COLLATE utf8mb4_spanish2_ci NOT NULL,
   `id sucursal` int(11) NOT NULL,
-  `móvil` int(9) NOT NULL
+  `movil` int(9) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
 
 --
 -- Volcado de datos para la tabla `usuario`
 --
 
-INSERT INTO `usuario` (`DNI`, `nombre completo`, `IBAN`, `dirección`, `id sucursal`, `móvil`) VALUES
+INSERT INTO `usuario` (`DNI`, `nombre completo`, `IBAN`, `direccion`, `id sucursal`, `movil`) VALUES
 ('22224568Y', 'Hilario de los Cementos', 'ES123456789', 'Calle Kirgyos 3', 6, 789654123);
 
 --
