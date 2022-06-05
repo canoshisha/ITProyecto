@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 05-jun-2022 18:04:24 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="POJOS_UPOBank.Tarjeta" table="tarjeta" catalog="banco" optimistic-lock="version">
+        <id name="numeroTarjeta" type="int">
+            <column name="`Numero tarjeta`" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="cuentaBancaria" class="POJOS_UPOBank.CuentaBancaria" fetch="select">
+            <column name="IBAN" length="40" not-null="true" />
+        </many-to-one>
+        <property name="caducidad" type="date">
+            <column name="caducidad" length="10" not-null="true" />
+        </property>
+        <property name="ccv" type="int">
+            <column name="ccv" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

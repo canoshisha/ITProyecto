@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 05-jun-2022 18:04:24 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="POJOS_UPOBank.Prestamo" table="prestamo" catalog="banco" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="cuentaBancaria" class="POJOS_UPOBank.CuentaBancaria" fetch="select">
+            <column name="IBAN" length="40" not-null="true" />
+        </many-to-one>
+        <property name="inicio" type="date">
+            <column name="inicio" length="10" not-null="true" />
+        </property>
+        <property name="fin" type="date">
+            <column name="fin" length="10" not-null="true" />
+        </property>
+        <property name="mensualidad" type="float">
+            <column name="mensualidad" precision="12" scale="0" not-null="true" />
+        </property>
+        <property name="hipoteca" type="boolean">
+            <column name="hipoteca" not-null="true" />
+        </property>
+        <property name="cantidad" type="float">
+            <column name="cantidad" precision="12" scale="0" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

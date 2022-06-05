@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/banco?zeroDateTimeBehavior=convertToNull</property>
+    <property name="hibernate.connection.username">root</property>
+    <mapping resource="POJOS_UPOBank/CuentaBancaria.hbm.xml"/>
+    <mapping resource="POJOS_UPOBank/Central.hbm.xml"/>
+    <mapping resource="POJOS_UPOBank/Sucursal.hbm.xml"/>
+    <mapping resource="POJOS_UPOBank/Transferencia.hbm.xml"/>
+    <mapping resource="POJOS_UPOBank/Tarjeta.hbm.xml"/>
+    <mapping resource="POJOS_UPOBank/Bizum.hbm.xml"/>
+    <mapping resource="POJOS_UPOBank/Usuario.hbm.xml"/>
+    <mapping resource="POJOS_UPOBank/Prestamo.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>
