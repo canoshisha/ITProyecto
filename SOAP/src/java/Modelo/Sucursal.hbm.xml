@@ -9,14 +9,14 @@
             <generator class="identity" />
         </id>
         <many-to-one name="central" class="Modelo.Central" fetch="select">
-            <column name="`nombre banco`" length="15" not-null="true" />
+            <column name="nombre banco" length="15" not-null="true" />
         </many-to-one>
         <property name="direccion" type="string">
             <column name="direccion" length="65535" not-null="true" />
         </property>
         <set name="usuarios" table="usuario" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="`id sucursal`" not-null="true" />
+                <column name="id sucursal`" not-null="true" />
             </key>
             <one-to-many class="Modelo.Usuario" />
         </set>

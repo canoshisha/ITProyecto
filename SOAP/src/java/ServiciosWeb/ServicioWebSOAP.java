@@ -5,9 +5,11 @@
  */
 package ServiciosWeb;
 
+import java.util.List;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
+
 
 /**
  *
@@ -27,4 +29,11 @@ public class ServicioWebSOAP {
     public int suma(@WebParam(name = "n1") int n1,@WebParam(name = "n2") int n2) {
         return n1+n2;
     }
+    
+    @WebMethod(operationName = "listarSucursal")
+    public String listarSucursal(){
+    List<Modelo.Sucursal> lista = DAO.SucursalDAO.listarSucursal();    
+    return lista.get(0).getDireccion();   
+    }
+    
 }
