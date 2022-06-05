@@ -12,7 +12,7 @@ import org.hibernate.*;
 
 public class Usuario {
 
-    public static POJOS_UPOBank.Usuario Usuario(String dni,String passwd) {
+    public static POJOS_UPOBank.Usuario UsuarioLogin(String dni,String passwd) {
         POJOS_UPOBank.Usuario usuario;
         Session s;
         s = HibernateUtil.getSessionFactory().openSession();
@@ -22,5 +22,6 @@ public class Usuario {
         tx.commit();
         return usuario;
     }
+
 
 }
