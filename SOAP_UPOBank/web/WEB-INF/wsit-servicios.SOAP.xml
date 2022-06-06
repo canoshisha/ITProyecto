@@ -20,7 +20,6 @@
         </operation>
     </portType>
     <binding name="SOAPPortBinding" type="tns:SOAP">
-        <wsp:PolicyReference URI="#SOAPPortBindingPolicy"/>
         <operation name="usuarioLoginString">
             <input/>
             <output/>
@@ -33,11 +32,4 @@
     <service name="SOAP">
         <port name="SOAPPort" binding="tns:SOAPPortBinding"/>
     </service>
-    <wsp:Policy wsu:Id="SOAPPortBindingPolicy">
-        <wsp:ExactlyOne>
-            <wsp:All>
-                <wsoma:OptimizedMimeSerialization/>
-            </wsp:All>
-        </wsp:ExactlyOne>
-    </wsp:Policy>
 </definitions>
