@@ -12,12 +12,7 @@ import javax.jws.WebParam;
  */
 @WebService(serviceName = "SOAP")
 public class SOAP {
- /**
-     * Web service operation
-     * @param dni
-     * @param passwd
-     * @return 
-     */
+
   @WebMethod(operationName = "usuarioLoginString")
      public String usuarioLoginString(@WebParam(name = "dni") String dni,@WebParam(name = "passwd") String passwd){
            return DAO.Usuario.UsuarioLogin(dni, passwd).toString();
