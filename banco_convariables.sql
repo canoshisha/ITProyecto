@@ -16,6 +16,11 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Base de datos: `banco`
+--
+CREATE DATABASE IF NOT EXISTS `banco` DEFAULT CHARACTER SET utf8 COLLATE utf8_spanish2_ci;
+USE `banco`;
+--
 -- Table structure for table `bizum`
 --
 
