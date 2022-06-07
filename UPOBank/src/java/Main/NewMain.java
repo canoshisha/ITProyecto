@@ -20,7 +20,7 @@ public class NewMain {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        ClienteREST.JerseyClient client1=new ClienteREST.JerseyClient();
+        ClienteREST.BizumREST client1=new ClienteREST.BizumREST();
  GenericType<List<Bizum>> genericType = new GenericType<List<Bizum>>() {
     };
     //Returns an ArrayList of Player from the web service

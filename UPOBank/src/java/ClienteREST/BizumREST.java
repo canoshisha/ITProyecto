@@ -14,21 +14,21 @@ import javax.ws.rs.core.GenericType;
  * Jersey REST client generated for REST resource:we [servicios.bizum]<br>
  * USAGE:
  * <pre>
- *        JerseyClient client = new JerseyClient();
- *        Object response = client.XXX(...);
- *        // do whatever with response
- *        client.close();
- * </pre>
+        BizumREST client = new BizumREST();
+        Object response = client.XXX(...);
+        // do whatever with response
+        client.close();
+ </pre>
  *
  * @author sergi
  */
-public class JerseyClient {
+public class BizumREST {
 
     private WebTarget webTarget;
     private Client client;
     private static final String BASE_URI = "http://localhost:8080/REST/webresources/";
 
-    public JerseyClient() {
+    public BizumREST() {
         client = javax.ws.rs.client.ClientBuilder.newClient();
         webTarget = client.target(BASE_URI).path("servicios.bizum");
     }
