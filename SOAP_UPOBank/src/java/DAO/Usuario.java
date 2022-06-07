@@ -5,20 +5,19 @@
  */
 package DAO;
 
-import POJOS_UPOBank.HibernateUtil;
-import java.util.*;
+import POJOS.HibernateUtil;
 import org.hibernate.*;
 
 
 public class Usuario {
 
-    public static POJOS_UPOBank.Usuario UsuarioLogin(String dni,String passwd) {
-        POJOS_UPOBank.Usuario usuario;
+    public static POJOS.Usuario UsuarioLogin(String dni,String passwd) {
+        POJOS.Usuario usuario;
         Session s;
         s = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = s.beginTransaction();
         Query q = s.createQuery(" from Usuario user where user.dni = '"+dni+"' and user.password =" + passwd);
-        usuario = (POJOS_UPOBank.Usuario) q.uniqueResult();
+        usuario = (POJOS.Usuario) q.uniqueResult();
         tx.commit();
         return usuario;
     }

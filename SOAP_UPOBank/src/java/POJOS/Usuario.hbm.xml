@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 07-jun-2022 18:31:51 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="POJOS.Usuario" table="usuario" catalog="banco" optimistic-lock="version">
+        <id name="dni" type="string">
+            <column name="DNI" length="9" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="cuentaBancaria" class="POJOS.CuentaBancaria" fetch="select">
+            <column name="IBAN" length="40" not-null="true" />
+        </many-to-one>
+        <many-to-one name="sucursal" class="POJOS.Sucursal" fetch="select">
+            <column name="id_sucursal" not-null="true" />
+        </many-to-one>
+        <property name="nombreCompleto" type="string">
+            <column name="nombre_completo" length="40" not-null="true" />
+        </property>
+        <property name="password" type="int">
+            <column name="password" not-null="true" />
+        </property>
+        <property name="direccion" type="string">
+            <column name="direccion" length="65535" not-null="true" />
+        </property>
+        <property name="movil" type="int">
+            <column name="movil" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

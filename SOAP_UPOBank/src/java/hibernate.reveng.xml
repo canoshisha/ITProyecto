@@ -41,12 +41,12 @@ Contributor(s):
 -->
 <hibernate-reverse-engineering>
   <schema-selection match-catalog="banco"/>
-  <table-filter match-name="bizum"/>
-  <table-filter match-name="central"/>
-  <table-filter match-name="prestamo"/>
-  <table-filter match-name="transferencia"/>
-  <table-filter match-name="usuario"/>
-  <table-filter match-name="cuenta bancaria"/>
   <table-filter match-name="sucursal"/>
+  <table-filter match-name="transferencia"/>
+  <table-filter match-name="cuenta bancaria"/>
+  <table-filter match-name="bizum"/>
+  <table-filter match-name="prestamo"/>
+  <table-filter match-name="usuario"/>
   <table-filter match-name="tarjeta"/>
+  <table-filter match-name="central"/>
 </hibernate-reverse-engineering>
