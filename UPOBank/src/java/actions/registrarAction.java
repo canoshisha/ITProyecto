@@ -5,12 +5,17 @@
  */
 package actions;
 
+import Entidades_REST.CuentaBancaria;
 import Entidades_REST.Sucursal;
+import Entidades_REST.Usuario;
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import javax.ws.rs.core.GenericType;
+import wsREST.CuentaBancariaREST;
 import wsREST.SucursalREST;
+import wsREST.UsuarioREST;
 
 /**
  *
@@ -20,9 +25,16 @@ public class registrarAction extends ActionSupport {
     
     private String dniUsuario,nombreCompleto,passwordUsuario,direccionUsuario,direccionSucursal,movilUsuario;
     private List<String> listaDirecciones;
-    GenericType<List<Sucursal>> genericType = new GenericType<List<Sucursal>>() {
+    GenericType<List<Sucursal>> genericTypeSuc = new GenericType<List<Sucursal>>() {
     };
-    SucursalREST dao = new SucursalREST();
+    GenericType<List<CuentaBancaria>> genericTypeCB = new GenericType<List<CuentaBancaria>>() {
+    };
+    GenericType<List<Usuario>> genericTypeUsr = new GenericType<List<Usuario>>() {
+    };
+    SucursalREST daoSuc = new SucursalREST();
+    UsuarioREST daoUsr = new UsuarioREST();
+    CuentaBancariaREST daoCB = new CuentaBancariaREST();
+            
 
     public registrarAction() {
     }
@@ -92,11 +104,56 @@ public class registrarAction extends ActionSupport {
     }
     public String obtenerDireccionesSucursal(){
         this.listaDirecciones =  new ArrayList<String>();
-        List <Sucursal> listaSucursales = (List<Sucursal>) dao.findAll_XML(genericType);
+        List <Sucursal> listaSucursales = (List<Sucursal>) daoSuc.findAll_XML(genericTypeSuc);
         for (Sucursal sucursal : listaSucursales) {
             this.listaDirecciones.add(sucursal.getDireccion());
         }
+        daoSuc.close();
         return SUCCESS;
+    }
+    
+    public String registrarUsuario() throws Exception{
+        Usuario usr = new Usuario();
+        usr.setDni(this.getDniUsuario());
+        usr.setNombreCompleto(this.getNombreCompleto());
+        usr.setDireccion(this.getDireccionUsuario());
+        
+        List <Sucursal> listaSucursales = (List<Sucursal>) daoSuc.findAll_XML(genericTypeSuc);
+        for (Sucursal sucursal : listaSucursales) {
+            if(sucursal.getDireccion().equalsIgnoreCase(this.getDireccionSucursal())){
+                Sucursal sl = sucursal;
+            }
+        }
+        boolean correcto;
+        do {          
+            correcto = false;
+            String iban = "ES"+GenerarIBAN();
+            
+            List<CuentaBancaria> listaCuentas = (List<CuentaBancaria>) daoCB.findAll_XML(genericTypeCB);
+            for (CuentaBancaria cuenta : listaCuentas) {
+                if(cuenta.getIban().equalsIgnoreCase(iban)){
+                    correcto = true;
+                }
+            }
+                     
+        } while (correcto == true);
+        
+        
+        
+        
+        
+        
+        return execute();
+        
+    }
+    public String GenerarIBAN() {
+        Random random = new Random();
+        String cadena = "";
+        for (int i = 0; i < 22; i++) {
+           cadena += String.valueOf(random.nextInt(10));
+        }
+          ;
+        return cadena;
     }
     
 }

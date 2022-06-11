@@ -8,11 +8,15 @@
         
     </package>
     
-    <package name="login" extends="struts-default">
+    <package name="login/logout" extends="struts-default">
          
         <action name="iniciarSesion" class="actions.loginAction">
             <result name="success">/CuentaBancaria/cuentaBancaria.jsp</result>
             <result name="input">/vistasLogin/login.jsp</result>
+        </action>
+        
+        <action name="cerrarSesion">
+            <result>/vistasLogin/login.jsp</result>
         </action>
         
     </package>
@@ -55,9 +59,9 @@
             <result name="input">/Transferencia/formTransferencia.jsp</result>
         </action>
         
-        <action name="registrarBizum" class="actions.realizarBizum" method="execute">
+        <action name="prestamoRegistrar" class="actions.solicitarPrestamo" method="execute">
             <result name="success">/CuentaBancaria/cuentaBancaria.jsp</result>
-            <result name="input">/Bizum/formBizum.jsp</result>
+            <result name="input">/Prestasmo/formSolicitarPrestamo.jsp</result>
         </action>
         
         

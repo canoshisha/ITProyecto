@@ -53,5 +53,5 @@ public class loginAction extends ActionSupport {
             addActionError("Contraseña incorrecta");
         }
     }
-
+    
 }
