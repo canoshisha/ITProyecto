@@ -31,6 +31,8 @@ public class registrarAction extends ActionSupport {
     };
     GenericType<List<Usuario>> genericTypeUsr = new GenericType<List<Usuario>>() {
     };
+    GenericType<Usuario> genericType = new GenericType<Usuario>() {
+    };
     SucursalREST daoSuc = new SucursalREST();
     UsuarioREST daoUsr = new UsuarioREST();
     CuentaBancariaREST daoCB = new CuentaBancariaREST();
@@ -113,21 +115,20 @@ public class registrarAction extends ActionSupport {
     }
     
     public String registrarUsuario() throws Exception{
-        Usuario usr = new Usuario();
-        usr.setDni(this.getDniUsuario());
-        usr.setNombreCompleto(this.getNombreCompleto());
-        usr.setDireccion(this.getDireccionUsuario());
-        
+               
         List <Sucursal> listaSucursales = (List<Sucursal>) daoSuc.findAll_XML(genericTypeSuc);
+        boolean correcto;
+        String iban;
+        Sucursal sl = new Sucursal();
         for (Sucursal sucursal : listaSucursales) {
             if(sucursal.getDireccion().equalsIgnoreCase(this.getDireccionSucursal())){
-                Sucursal sl = sucursal;
+                sl = sucursal;
             }
         }
-        boolean correcto;
+        
         do {          
             correcto = false;
-            String iban = "ES"+GenerarIBAN();
+             iban = "ES"+GenerarIBAN();
             
             List<CuentaBancaria> listaCuentas = (List<CuentaBancaria>) daoCB.findAll_XML(genericTypeCB);
             for (CuentaBancaria cuenta : listaCuentas) {
@@ -138,10 +139,17 @@ public class registrarAction extends ActionSupport {
                      
         } while (correcto == true);
         
+        Usuario usr = new Usuario(this.getDniUsuario(), this.getNombreCompleto(), this.getPasswordUsuario(), this.getDireccionUsuario(), Integer.parseInt(this.getMovilUsuario()));
+        Random random = new Random();
+        int saldo = random.nextInt(1000);
+        CuentaBancaria cb = new CuentaBancaria(iban,saldo);
+        usr.setIdSucursal(sl);
+        usr.setIban(cb);
+        daoCB.create_XML(cb);
+        daoUsr.create_XML(usr);
         
-        
-        
-        
+        daoCB.close();
+        daoUsr.close();
         
         return execute();
         
@@ -150,10 +158,37 @@ public class registrarAction extends ActionSupport {
         Random random = new Random();
         String cadena = "";
         for (int i = 0; i < 22; i++) {
-           cadena += String.valueOf(random.nextInt(10));
+           cadena += String.valueOf(random.nextInt(9));
         }
           ;
         return cadena;
+    }
+    
+    public void validate() {
+
+//        Usuario usr = (Usuario) daoUsr.find_XML(genericType, dniUsuario);
+
+        if (this.getDniUsuario() == null || this.getDniUsuario() == "") {
+            addFieldError("dniUsuario","El campo dni debe estar relleno");
+        } else if (this.getDniUsuario().matches("(\\d{8})([-]?)([A-Z]{1})")) {
+            addFieldError("dniUsuario","Formato de DNI incorrecto, debe tener 8 números y una letra");
+        }
+        if (this.getNombreCompleto()== null || this.getNombreCompleto()== "") {
+            addFieldError("nombreCompleto","El campo nombre completo debe estar relleno");
+        }
+        if(this.getPasswordUsuario() == null || this.getPasswordUsuario() == ""){
+            addFieldError("passwordUsuario","El campo password debe estar relleno");
+        }else if(this.getPasswordUsuario().length() < 5){           
+            addFieldError("passwordUsuario","El password debe tener una longitud mínima de 5 caracteres");
+        }
+        if(this.getDireccionUsuario() == null || this.getDireccionUsuario() == ""){
+            addFieldError("direccionUsuario","El campo direccion Usuario debe estar relleno");
+        }
+        if(this.getMovilUsuario() == null || this.getMovilUsuario() == ""){
+            addFieldError("movilUsuario","El campo telefóno móvil debe estar relleno");
+        }
+
+
     }
     
 }
