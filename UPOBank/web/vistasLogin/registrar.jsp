@@ -22,7 +22,7 @@
             <s:textfield name="movilUsuario" label="Teléfono móvil"/> 
             <s:select label="Seleccione la dirección de la sucursal" 
                       headerValue="Direccion Sucursal"
-                      list="#{'1':'Calle Rojo 5', '2':'Calle Verde 3', '3':'Calle Azul 9'}" //esto lo tiene que pillar de la bbdd
+                     list="#{'1':'Calle Rojo 5', '2':'Calle Verde 3', '3':'Calle Azul 9'}" <%-- //esto lo tiene que pillar de la bbdd--%>
                       name="direccionSucursal"/>
             <s:submit name="RegistrarUsuario" value="Registrar Usuario"/>
         </s:form>
