@@ -13,7 +13,7 @@ import javax.ws.rs.core.GenericType;
 
 /**
  * Jersey REST client generated for REST resource:TarjetaFacadeREST
- * [servicios.tarjeta]<br>
+ * [entidades.tarjeta]<br>
  * USAGE:
  * <pre>
  *        TarjetaREST client = new TarjetaREST();
@@ -22,17 +22,17 @@ import javax.ws.rs.core.GenericType;
  *        client.close();
  * </pre>
  *
- * @author mater
+ * @author sergi
  */
 public class TarjetaREST {
 
     private WebTarget webTarget;
     private Client client;
-    private static final String BASE_URI = "http://localhost:8080/REST/webresources";
+    private static final String BASE_URI = "http://localhost:8080/REST2.0/webresources";
 
     public TarjetaREST() {
         client = javax.ws.rs.client.ClientBuilder.newClient();
-        webTarget = client.target(BASE_URI).path("servicios.tarjeta");
+        webTarget = client.target(BASE_URI).path("entidades.tarjeta");
     }
 
     public String countREST() throws ClientErrorException {
@@ -49,25 +49,25 @@ public class TarjetaREST {
         webTarget.path(java.text.MessageFormat.format("{0}", new Object[]{id})).request(javax.ws.rs.core.MediaType.APPLICATION_JSON).put(javax.ws.rs.client.Entity.entity(requestEntity, javax.ws.rs.core.MediaType.APPLICATION_JSON));
     }
 
-    public <T> T find_XML(GenericType<T> responseType, String id) throws ClientErrorException {
+    public <T> T find_XML(GenericType<T>responseType, String id) throws ClientErrorException {
         WebTarget resource = webTarget;
         resource = resource.path(java.text.MessageFormat.format("{0}", new Object[]{id}));
         return resource.request(javax.ws.rs.core.MediaType.APPLICATION_XML).get(responseType);
     }
 
-    public <T> T find_JSON(GenericType<T> responseType, String id) throws ClientErrorException {
+    public <T> T find_JSON(GenericType<T>responseType, String id) throws ClientErrorException {
         WebTarget resource = webTarget;
         resource = resource.path(java.text.MessageFormat.format("{0}", new Object[]{id}));
         return resource.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).get(responseType);
     }
 
-    public <T> T findRange_XML(GenericType<T> responseType, String from, String to) throws ClientErrorException {
+    public <T> T findRange_XML(GenericType<T>responseType, String from, String to) throws ClientErrorException {
         WebTarget resource = webTarget;
         resource = resource.path(java.text.MessageFormat.format("{0}/{1}", new Object[]{from, to}));
         return resource.request(javax.ws.rs.core.MediaType.APPLICATION_XML).get(responseType);
     }
 
-    public <T> T findRange_JSON(GenericType<T> responseType, String from, String to) throws ClientErrorException {
+    public <T> T findRange_JSON(GenericType<T>responseType, String from, String to) throws ClientErrorException {
         WebTarget resource = webTarget;
         resource = resource.path(java.text.MessageFormat.format("{0}/{1}", new Object[]{from, to}));
         return resource.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).get(responseType);
@@ -81,12 +81,12 @@ public class TarjetaREST {
         webTarget.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).post(javax.ws.rs.client.Entity.entity(requestEntity, javax.ws.rs.core.MediaType.APPLICATION_JSON));
     }
 
-    public <T> T findAll_XML(GenericType<T> responseType) throws ClientErrorException {
+    public <T> T findAll_XML(GenericType<T>responseType) throws ClientErrorException {
         WebTarget resource = webTarget;
         return resource.request(javax.ws.rs.core.MediaType.APPLICATION_XML).get(responseType);
     }
 
-    public <T> T findAll_JSON(GenericType<T> responseType) throws ClientErrorException {
+    public <T> T findAll_JSON(GenericType<T>responseType) throws ClientErrorException {
         WebTarget resource = webTarget;
         return resource.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).get(responseType);
     }

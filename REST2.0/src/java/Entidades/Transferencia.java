@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Entidades_REST;
+package Entidades;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -29,16 +29,17 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author sergi
  */
 @Entity
-@Table(name = "bizum")
+@Table(name = "transferencia")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Bizum.findAll", query = "SELECT b FROM Bizum b")
-    , @NamedQuery(name = "Bizum.findById", query = "SELECT b FROM Bizum b WHERE b.id = :id")
-    , @NamedQuery(name = "Bizum.findByMovilDestinatario", query = "SELECT b FROM Bizum b WHERE b.movilDestinatario = :movilDestinatario")
-    , @NamedQuery(name = "Bizum.findByFecha", query = "SELECT b FROM Bizum b WHERE b.fecha = :fecha")
-    , @NamedQuery(name = "Bizum.findByCantidad", query = "SELECT b FROM Bizum b WHERE b.cantidad = :cantidad")
-    , @NamedQuery(name = "Bizum.findByConcepto", query = "SELECT b FROM Bizum b WHERE b.concepto = :concepto")})
-public class Bizum implements Serializable {
+    @NamedQuery(name = "Transferencia.findAll", query = "SELECT t FROM Transferencia t")
+    , @NamedQuery(name = "Transferencia.findById", query = "SELECT t FROM Transferencia t WHERE t.id = :id")
+    , @NamedQuery(name = "Transferencia.findByIBANdestinatario", query = "SELECT t FROM Transferencia t WHERE t.iBANdestinatario = :iBANdestinatario")
+    , @NamedQuery(name = "Transferencia.findByFechaInicio", query = "SELECT t FROM Transferencia t WHERE t.fechaInicio = :fechaInicio")
+    , @NamedQuery(name = "Transferencia.findByFechaFin", query = "SELECT t FROM Transferencia t WHERE t.fechaFin = :fechaFin")
+    , @NamedQuery(name = "Transferencia.findByCantidad", query = "SELECT t FROM Transferencia t WHERE t.cantidad = :cantidad")
+    , @NamedQuery(name = "Transferencia.findByConcepto", query = "SELECT t FROM Transferencia t WHERE t.concepto = :concepto")})
+public class Transferencia implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -48,13 +49,19 @@ public class Bizum implements Serializable {
     private Integer id;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "movil_destinatario")
-    private int movilDestinatario;
+    @Size(min = 1, max = 40)
+    @Column(name = "IBAN_destinatario")
+    private String iBANdestinatario;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "fecha")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fecha;
+    @Column(name = "fecha_inicio")
+    @Temporal(TemporalType.DATE)
+    private Date fechaInicio;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "fecha_fin")
+    @Temporal(TemporalType.DATE)
+    private Date fechaFin;
     @Basic(optional = false)
     @NotNull
     @Column(name = "cantidad")
@@ -68,17 +75,18 @@ public class Bizum implements Serializable {
     @ManyToOne(optional = false)
     private CuentaBancaria iban;
 
-    public Bizum() {
+    public Transferencia() {
     }
 
-    public Bizum(Integer id) {
+    public Transferencia(Integer id) {
         this.id = id;
     }
 
-    public Bizum(Integer id, int movilDestinatario, Date fecha, float cantidad, String concepto) {
+    public Transferencia(Integer id, String iBANdestinatario, Date fechaInicio, Date fechaFin, float cantidad, String concepto) {
         this.id = id;
-        this.movilDestinatario = movilDestinatario;
-        this.fecha = fecha;
+        this.iBANdestinatario = iBANdestinatario;
+        this.fechaInicio = fechaInicio;
+        this.fechaFin = fechaFin;
         this.cantidad = cantidad;
         this.concepto = concepto;
     }
@@ -91,20 +99,28 @@ public class Bizum implements Serializable {
         this.id = id;
     }
 
-    public int getMovilDestinatario() {
-        return movilDestinatario;
+    public String getIBANdestinatario() {
+        return iBANdestinatario;
     }
 
-    public void setMovilDestinatario(int movilDestinatario) {
-        this.movilDestinatario = movilDestinatario;
+    public void setIBANdestinatario(String iBANdestinatario) {
+        this.iBANdestinatario = iBANdestinatario;
     }
 
-    public Date getFecha() {
-        return fecha;
+    public Date getFechaInicio() {
+        return fechaInicio;
     }
 
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
+    public void setFechaInicio(Date fechaInicio) {
+        this.fechaInicio = fechaInicio;
+    }
+
+    public Date getFechaFin() {
+        return fechaFin;
+    }
+
+    public void setFechaFin(Date fechaFin) {
+        this.fechaFin = fechaFin;
     }
 
     public float getCantidad() {
@@ -141,10 +157,10 @@ public class Bizum implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Bizum)) {
+        if (!(object instanceof Transferencia)) {
             return false;
         }
-        Bizum other = (Bizum) object;
+        Transferencia other = (Transferencia) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -153,7 +169,7 @@ public class Bizum implements Serializable {
 
     @Override
     public String toString() {
-        return "Entidades_REST.Bizum[ id=" + id + " ]";
+        return "Entidades.Transferencia[ id=" + id + " ]";
     }
     
 }

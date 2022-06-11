@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Entidades_REST;
+package Entidades;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -153,7 +153,7 @@ public class Bizum implements Serializable {
 
     @Override
     public String toString() {
-        return "Entidades_REST.Bizum[ id=" + id + " ]";
+        return "Entidades.Bizum[ id=" + id + " ]";
     }
     
 }
