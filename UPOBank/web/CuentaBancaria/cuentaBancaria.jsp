@@ -48,7 +48,7 @@
                 </tr>
             </tbody>
         </table>
-        <s:form action="formbizum" method="POST">
+        <s:form action="bizumform" method="POST">
             <s:hidden name="IBAN" value="AQUI PONERMOS EL VALOR DEL IBAN"/>
             <s:submit name="realizarBizum" value="Realizar Bizum"/>
         </s:form>
@@ -72,7 +72,7 @@
                 </tr>
             </tbody>
         </table>
-        <s:form action="formtransf" method="POST">
+        <s:form action="transform" method="POST">
             <s:hidden name="IBAN" value="AQUI PONERMOS EL VALOR DEL IBAN"/>
             <s:submit name="realizarTransferencia" value="Realizar transferencia"/>
         </s:form>
@@ -99,7 +99,7 @@
                 </tr>
             </tbody>
         </table>
-        <s:form action="formsolPres" method="POST">
+        <s:form action="solPresform" method="POST">
             <s:hidden name="IBAN" value="AQUI PONERMOS EL VALOR DEL IBAN"/>
             <s:submit name="solicitarPrestamo" value="Solicitar un prestamos"/>
         </s:form>
