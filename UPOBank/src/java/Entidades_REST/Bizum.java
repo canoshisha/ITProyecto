@@ -155,5 +155,6 @@ public class Bizum implements Serializable {
     public String toString() {
         return "Entidades_REST.Bizum[ id=" + id + " ]";
     }
+
     
 }
