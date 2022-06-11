@@ -5,7 +5,7 @@
  */
 package actions;
 
-import Banco.entidades.Usuario;
+import Entidades_REST.Usuario;
 import wsREST.UsuarioREST;
 import com.opensymphony.xwork2.ActionSupport;
 import javax.ws.rs.core.GenericType;
@@ -15,11 +15,11 @@ import javax.ws.rs.core.GenericType;
  * @author mater
  */
 public class loginAction extends ActionSupport {
-    
-    String dniUsuario,passwordUsuario;
-    GenericType<Usuario> genericType = new GenericType<Usuario>(){};
+
+    String dniUsuario, passwordUsuario;
+    GenericType<Usuario> genericType = new GenericType<Usuario>() {};
     UsuarioREST dao = new UsuarioREST();
-    
+
     public loginAction() {
     }
 
@@ -38,20 +38,20 @@ public class loginAction extends ActionSupport {
     public void setPasswordUsuario(String passwordUsuario) {
         this.passwordUsuario = passwordUsuario;
     }
-    
+
     public String execute() throws Exception {
-        
+        return SUCCESS;
     }
-    
-    public void validate(){
-        
-        Usuario usr;
-        
-		if("mkyong".equals(getUsername())){
-			
-		
-			addActionError("I don't know you, dont try to hack me!");
-		}
-	}
-    
+
+    public void validate() {
+
+        Usuario usr = (Usuario) dao.find_XML(genericType, dniUsuario);
+
+        if (usr == null) {
+            addActionError("Usuario incorrecto");
+        }else if(!usr.getPassword().equalsIgnoreCase(this.getPasswordUsuario())){
+            addActionError("Contraseña incorrecta");
+        }
+    }
+
 }

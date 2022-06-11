@@ -18,8 +18,6 @@
                 <s:actionerror/>
             </div>
         </s:if>
-
-
         <s:form action="iniciarSesion" method="post">
             <s:textfield name="dniUsuario" label="DNI"/>
             <s:textfield name="passwordUsuario" label="Contraseña"/>
@@ -27,8 +25,7 @@
         </s:form>
         <p>¿Aún no te has registrado?</p>
         <s:form action="registrar" method="post">
-            <s:submit name="registrar" value="Registrarse"/>
-            <s:actionerror/>
+            <s:submit name="registrar" value="Registrarse"/>            
         </s:form>
     </body>
 </html>
