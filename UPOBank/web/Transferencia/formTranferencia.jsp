@@ -14,9 +14,9 @@
     </head>
     <body>
           <s:form>
-            <s:label>IBAN destinatario </s:label> <s:text name="IBAN_dest"/>
-            <s:label>Cantidad </s:label> <s:text name="cantidad"  />
-            <s:label>Concepto </s:label> <s:text name="concepto"  />
+              <s:label>IBAN destinatario </s:label> <s:textfield name="IBAN_dest"/>
+              <s:label>Cantidad </s:label> <s:textfield name="cantidad"  />
+              <s:label>Concepto </s:label> <s:textfield name="concepto"  />
             <s:hidden name="IBAN" value="AQUI VA LA VARIABLE IBAN"/>
         </s:form>
     </body>

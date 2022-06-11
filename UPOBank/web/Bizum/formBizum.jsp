@@ -13,10 +13,10 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <s:form>
-            <s:label>Movil destinatario </s:label> <s:text name="movilDest"  />
-            <s:label>Cantidad </s:label> <s:text name="cantidad"  />
-            <s:label>Concepto </s:label> <s:text name="concepto"  />
+        <s:form action="" method="POST">
+            <s:label>Movil destinatario </s:label> <s:textfield name="movilDest"/>
+            <s:label>Cantidad </s:label> <s:textfield name="cantidad"  />
+            <s:label>Concepto </s:label> <s:textfield name="concepto"  />
             <s:hidden name="IBAN" value="AQUI VA LA VARIABLE IBAN"/>
         </s:form>
     </body>
