@@ -14,7 +14,7 @@
     </head>
     <body>
         <h1>Bienvenido <s:property value="#session.usuario.getNombreCompleto()"/> </h1>
-        <h4>Tu sucursal es .... </h4>
+        <h4>Tu sucursal se encuentra en  <s:property value="#session.usuario.getIdSucursal().getDireccion()"/> </h4>
 
         <table border="1">
             <thead>
@@ -75,13 +75,15 @@
                 </tr>
             </thead>
             <tbody>
+                <s:iterator value="#session.listaPrestamo">
                 <tr>
-                    <td>..</td>
-                    <td>fecha inicio</td>
-                    <td>fecha fin</td>
-                    <td>..</td>
-                    <td></td>
+                    <td><s:property value="getInicio().toString()"/> </td>
+                    <td><s:property value="getFin().toString()"/></td>
+                    <td><s:property value="getMensualidad()"/></td>
+                    <td><s:property value="getHipoteca()"/></td>
+                    <td><s:property value="getCantidad()"/></td>
                 </tr>
+                </s:iterator>
             </tbody>
         </table>
         <br></br>

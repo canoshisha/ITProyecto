@@ -96,6 +96,8 @@ public class realizarBizum extends ActionSupport {
         nuevoBizum.setFecha(date);
         
         daoBizum.create_XML(nuevoBizum);
+        
+        
         return SUCCESS;
     }
     
