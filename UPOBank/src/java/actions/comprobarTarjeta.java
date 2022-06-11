@@ -9,6 +9,7 @@ import Entidades_REST.CuentaBancaria;
 import Entidades_REST.Tarjeta;
 import static com.opensymphony.xwork2.Action.SUCCESS;
 import java.time.LocalDateTime;
+import java.util.Calendar;
 import java.util.Date;
 import javax.ws.rs.core.GenericType;
 import wsREST.CuentaBancariaREST;
@@ -47,16 +48,17 @@ public class comprobarTarjeta {
         for (int i = 1; i <= 3; i++) {
             cvv = (int) (Math.random() * 9 + 1);
         }
-
-        caducidad = new Date();
+        
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(fecha);// Configuramos la fecha que se recibe
+        calendar.add(Calendar.DAY_OF_YEAR, 1080);//Añadir 3 años en el préstamo
+        caducidad = calendar.getTime();
         
         tarjeta.setNumerotarjeta(Numero_tarjeta);
         tarjeta.setCaducidad(caducidad);
         tarjeta.setCvv(cvv);
         
         daoTarjeta.create_XML(tarjeta);
-        
-        
 
         return SUCCESS;
 
