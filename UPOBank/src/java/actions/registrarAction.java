@@ -166,7 +166,7 @@ public class registrarAction extends ActionSupport {
     
     public void validate() {
 
-//        Usuario usr = (Usuario) daoUsr.find_XML(genericType, dniUsuario);
+        Usuario usr = (Usuario) daoUsr.find_XML(genericType, this.getDniUsuario());
 
         if (this.getDniUsuario() == null || this.getDniUsuario() == "") {
             addFieldError("dniUsuario","El campo dni debe estar relleno");
@@ -189,6 +189,11 @@ public class registrarAction extends ActionSupport {
         }else if(this.getMovilUsuario().length() != 9){
             addFieldError("movilUsuario","El telefóno móvil debe tener entre 9 dígitos.");
         }
+        
+        if(usr != null){
+            addActionError("El usuario ya existe");
+        }
+        
 
 
     }
