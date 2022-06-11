@@ -34,16 +34,16 @@ public class realizarBizum extends ActionSupport {
         
 
      if (Integer.parseInt(movilDest) <9 || Integer.parseInt(movilDest) > 9) {
-            addActionError("El telefono debe tener 9 digitos");
+            addFieldError("El telefono debe tener 9 digitos");
      }
      if(cantidad.isEmpty()){
-            addActionError("Campo de cantidad vacia");
+            addFieldError("Campo de cantidad vacia");
         }
      if(concepto.isEmpty()){
-         addActionError("Campo de cantidad vacia");
+         addFieldError("Campo de cantidad vacia");
      }
      if(Float.parseFloat(cantidad) <0){
-         addActionError("Valor de cantidad no aceptado");
+         addFieldError("Valor de cantidad no aceptado");
 
      }
      
