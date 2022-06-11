@@ -18,8 +18,7 @@ import wsREST.SucursalREST;
  */
 public class registrarAction extends ActionSupport {
     
-    private String dniUsuario,nombreCompleto,passwordUsuario,direccionUsuario,direccionSucursal;
-    private int movilUsuario;
+    private String dniUsuario,nombreCompleto,passwordUsuario,direccionUsuario,direccionSucursal,movilUsuario;
     private List<String> listaDirecciones;
     GenericType<List<Sucursal>> genericType = new GenericType<List<Sucursal>>() {
     };
@@ -68,11 +67,11 @@ public class registrarAction extends ActionSupport {
         this.direccionSucursal = direccionSucursal;
     }
 
-    public int getMovilUsuario() {
+    public String getMovilUsuario() {
         return movilUsuario;
     }
 
-    public void setMovilUsuario(int movilUsuario) {
+    public void setMovilUsuario(String movilUsuario) {
         this.movilUsuario = movilUsuario;
     }
 
