@@ -15,7 +15,7 @@
     <body>
         <h1>Bienvenido JOSELITO</h1>
         <h4>Tu sucursal es .... </h4>
-        
+
         <table border="1">
             <thead>
                 <tr>
@@ -31,12 +31,13 @@
             </tbody>
         </table>
         <br>
-        <h4>Ultimos movimientos por Bizum</h4>
+        <h4>Ultimos movimientos de la cuenta</h4>
         <table border="1">
             <thead>
                 <tr>
-                    <th>Movil destinatario</th>
                     <th>Fecha</th>
+                    <th>Concepto</th>
+                    <th>Bizum/Transferencia</th>
                     <th>Cantidad</th>
                 </tr>
             </thead>
@@ -45,38 +46,24 @@
                     <td>..</td>
                     <td>..</td>
                     <td>..</td>
+                    <td>..</td>
                 </tr>
             </tbody>
         </table>
+        <br></br>
         <s:form action="bizumform" method="POST">
             <s:hidden name="IBAN" value="AQUI PONERMOS EL VALOR DEL IBAN"/>
             <s:submit name="realizarBizum" value="Realizar Bizum"/>
         </s:form>
-        
-        <h4>Ultimas transferencias</h4>
-        <table border="1">
-            <thead>
-                <tr>
-                    <th>IBAN destinatario</th>
-                    <th>Fecha realizada</th>
-                    <th>Fecha recibida</th>
-                    <th>Cantidad</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>..</td>
-                    <td>fecha inicio</td>
-                    <td>fecha fin</td>
-                    <td>..</td>
-                </tr>
-            </tbody>
-        </table>
+
         <s:form action="transform" method="POST">
             <s:hidden name="IBAN" value="AQUI PONERMOS EL VALOR DEL IBAN"/>
             <s:submit name="realizarTransferencia" value="Realizar transferencia"/>
         </s:form>
         
+        <h5>Ingresos en los ultimos 30 días: ..</h5>
+        <h5>Gastos en los ultimos 30 días: ..</h5>
+        <h5>Saldo Actual: .. </h5>
         
         <h4>Ultimos prestamos</h4>
         <table border="1">
@@ -99,12 +86,11 @@
                 </tr>
             </tbody>
         </table>
+        <br></br>
+
         <s:form action="solPresform" method="POST">
             <s:hidden name="IBAN" value="AQUI PONERMOS EL VALOR DEL IBAN"/>
             <s:submit name="solicitarPrestamo" value="Solicitar un prestamos"/>
         </s:form>
-        
-        
-        
     </body>
 </html>
