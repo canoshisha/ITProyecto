@@ -8,7 +8,6 @@ package actions;
 import Entidades_REST.Bizum;
 import Entidades_REST.CuentaBancaria;
 import com.opensymphony.xwork2.ActionSupport;
-import java.time.LocalDateTime;
 import java.util.Date;
 import javax.ws.rs.core.GenericType;
 import wsREST.BizumREST;
@@ -25,10 +24,32 @@ public class realizarBizum extends ActionSupport {
     GenericType<CuentaBancaria> genericTypeCuenta = new GenericType<CuentaBancaria>(){};
     BizumREST daoBizum = new BizumREST();
     CuentaBancariaREST daoCuenta = new CuentaBancariaREST();
-    
+
     public realizarBizum() {
     }
     
+    @Override
+    public void validate() {
+
+        
+
+     if (Integer.parseInt(movilDest) <9 || Integer.parseInt(movilDest) > 9) {
+            addFieldError("movilDest","El telefono debe tener 9 digitos");
+     }
+     if(cantidad.isEmpty()){
+            addFieldError("cantidad","Campo de cantidad vacia");
+        }
+     if(concepto.isEmpty()){
+         addFieldError("concepto","Campo de cantidad vacia");
+     }
+     if(Float.parseFloat(cantidad) <0){
+         addFieldError("cantidad","Valor de cantidad no aceptado");
+
+     }
+     
+    }
+    
+    @Override
     public String execute() throws Exception {
         CuentaBancaria cuenta =(CuentaBancaria) daoCuenta.find_XML(genericTypeCuenta, IBAN);
         float saldo = cuenta.getCantidad() - Float.parseFloat(cantidad);
