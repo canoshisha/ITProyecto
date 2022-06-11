@@ -63,5 +63,14 @@ public class loginAction extends ActionSupport {
         session.put("usuario", usr);
 
     }
+    public String limpiarSession(){
+        actionContext = ActionContext.getContext();
+        session = actionContext.getSession();
+        if(session != null){
+            session.clear();
+        }
+        
+        return SUCCESS;
+    }
 
 }
