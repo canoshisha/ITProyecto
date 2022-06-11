@@ -13,6 +13,13 @@
         <title>UPOBank</title>
     </head>
     <body>
+        <s:if test="hasActionErrors()">
+            <div class="errors">
+                <s:actionerror/>
+            </div>
+        </s:if>
+
+
         <s:form action="iniciarSesion" method="post">
             <s:textfield name="dniUsuario" label="DNI"/>
             <s:textfield name="passwordUsuario" label="Contraseña"/>
@@ -21,6 +28,7 @@
         <p>¿Aún no te has registrado?</p>
         <s:form action="registrar" method="post">
             <s:submit name="registrar" value="Registrarse"/>
+            <s:actionerror/>
         </s:form>
     </body>
 </html>

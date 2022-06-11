@@ -13,12 +13,18 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1></h1>
-        
-        <s:form action="iniciarSesion" method="post">
+        <h1>Datos para registrarse</h1>       
+        <s:form action="RegistrarUsuario" method="post">
             <s:textfield name="dniUsuario" label="DNI"/>
+            <s:textfield name="nombreCompleto" label="Nombre Completo"/>
             <s:textfield name="passwordUsuario" label="Contraseña"/>
-            <s:submit name="iniciarSesion" value="Iniciar Sesión"/>
+            <s:textfield name="direccionUsuario" label="Dirección Usuario"/>
+            <s:textfield name="movilUsuario" label="Teléfono móvil"/> 
+            <s:select label="Seleccione la dirección de la sucursal" 
+                      headerValue="Direccion Sucursal"
+                      list="#{'1':'Calle Rojo 5', '2':'Calle Verde 3', '3':'Calle Azul 9'}" 
+                      name="direccionSucursal"/>
+            <s:submit name="RegistrarUsuario" value="Registrar Usuario"/>
         </s:form>
     </body>
 </html>
