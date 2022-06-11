@@ -5,7 +5,7 @@
  */
 package actions;
 
-import Banco.entidades.Usuario;
+import Entidades_REST.Usuario;
 import wsREST.UsuarioREST;
 import com.opensymphony.xwork2.ActionSupport;
 import javax.ws.rs.core.GenericType;
