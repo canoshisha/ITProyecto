@@ -5,7 +5,6 @@
  */
 package actions;
 
-import Entidades_REST.Bizum;
 import Entidades_REST.Prestamo;
 import Entidades_REST.CuentaBancaria;
 import static com.opensymphony.xwork2.Action.SUCCESS;
@@ -31,6 +30,22 @@ public class solicitarPrestamo extends ActionSupport{
     };
     PrestamoREST daoPrestamo = new PrestamoREST();
     CuentaBancariaREST daoCuenta = new CuentaBancariaREST();
+
+    public String getIBAN() {
+        return IBAN;
+    }
+
+    public void setIBAN(String IBAN) {
+        this.IBAN = IBAN;
+    }
+
+    public String getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(String cantidad) {
+        this.cantidad = cantidad;
+    }
 
     public solicitarPrestamo() {
     }

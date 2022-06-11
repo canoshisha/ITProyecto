@@ -31,19 +31,51 @@ public class realizarTransferencia extends ActionSupport {
 
     public realizarTransferencia() {
     }
+
+    public String getIBAN_dest() {
+        return IBAN_dest;
+    }
+
+    public void setIBAN_dest(String IBAN_dest) {
+        this.IBAN_dest = IBAN_dest;
+    }
+
+    public String getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(String cantidad) {
+        this.cantidad = cantidad;
+    }
+
+    public String getConcepto() {
+        return concepto;
+    }
+
+    public void setConcepto(String concepto) {
+        this.concepto = concepto;
+    }
+
+    public String getIBAN() {
+        return IBAN;
+    }
+
+    public void setIBAN(String IBAN) {
+        this.IBAN = IBAN;
+    }
     
      @Override
     public void validate() {
-     if(IBAN_dest.isEmpty()){
+     if(this.IBAN_dest.isEmpty()){
              addFieldError("IBAN_dest","Campo de IBAN destinatario vacia");
         }
-     if(cantidad.isEmpty()){
+     if(this.cantidad.isEmpty()){
            addFieldError("cantidad","Campo de cantidad vacia");
         }
-     if(concepto.isEmpty()){
+     if(this.concepto.isEmpty()){
          addFieldError("concepto","Campo de cantidad vacia");
      }
-     if(Float.parseFloat(cantidad) <0){
+     if(Float.parseFloat(this.cantidad) <0){
          addFieldError("cantidad","Valor de cantidad no aceptado");
 
      }
@@ -52,10 +84,10 @@ public class realizarTransferencia extends ActionSupport {
     
     
     public String execute() throws Exception {
-        CuentaBancaria cuenta = (CuentaBancaria) daoCuenta.find_XML(genericTypeCuenta, IBAN);
-        float saldo = cuenta.getCantidad() - Float.parseFloat(cantidad);
+        CuentaBancaria cuenta = (CuentaBancaria) daoCuenta.find_XML(genericTypeCuenta, this.IBAN);
+        float saldo = cuenta.getCantidad() - Float.parseFloat(this.cantidad);
         cuenta.setCantidad(saldo);
-        daoCuenta.edit_XML(cuenta, IBAN);
+        daoCuenta.edit_XML(cuenta, this.IBAN);
         
         
         
@@ -65,9 +97,9 @@ public class realizarTransferencia extends ActionSupport {
         calendar.add(Calendar.DAY_OF_YEAR, 3);// numero de díasaañadir,orestar en caso de días<0
         
         Transferencia nuevaTransferencia = new Transferencia();
-        nuevaTransferencia.setCantidad(Float.parseFloat(cantidad));
-        nuevaTransferencia.setConcepto(concepto);
-        nuevaTransferencia.setIBANdestinatario(IBAN_dest);
+        nuevaTransferencia.setCantidad(Float.parseFloat(this.cantidad));
+        nuevaTransferencia.setConcepto(this.concepto);
+        nuevaTransferencia.setIBANdestinatario(this.IBAN_dest);
         nuevaTransferencia.setIban(cuenta);
         nuevaTransferencia.setFechaInicio(date);
         nuevaTransferencia.setFechaFin(calendar.getTime());

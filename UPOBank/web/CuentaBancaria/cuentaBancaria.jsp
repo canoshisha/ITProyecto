@@ -13,7 +13,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Bienvenido <s:property value="#session.usuario.getNombreCompleto()"/></h1>
+        <h1>Bienvenido <s:property value="#session.usuario.getNombreCompleto()"/> </h1>
         <h4>Tu sucursal es .... </h4>
 
         <table border="1">
@@ -52,12 +52,10 @@
         </table>
         <br></br>
         <s:form action="bizumform" method="POST">
-            <s:hidden name="IBAN" value="AQUI PONERMOS EL VALOR DEL IBAN"/>
             <s:submit name="realizarBizum" value="Realizar Bizum"/>
         </s:form>
 
         <s:form action="transform" method="POST">
-            <s:hidden name="IBAN" value="AQUI PONERMOS EL VALOR DEL IBAN"/>
             <s:submit name="realizarTransferencia" value="Realizar transferencia"/>
         </s:form>
         
@@ -92,10 +90,12 @@
             <s:hidden name="IBAN" value="AQUI PONERMOS EL VALOR DEL IBAN"/>
             <s:submit name="solicitarPrestamo" value="Solicitar un prestamos"/>
         </s:form>
-        
-        <s:form action="Tarjetaform" method="POST">
+        <%-- 
+     <s:form action="Tarjetaform" method="POST">
             <s:submit name="verTarjetas" value="Tarjetas"/>
         </s:form>
+--%>
+       
         
     </body>
 </html>
