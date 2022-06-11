@@ -42,7 +42,7 @@
         </action>
         
         <action name="solPresform">
-            <result>/Prestasmo/formSolicitarPrestamo.jsp</result>
+            <result>/Prestamo/formSolicitarPrestamo.jsp</result>
         </action>
         
     </package>
@@ -59,9 +59,9 @@
             <result name="input">/Transferencia/formTransferencia.jsp</result>
         </action>
         
-        <action name="prestamoRegistrar" class="actions.solicitarPrestamo" method="execute">
+        <action name="prestamoRegistrar" class="actions.solicitarPrestamo" method="nuevoPrestamo">
             <result name="success">/CuentaBancaria/cuentaBancaria.jsp</result>
-            <result name="input">/Prestasmo/formSolicitarPrestamo.jsp</result>
+            <result name="input">/Prestamo/formSolicitarPrestamo.jsp</result>
         </action>
         
         

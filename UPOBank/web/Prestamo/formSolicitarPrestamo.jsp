@@ -14,10 +14,10 @@
     </head>
     <body>
         <s:form action="prestamoRegistrar" method="post">
-            <s:label>Cantidad que desea </s:label> <s:text name="cantidad"/>
-            <s:label>Hipoteca </s:label> <s:checkbox name="hipoteca" fieldValue="true" />
-            <s:label>IBAN de la cuenta </s:label> <s:text name="IBAN"  />
+            <s:textfield name="cantidad" label="Cantidad del préstamo"/>
+            <s:checkbox name="hipoteca" fieldValue="true" label="Hipoteca"/>
             <s:hidden name="IBAN" value="AQUI VA LA VARIABLE IBAN"/>
+            <s:submit name="nuevoPrestamo" value="Registrar Prestamo"/>
         </s:form>
     </body>
 </html>
