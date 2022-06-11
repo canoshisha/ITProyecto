@@ -5,6 +5,7 @@
  */
 package wsREST;
 
+import Entidades_REST.Tarjeta;
 import javax.ws.rs.ClientErrorException;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.WebTarget;
@@ -96,6 +97,10 @@ public class TarjetaREST {
 
     public void close() {
         client.close();
+    }
+
+    public void remove(Tarjeta tarjeta) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }
