@@ -25,6 +25,9 @@ public class registrarAction extends ActionSupport {
     };
     SucursalREST dao = new SucursalREST();
 
+    public registrarAction() {
+    }
+    
     public String getDniUsuario() {
         return dniUsuario;
     }
@@ -83,14 +86,13 @@ public class registrarAction extends ActionSupport {
     
     
     
-    public registrarAction() {
-    }
+    
     
     public String execute() throws Exception {
         return SUCCESS;
     }
     public String obtenerDireccionesSucursal(){
-        listaDirecciones =  new ArrayList<String>();
+        this.listaDirecciones =  new ArrayList<String>();
         List <Sucursal> listaSucursales = (List<Sucursal>) dao.findAll_XML(genericType);
         for (Sucursal sucursal : listaSucursales) {
             this.listaDirecciones.add(sucursal.getDireccion());

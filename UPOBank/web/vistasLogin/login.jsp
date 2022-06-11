@@ -24,7 +24,7 @@
             <s:submit name="iniciarSesion" value="Iniciar Sesión"/>
         </s:form>
         <p>¿Aún no te has registrado?</p>
-        <s:form action="registrar" method="post">
+        <s:form action="regi" method="post">
             <s:submit name="registrar" value="Registrarse"/>            
         </s:form>
     </body>

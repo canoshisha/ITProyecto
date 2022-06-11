@@ -9,10 +9,15 @@
     </package>
     
     <package name="login" extends="struts-default">
+         
+        <action name="iniciarSesion" class="actions.loginAction">
+            <result name="success">/CuentaBancaria/cuentaBancaria.jsp</result>
+            <result name="input">/vistasLogin/login.jsp</result>
+        </action>
         
-        
-        
-        <action name="registrar" class="actions.registrarAction" method="obtenerDireccionesSucursal">
+    </package>
+    <package name="registrarUsuario" extends="struts-default">
+        <action name="regi" class="actions.registrarAction" method="obtenerDireccionesSucursal">
             <result name="success">/vistasLogin/registrar.jsp</result>
         </action>
         
@@ -20,12 +25,6 @@
             <result name="success">/vistasLogin/login.jsp</result>
             <result name="input">/vistasLogin/registrar.jsp</result>
         </action>
-        
-        <action name="iniciarSesion" class="actions.loginAction">
-            <result name="success">/CuentaBancaria/cuentaBancaria.jsp</result>
-            <result name="input">/vistasLogin/login.jsp</result>
-        </action>
-        
     </package>
     
 </struts>
