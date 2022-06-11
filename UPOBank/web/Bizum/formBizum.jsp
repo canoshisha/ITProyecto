@@ -11,9 +11,16 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <s:head/>
     </head>
     <body>
-        <s:form action="" method="POST">
+
+        <s:if test="hasActionErrors()">
+            <div class="errors">
+                <s:actionerror/>
+            </div>
+        </s:if>
+        <s:form action="bizumRegistrar" method="POST">
             <s:label>Movil destinatario </s:label> <s:textfield name="movilDest"/>
             <s:label>Cantidad </s:label> <s:textfield name="cantidad"  />
             <s:label>Concepto </s:label> <s:textfield name="concepto"  />

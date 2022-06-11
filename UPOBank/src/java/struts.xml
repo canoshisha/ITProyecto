@@ -27,4 +27,40 @@
         </action>
     </package>
     
+    <package name="redireccionesOperacionesUsuario" extends="struts-default">
+        
+        <action name="bizumform">
+            <result>/Bizum/formBizum.jsp</result>
+        </action>
+        
+        <action name="transform">
+            <result>/Transferencia/formTransferencia.jsp</result>
+        </action>
+        
+        <action name="solPresform">
+            <result>/Prestasmo/formSolicitarPrestamo.jsp</result>
+        </action>
+        
+    </package>
+    
+    <package name="registrarOperacionesUsuario" extends="struts-default">
+        
+        <action name="bizumRegistrar" class="actions.realizarBizum" method="execute">
+            <result name="success">/CuentaBancaria/cuentaBancaria.jsp</result>
+            <result name="input">/Bizum/formBizum.jsp</result>
+        </action>
+        
+        <action name="transferenciaRegistrar" class="actions.realizarTransferencia" method="execute">
+            <result name="success">/CuentaBancaria/cuentaBancaria.jsp</result>
+            <result name="input">/Transferencia/formTransferencia.jsp</result>
+        </action>
+        
+        <action name="registrarBizum" class="actions.realizarBizum" method="execute">
+            <result name="success">/CuentaBancaria/cuentaBancaria.jsp</result>
+            <result name="input">/Bizum/formBizum.jsp</result>
+        </action>
+        
+        
+    </package>
+    
 </struts>

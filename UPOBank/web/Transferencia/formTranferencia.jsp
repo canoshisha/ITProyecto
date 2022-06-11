@@ -13,7 +13,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-          <s:form>
+          <s:form action="transferenciaRegistrar" method="POST">
               <s:label>IBAN destinatario </s:label> <s:textfield name="IBAN_dest"/>
               <s:label>Cantidad </s:label> <s:textfield name="cantidad"  />
               <s:label>Concepto </s:label> <s:textfield name="concepto"  />
