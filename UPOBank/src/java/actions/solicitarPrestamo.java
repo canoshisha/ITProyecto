@@ -35,15 +35,16 @@ public class solicitarPrestamo extends ActionSupport{
     public solicitarPrestamo() {
     }
 
+    @Override
     public void validate() {
 
-        if (cantidad.isEmpty()) {
+        if (this.cantidad.isEmpty()) {
             addFieldError("cantidad", "Campo de cantidad vacia");
         }
-        if (IBAN.isEmpty() || (CuentaBancaria) daoCuenta.find_XML(genericTypeCuenta, IBAN) == null) {
-            addFieldError("IBAN", "IBAN registrado necesario para la operacion");
-        }
-        if (Float.parseFloat(cantidad) < 0 || Float.parseFloat(cantidad) >1000000) {
+//        if (this.IBAN.isEmpty() || (CuentaBancaria) daoCuenta.find_XML(genericTypeCuenta, this.IBAN) == null) {
+//            addFieldError("IBAN", "IBAN registrado necesario para la operacion");
+//        }
+        if (Float.parseFloat(this.cantidad) < 0 || Float.parseFloat(this.cantidad) >1000000) {
             addFieldError("cantidad", "Valor de cantidad no aceptado");
 
         }
@@ -55,21 +56,22 @@ public class solicitarPrestamo extends ActionSupport{
     }
 
     public String nuevoPrestamo() {
-        CuentaBancaria cuenta = (CuentaBancaria) daoCuenta.find_XML(genericTypeCuenta, IBAN);
+        
+        CuentaBancaria cuenta = (CuentaBancaria) daoCuenta.find_XML(genericTypeCuenta, this.IBAN);
         Date inicio = new Date();
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(inicio);// Configuramos la fecha que se recibe
         calendar.add(Calendar.DAY_OF_YEAR, 1080);//Añadir 3 años en el préstamo
         Date fin = calendar.getTime();
-        float mensualidad = Integer.parseInt(cantidad)/36;
+        float mensualidad = Integer.parseInt(this.cantidad)/36;
         
         Prestamo nuevoPrestamo = new Prestamo();
         nuevoPrestamo.setIban(cuenta);
         nuevoPrestamo.setInicio(inicio);
         nuevoPrestamo.setFin(fin);
         nuevoPrestamo.setMensualidad(mensualidad);
-        nuevoPrestamo.setHipoteca(hipoteca);
-        nuevoPrestamo.setCantidad(Float.parseFloat(cantidad));
+        nuevoPrestamo.setHipoteca(this.hipoteca);
+        nuevoPrestamo.setCantidad(Float.parseFloat(this.cantidad));
         daoPrestamo.create_XML(nuevoPrestamo);
         return SUCCESS;
     }
