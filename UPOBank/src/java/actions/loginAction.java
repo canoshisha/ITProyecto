@@ -6,8 +6,10 @@
 package actions;
 
 import Entidades_REST.Usuario;
+import com.opensymphony.xwork2.ActionContext;
 import wsREST.UsuarioREST;
 import com.opensymphony.xwork2.ActionSupport;
+import java.util.Map;
 import javax.ws.rs.core.GenericType;
 
 /**
@@ -17,8 +19,11 @@ import javax.ws.rs.core.GenericType;
 public class loginAction extends ActionSupport {
 
     String dniUsuario, passwordUsuario;
-    GenericType<Usuario> genericType = new GenericType<Usuario>() {};
+    GenericType<Usuario> genericType = new GenericType<Usuario>() {
+    };
     UsuarioREST dao = new UsuarioREST();
+    ActionContext actionContext;
+    private Map session;
 
     public loginAction() {
     }
@@ -49,9 +54,14 @@ public class loginAction extends ActionSupport {
 
         if (usr == null) {
             addActionError("Usuario incorrecto");
-        }else if(!usr.getPassword().equalsIgnoreCase(this.getPasswordUsuario())){
+        } else if (!usr.getPassword().equalsIgnoreCase(this.getPasswordUsuario())) {
             addActionError("Contraseña incorrecta");
         }
+
+        actionContext = ActionContext.getContext();
+        session = actionContext.getSession();
+        session.put("usuario", usr);
+
     }
-    
+
 }

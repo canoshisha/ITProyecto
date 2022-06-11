@@ -13,7 +13,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <s:form>
+        <s:form action="prestamoRegistrar" method="post">
             <s:label>Cantidad que desea </s:label> <s:text name="cantidad"/>
             <s:label>Hipoteca </s:label> <s:checkbox name="hipoteca" fieldValue="true" />
             <s:label>IBAN de la cuenta </s:label> <s:text name="IBAN"  />

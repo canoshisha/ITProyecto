@@ -13,7 +13,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Bienvenido JOSELITO</h1>
+        <h1>Bienvenido <s:property value="#session.usuario.getNombreCompleto()"/></h1>
         <h4>Tu sucursal es .... </h4>
 
         <table border="1">
