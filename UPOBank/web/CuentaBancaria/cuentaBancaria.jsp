@@ -25,8 +25,8 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>...</td>
-                    <td>...€</td>
+                    <td><s:property value="#session.usuario.getIban().getIban()"/> </td>
+                    <td><s:property value="#session.usuario.getIban().getCantidad()"/>€</td>
                 </tr>
             </tbody>
         </table>
