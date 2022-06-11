@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Banco.entidades;
+package Entidades_REST;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
@@ -49,8 +49,9 @@ public class Usuario implements Serializable {
     private String nombreCompleto;
     @Basic(optional = false)
     @NotNull
+    @Size(min = 1, max = 9)
     @Column(name = "password")
-    private int password;
+    private String password;
     @Basic(optional = false)
     @NotNull
     @Lob
@@ -75,7 +76,7 @@ public class Usuario implements Serializable {
         this.dni = dni;
     }
 
-    public Usuario(String dni, String nombreCompleto, int password, String direccion, int movil) {
+    public Usuario(String dni, String nombreCompleto, String password, String direccion, int movil) {
         this.dni = dni;
         this.nombreCompleto = nombreCompleto;
         this.password = password;
@@ -99,11 +100,11 @@ public class Usuario implements Serializable {
         this.nombreCompleto = nombreCompleto;
     }
 
-    public int getPassword() {
+    public String getPassword() {
         return password;
     }
 
-    public void setPassword(int password) {
+    public void setPassword(String password) {
         this.password = password;
     }
 
@@ -161,7 +162,7 @@ public class Usuario implements Serializable {
 
     @Override
     public String toString() {
-        return "Banco.entidades.Usuario[ dni=" + dni + " ]";
+        return "Entidades_REST.Usuario[ dni=" + dni + " ]";
     }
     
 }

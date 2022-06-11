@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Banco.entidades;
+package Entidades_REST;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -21,6 +21,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -28,17 +29,16 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author sergi
  */
 @Entity
-@Table(name = "prestamo")
+@Table(name = "bizum")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Prestamo.findAll", query = "SELECT p FROM Prestamo p")
-    , @NamedQuery(name = "Prestamo.findById", query = "SELECT p FROM Prestamo p WHERE p.id = :id")
-    , @NamedQuery(name = "Prestamo.findByInicio", query = "SELECT p FROM Prestamo p WHERE p.inicio = :inicio")
-    , @NamedQuery(name = "Prestamo.findByFin", query = "SELECT p FROM Prestamo p WHERE p.fin = :fin")
-    , @NamedQuery(name = "Prestamo.findByMensualidad", query = "SELECT p FROM Prestamo p WHERE p.mensualidad = :mensualidad")
-    , @NamedQuery(name = "Prestamo.findByHipoteca", query = "SELECT p FROM Prestamo p WHERE p.hipoteca = :hipoteca")
-    , @NamedQuery(name = "Prestamo.findByCantidad", query = "SELECT p FROM Prestamo p WHERE p.cantidad = :cantidad")})
-public class Prestamo implements Serializable {
+    @NamedQuery(name = "Bizum.findAll", query = "SELECT b FROM Bizum b")
+    , @NamedQuery(name = "Bizum.findById", query = "SELECT b FROM Bizum b WHERE b.id = :id")
+    , @NamedQuery(name = "Bizum.findByMovilDestinatario", query = "SELECT b FROM Bizum b WHERE b.movilDestinatario = :movilDestinatario")
+    , @NamedQuery(name = "Bizum.findByFecha", query = "SELECT b FROM Bizum b WHERE b.fecha = :fecha")
+    , @NamedQuery(name = "Bizum.findByCantidad", query = "SELECT b FROM Bizum b WHERE b.cantidad = :cantidad")
+    , @NamedQuery(name = "Bizum.findByConcepto", query = "SELECT b FROM Bizum b WHERE b.concepto = :concepto")})
+public class Bizum implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -48,44 +48,39 @@ public class Prestamo implements Serializable {
     private Integer id;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "inicio")
-    @Temporal(TemporalType.DATE)
-    private Date inicio;
+    @Column(name = "movil_destinatario")
+    private int movilDestinatario;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "fin")
-    @Temporal(TemporalType.DATE)
-    private Date fin;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "mensualidad")
-    private float mensualidad;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "hipoteca")
-    private boolean hipoteca;
+    @Column(name = "fecha")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date fecha;
     @Basic(optional = false)
     @NotNull
     @Column(name = "cantidad")
     private float cantidad;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 30)
+    @Column(name = "concepto")
+    private String concepto;
     @JoinColumn(name = "IBAN", referencedColumnName = "IBAN")
     @ManyToOne(optional = false)
     private CuentaBancaria iban;
 
-    public Prestamo() {
+    public Bizum() {
     }
 
-    public Prestamo(Integer id) {
+    public Bizum(Integer id) {
         this.id = id;
     }
 
-    public Prestamo(Integer id, Date inicio, Date fin, float mensualidad, boolean hipoteca, float cantidad) {
+    public Bizum(Integer id, int movilDestinatario, Date fecha, float cantidad, String concepto) {
         this.id = id;
-        this.inicio = inicio;
-        this.fin = fin;
-        this.mensualidad = mensualidad;
-        this.hipoteca = hipoteca;
+        this.movilDestinatario = movilDestinatario;
+        this.fecha = fecha;
         this.cantidad = cantidad;
+        this.concepto = concepto;
     }
 
     public Integer getId() {
@@ -96,36 +91,20 @@ public class Prestamo implements Serializable {
         this.id = id;
     }
 
-    public Date getInicio() {
-        return inicio;
+    public int getMovilDestinatario() {
+        return movilDestinatario;
     }
 
-    public void setInicio(Date inicio) {
-        this.inicio = inicio;
+    public void setMovilDestinatario(int movilDestinatario) {
+        this.movilDestinatario = movilDestinatario;
     }
 
-    public Date getFin() {
-        return fin;
+    public Date getFecha() {
+        return fecha;
     }
 
-    public void setFin(Date fin) {
-        this.fin = fin;
-    }
-
-    public float getMensualidad() {
-        return mensualidad;
-    }
-
-    public void setMensualidad(float mensualidad) {
-        this.mensualidad = mensualidad;
-    }
-
-    public boolean getHipoteca() {
-        return hipoteca;
-    }
-
-    public void setHipoteca(boolean hipoteca) {
-        this.hipoteca = hipoteca;
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
     }
 
     public float getCantidad() {
@@ -134,6 +113,14 @@ public class Prestamo implements Serializable {
 
     public void setCantidad(float cantidad) {
         this.cantidad = cantidad;
+    }
+
+    public String getConcepto() {
+        return concepto;
+    }
+
+    public void setConcepto(String concepto) {
+        this.concepto = concepto;
     }
 
     public CuentaBancaria getIban() {
@@ -154,10 +141,10 @@ public class Prestamo implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Prestamo)) {
+        if (!(object instanceof Bizum)) {
             return false;
         }
-        Prestamo other = (Prestamo) object;
+        Bizum other = (Bizum) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -166,7 +153,7 @@ public class Prestamo implements Serializable {
 
     @Override
     public String toString() {
-        return "Banco.entidades.Prestamo[ id=" + id + " ]";
+        return "Entidades_REST.Bizum[ id=" + id + " ]";
     }
     
 }

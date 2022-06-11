@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Banco.entidades;
+package Entidades_REST;
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -139,7 +139,7 @@ public class Central implements Serializable {
 
     @Override
     public String toString() {
-        return "Banco.entidades.Central[ nombre=" + nombre + " ]";
+        return "Entidades_REST.Central[ nombre=" + nombre + " ]";
     }
     
 }

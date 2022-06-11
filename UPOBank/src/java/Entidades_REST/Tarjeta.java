@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Banco.entidades;
+package Entidades_REST;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -32,7 +32,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Tarjeta.findAll", query = "SELECT t FROM Tarjeta t")
     , @NamedQuery(name = "Tarjeta.findByNumerotarjeta", query = "SELECT t FROM Tarjeta t WHERE t.numerotarjeta = :numerotarjeta")
     , @NamedQuery(name = "Tarjeta.findByCaducidad", query = "SELECT t FROM Tarjeta t WHERE t.caducidad = :caducidad")
-    , @NamedQuery(name = "Tarjeta.findByCcv", query = "SELECT t FROM Tarjeta t WHERE t.ccv = :ccv")})
+    , @NamedQuery(name = "Tarjeta.findByCvv", query = "SELECT t FROM Tarjeta t WHERE t.cvv = :cvv")})
 public class Tarjeta implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -48,8 +48,8 @@ public class Tarjeta implements Serializable {
     private Date caducidad;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "ccv")
-    private int ccv;
+    @Column(name = "cvv")
+    private int cvv;
     @JoinColumn(name = "IBAN", referencedColumnName = "IBAN")
     @ManyToOne(optional = false)
     private CuentaBancaria iban;
@@ -61,10 +61,10 @@ public class Tarjeta implements Serializable {
         this.numerotarjeta = numerotarjeta;
     }
 
-    public Tarjeta(Integer numerotarjeta, Date caducidad, int ccv) {
+    public Tarjeta(Integer numerotarjeta, Date caducidad, int cvv) {
         this.numerotarjeta = numerotarjeta;
         this.caducidad = caducidad;
-        this.ccv = ccv;
+        this.cvv = cvv;
     }
 
     public Integer getNumerotarjeta() {
@@ -83,12 +83,12 @@ public class Tarjeta implements Serializable {
         this.caducidad = caducidad;
     }
 
-    public int getCcv() {
-        return ccv;
+    public int getCvv() {
+        return cvv;
     }
 
-    public void setCcv(int ccv) {
-        this.ccv = ccv;
+    public void setCvv(int cvv) {
+        this.cvv = cvv;
     }
 
     public CuentaBancaria getIban() {
@@ -121,7 +121,7 @@ public class Tarjeta implements Serializable {
 
     @Override
     public String toString() {
-        return "Banco.entidades.Tarjeta[ numerotarjeta=" + numerotarjeta + " ]";
+        return "Entidades_REST.Tarjeta[ numerotarjeta=" + numerotarjeta + " ]";
     }
     
 }

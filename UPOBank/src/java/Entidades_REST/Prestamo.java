@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Banco.entidades;
+package Entidades_REST;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -28,15 +28,17 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author sergi
  */
 @Entity
-@Table(name = "bizum")
+@Table(name = "prestamo")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Bizum.findAll", query = "SELECT b FROM Bizum b")
-    , @NamedQuery(name = "Bizum.findById", query = "SELECT b FROM Bizum b WHERE b.id = :id")
-    , @NamedQuery(name = "Bizum.findByMovilDestinatario", query = "SELECT b FROM Bizum b WHERE b.movilDestinatario = :movilDestinatario")
-    , @NamedQuery(name = "Bizum.findByFecha", query = "SELECT b FROM Bizum b WHERE b.fecha = :fecha")
-    , @NamedQuery(name = "Bizum.findByCantidad", query = "SELECT b FROM Bizum b WHERE b.cantidad = :cantidad")})
-public class Bizum implements Serializable {
+    @NamedQuery(name = "Prestamo.findAll", query = "SELECT p FROM Prestamo p")
+    , @NamedQuery(name = "Prestamo.findById", query = "SELECT p FROM Prestamo p WHERE p.id = :id")
+    , @NamedQuery(name = "Prestamo.findByInicio", query = "SELECT p FROM Prestamo p WHERE p.inicio = :inicio")
+    , @NamedQuery(name = "Prestamo.findByFin", query = "SELECT p FROM Prestamo p WHERE p.fin = :fin")
+    , @NamedQuery(name = "Prestamo.findByMensualidad", query = "SELECT p FROM Prestamo p WHERE p.mensualidad = :mensualidad")
+    , @NamedQuery(name = "Prestamo.findByHipoteca", query = "SELECT p FROM Prestamo p WHERE p.hipoteca = :hipoteca")
+    , @NamedQuery(name = "Prestamo.findByCantidad", query = "SELECT p FROM Prestamo p WHERE p.cantidad = :cantidad")})
+public class Prestamo implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -46,13 +48,22 @@ public class Bizum implements Serializable {
     private Integer id;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "movil_destinatario")
-    private int movilDestinatario;
+    @Column(name = "inicio")
+    @Temporal(TemporalType.DATE)
+    private Date inicio;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "fecha")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fecha;
+    @Column(name = "fin")
+    @Temporal(TemporalType.DATE)
+    private Date fin;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "mensualidad")
+    private float mensualidad;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "hipoteca")
+    private boolean hipoteca;
     @Basic(optional = false)
     @NotNull
     @Column(name = "cantidad")
@@ -61,17 +72,19 @@ public class Bizum implements Serializable {
     @ManyToOne(optional = false)
     private CuentaBancaria iban;
 
-    public Bizum() {
+    public Prestamo() {
     }
 
-    public Bizum(Integer id) {
+    public Prestamo(Integer id) {
         this.id = id;
     }
 
-    public Bizum(Integer id, int movilDestinatario, Date fecha, float cantidad) {
+    public Prestamo(Integer id, Date inicio, Date fin, float mensualidad, boolean hipoteca, float cantidad) {
         this.id = id;
-        this.movilDestinatario = movilDestinatario;
-        this.fecha = fecha;
+        this.inicio = inicio;
+        this.fin = fin;
+        this.mensualidad = mensualidad;
+        this.hipoteca = hipoteca;
         this.cantidad = cantidad;
     }
 
@@ -83,20 +96,36 @@ public class Bizum implements Serializable {
         this.id = id;
     }
 
-    public int getMovilDestinatario() {
-        return movilDestinatario;
+    public Date getInicio() {
+        return inicio;
     }
 
-    public void setMovilDestinatario(int movilDestinatario) {
-        this.movilDestinatario = movilDestinatario;
+    public void setInicio(Date inicio) {
+        this.inicio = inicio;
     }
 
-    public Date getFecha() {
-        return fecha;
+    public Date getFin() {
+        return fin;
     }
 
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
+    public void setFin(Date fin) {
+        this.fin = fin;
+    }
+
+    public float getMensualidad() {
+        return mensualidad;
+    }
+
+    public void setMensualidad(float mensualidad) {
+        this.mensualidad = mensualidad;
+    }
+
+    public boolean getHipoteca() {
+        return hipoteca;
+    }
+
+    public void setHipoteca(boolean hipoteca) {
+        this.hipoteca = hipoteca;
     }
 
     public float getCantidad() {
@@ -125,10 +154,10 @@ public class Bizum implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Bizum)) {
+        if (!(object instanceof Prestamo)) {
             return false;
         }
-        Bizum other = (Bizum) object;
+        Prestamo other = (Prestamo) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -137,7 +166,7 @@ public class Bizum implements Serializable {
 
     @Override
     public String toString() {
-        return "Banco.entidades.Bizum[ id=" + id + " ]";
+        return "Entidades_REST.Prestamo[ id=" + id + " ]";
     }
     
 }

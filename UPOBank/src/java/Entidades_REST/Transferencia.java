@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Banco.entidades;
+package Entidades_REST;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -37,7 +37,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Transferencia.findByIBANdestinatario", query = "SELECT t FROM Transferencia t WHERE t.iBANdestinatario = :iBANdestinatario")
     , @NamedQuery(name = "Transferencia.findByFechaInicio", query = "SELECT t FROM Transferencia t WHERE t.fechaInicio = :fechaInicio")
     , @NamedQuery(name = "Transferencia.findByFechaFin", query = "SELECT t FROM Transferencia t WHERE t.fechaFin = :fechaFin")
-    , @NamedQuery(name = "Transferencia.findByCantidad", query = "SELECT t FROM Transferencia t WHERE t.cantidad = :cantidad")})
+    , @NamedQuery(name = "Transferencia.findByCantidad", query = "SELECT t FROM Transferencia t WHERE t.cantidad = :cantidad")
+    , @NamedQuery(name = "Transferencia.findByConcepto", query = "SELECT t FROM Transferencia t WHERE t.concepto = :concepto")})
 public class Transferencia implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -65,6 +66,11 @@ public class Transferencia implements Serializable {
     @NotNull
     @Column(name = "cantidad")
     private float cantidad;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 30)
+    @Column(name = "concepto")
+    private String concepto;
     @JoinColumn(name = "IBAN", referencedColumnName = "IBAN")
     @ManyToOne(optional = false)
     private CuentaBancaria iban;
@@ -76,12 +82,13 @@ public class Transferencia implements Serializable {
         this.id = id;
     }
 
-    public Transferencia(Integer id, String iBANdestinatario, Date fechaInicio, Date fechaFin, float cantidad) {
+    public Transferencia(Integer id, String iBANdestinatario, Date fechaInicio, Date fechaFin, float cantidad, String concepto) {
         this.id = id;
         this.iBANdestinatario = iBANdestinatario;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
         this.cantidad = cantidad;
+        this.concepto = concepto;
     }
 
     public Integer getId() {
@@ -124,6 +131,14 @@ public class Transferencia implements Serializable {
         this.cantidad = cantidad;
     }
 
+    public String getConcepto() {
+        return concepto;
+    }
+
+    public void setConcepto(String concepto) {
+        this.concepto = concepto;
+    }
+
     public CuentaBancaria getIban() {
         return iban;
     }
@@ -154,7 +169,7 @@ public class Transferencia implements Serializable {
 
     @Override
     public String toString() {
-        return "Banco.entidades.Transferencia[ id=" + id + " ]";
+        return "Entidades_REST.Transferencia[ id=" + id + " ]";
     }
     
 }
