@@ -8,11 +8,12 @@ package actions;
 import Entidades_REST.CuentaBancaria;
 import Entidades_REST.Tarjeta;
 import static com.opensymphony.xwork2.Action.SUCCESS;
-import java.time.LocalDateTime;
+import com.opensymphony.xwork2.ActionContext;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
 import javax.ws.rs.core.GenericType;
-import wsREST.CuentaBancariaREST;
 import wsREST.TarjetaREST;
 
 /**
@@ -25,19 +26,31 @@ public class comprobarTarjeta {
     Date caducidad;
     int cvv;
     String IBAN;
-
+    private Map session; 
+    List<Tarjeta> listaTarjetas;
+    ActionContext actionContext ;
     GenericType<Tarjeta> genericType = new GenericType<Tarjeta>() {
     };
     GenericType<CuentaBancaria> genericTypeCuenta = new GenericType<CuentaBancaria>() {
     };
+    GenericType<List<Tarjeta>> genericTypeTarjeta = new GenericType<List<Tarjeta>>() {
+    };
     TarjetaREST daoTarjeta = new TarjetaREST();
+    
     
     
     public comprobarTarjeta() {
 
     }
-
-    public String nuevaTarjeta() {
+    public String execute() throws Exception {
+        listaTarjetas =(List<Tarjeta>) daoTarjeta.findAll_XML(genericTypeTarjeta);
+        actionContext = ActionContext.getContext();
+        session = actionContext.getSession();
+        session.put("listaTarjetas", listaTarjetas);
+        return SUCCESS;
+    }
+    
+    public String createTarjeta() {
         java.util.Date fecha = new Date();
         Tarjeta tarjeta =(Tarjeta) daoTarjeta.findAll_XML(genericType);
         

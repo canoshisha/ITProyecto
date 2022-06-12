@@ -45,7 +45,10 @@
             <result>/Prestamo/formSolicitarPrestamo.jsp</result>
         </action>
         <action name="gesTarjetas" class="actions.comprobarTarjeta">
-            <result name="success">/Tarjeta/crearTarjeta.jsp</result>
+            <result name="success">/Tarjeta/gestTarjetas.jsp</result>
+        </action>
+        <action name="createTarjeta" class="actions.comprobarTarjeta" method="createTarjeta">
+            <result name="success">/Tarjeta/gestTarjetas.jsp</result>
         </action>
     </package>
     
