@@ -44,7 +44,9 @@
         <action name="solPresform">
             <result>/Prestamo/formSolicitarPrestamo.jsp</result>
         </action>
-        
+        <action name="gesTarjetas" class="actions.comprobarTarjeta">
+            <result name="success">/Tarjeta/crearTarjeta.jsp</result>
+        </action>
     </package>
     
     <package name="registrarOperacionesUsuario" extends="struts-default">

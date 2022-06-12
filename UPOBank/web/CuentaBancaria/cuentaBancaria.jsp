@@ -111,10 +111,13 @@
         <br></br>
 
         <s:form action="solPresform" method="POST">
-            <s:hidden name="IBAN" value="AQUI PONERMOS EL VALOR DEL IBAN"/>
             <s:submit name="solicitarPrestamo" value="Solicitar un prestamos"/>
         </s:form>
-
+        
+        <s:form action="gesTarjetas" method="POST">
+             <s:submit name="gestionarTarjetas" value="Gestionar tarjetas"/>
+        </s:form>
+        
         
         <br></br>
          <s:form action="cerrarSesion" method="POST">
