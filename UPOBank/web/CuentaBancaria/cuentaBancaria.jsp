@@ -20,9 +20,6 @@
     <body>
         <h1>Bienvenido <s:property value="#session.usuario.getNombreCompleto()"/> </h1>
         <h4>Tu sucursal se encuentra en  <s:property value="#session.usuario.getIdSucursal().getDireccion()"/> </h4>
-        <s:form action="formTarjeta" method="POST">
-            <s:submit name="verTarjetas" value="Tarjetas"/>
-        </s:form>
 
         <table border="1">
             <thead>
@@ -113,7 +110,7 @@
         <s:form action="solPresform" method="POST">
             <s:submit name="solicitarPrestamo" value="Solicitar un prestamos"/>
         </s:form>
-        
+        <h4>Gestionar tarjetas</h4>
         <s:form action="gesTarjetas" method="POST">
              <s:submit name="gestionarTarjetas" value="Gestionar tarjetas"/>
         </s:form>
