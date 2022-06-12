@@ -48,20 +48,25 @@
             </thead>
             <tbody>
                 <s:iterator value="#session.listaBizum">
+                    <s:if test="getIban().getIban() == #session.usuario.getIban().getIban()">
                     <tr>
                         <td><s:property value="getFecha()"/> </td>
                         <td>Bizum</td>
                         <td><s:property value="getConcepto()"/></td>
                         <td><s:property value="getCantidad()"/></td>
                     </tr>
+                    </s:if>
                 </s:iterator>
+                   
                 <s:iterator value="#session.listaTransferencia">
+                    <s:if test="getIban().getIban() == #session.usuario.getIban().getIban()"> 
                     <tr>
                         <td><s:property value="getFechaInicio()"/> </td>
                         <td>Transferencia</td>
                         <td><s:property value="getConcepto()"/></td>
                         <td><s:property value="getCantidad()"/></td>
                     </tr>
+                    </s:if>
                 </s:iterator>
             </tbody>
         </table>
@@ -88,6 +93,7 @@
             </thead>
             <tbody>
                 <s:iterator value="#session.listaPrestamo">
+                    <s:if test="getIban().getIban() == #session.usuario.getIban().getIban()">
                     <tr>
                         <td><s:property value="getInicio()"/> </td>
                         <td><s:property value="getFin()"/></td>
@@ -95,6 +101,7 @@
                         <td><s:property value="getHipoteca()"/></td>
                         <td><s:property value="getCantidad()"/></td>
                     </tr>
+                    </s:if>
                 </s:iterator>
             </tbody>
         </table>

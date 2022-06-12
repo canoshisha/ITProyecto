@@ -39,6 +39,12 @@ public class registrarAction extends ActionSupport {
             
 
     public registrarAction() {
+        
+        this.listaDirecciones =  new ArrayList<String>();
+        List <Sucursal> listaSucursales = (List<Sucursal>) daoSuc.findAll_XML(genericTypeSuc);
+        for (Sucursal sucursal : listaSucursales) {
+            this.listaDirecciones.add(sucursal.getDireccion());
+        }
     }
     
     public String getDniUsuario() {
@@ -142,6 +148,7 @@ public class registrarAction extends ActionSupport {
         
         daoCB.close();
         daoUsr.close();
+        daoSuc.close();
         
         return execute();
         
@@ -158,25 +165,24 @@ public class registrarAction extends ActionSupport {
     
     public void validate() {
 
-        
-
-        if (this.getDniUsuario() == null || this.getDniUsuario() == "") {
+       
+        if (this.getDniUsuario() == null || "".equals(this.getDniUsuario())) {
             addFieldError("dniUsuario","El campo dni debe estar relleno");
-        } else if (this.getDniUsuario().matches("(\\d{8})([-]?)([A-Z]{1})")) {
+        } else if (!this.getDniUsuario().matches("(\\d{8})([-]?)([A-Z]{1})")) {
             addFieldError("dniUsuario","Formato de DNI incorrecto, debe tener 8 números y una letra.");
         }
-        if (this.getNombreCompleto()== null || this.getNombreCompleto()== "") {
+        if (this.getNombreCompleto() == null || "".equals(this.getNombreCompleto())) {
             addFieldError("nombreCompleto","El campo nombre completo debe estar relleno.");
         }
-        if(this.getPasswordUsuario() == null || this.getPasswordUsuario() == ""){
-            addFieldError("passwordUsuario","El campo password debe estar relleno.");
+        if(this.getPasswordUsuario() == null || "".equals(this.getPasswordUsuario())){
+            addFieldError("passwordUsuario","El campo contraseña debe estar relleno.");
         }else if(this.getPasswordUsuario().length() < 5){           
-            addFieldError("passwordUsuario","El password debe tener una longitud mínima de 5 caracteres.");
+            addFieldError("passwordUsuario","La contraseña debe tener una longitud mínima de 5 caracteres.");
         }
-        if(this.getDireccionUsuario() == null || this.getDireccionUsuario() == ""){
+        if(this.getDireccionUsuario() == null || "".equals(this.getDireccionUsuario())){
             addFieldError("direccionUsuario","El campo direccion Usuario debe estar relleno.");
         }
-        if(this.getMovilUsuario() == null || this.getMovilUsuario() == ""){
+        if(this.getMovilUsuario() == null || "".equals(this.getMovilUsuario())){
             addFieldError("movilUsuario","El campo telefóno móvil debe estar relleno.");
         }else if(this.getMovilUsuario().length() != 9){
             addFieldError("movilUsuario","El telefóno móvil debe tener entre 9 dígitos.");
