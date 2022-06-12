@@ -213,13 +213,13 @@
                         <td><s:property value="getCvv()"/>€</td>
                         <td><s:property value="getIban().getIban"/>€</td>
                         <td>
-                            <s:form action="cuentaModificar" method="post">
-                                <s:hidden name="IBAN" value="%{getIban()}"/>
+                            <s:form action="tarjetaModificar" method="post">
+                                <s:hidden name="IBAN" value="%{getNumerotarjeta()}"/>
                                 <s:submit name="borrar" value="Modificar"/>
                             </s:form>
                             
-                            <s:form action="cuentaBorrar" method="post">
-                                <s:hidden name="IBAN" value="%{getIban()}"/>
+                            <s:form action="tarjetaBorrar" method="post">
+                                <s:hidden name="IBAN" value="%{getNumerotarjeta()}"/>
                                 <s:submit name="borrar" value="Eliminar"/>
                             </s:form>
                         </td>

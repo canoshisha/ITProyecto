@@ -69,4 +69,34 @@
         
     </package>
     
+    <package name="redireccionesOperacionesAdmninistrador" extends="struts-default">
+        
+        <action name="usuarioModificar">
+            <result>/Bizum/formBizum.jsp</result>
+        </action>
+        
+        <action name="cuentaModificar">
+            <result>/Transferencia/formTransferencia.jsp</result>
+        </action>
+        
+        <action name="solPresform">
+            <result>/Prestamo/formSolicitarPrestamo.jsp</result>
+        </action>
+        
+        <action name="tarjetaModificar">
+            <result>/Prestamo/formSolicitarPrestamo.jsp</result>
+        </action>
+        
+        
+    </package>
+    
+    
+    <package name="default" extends="struts-default">
+        
+    </package>
+    
+    
+    
+    
+    
 </struts>
