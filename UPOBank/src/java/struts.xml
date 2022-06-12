@@ -74,30 +74,28 @@
     
     <package name="redireccionesOperacionesAdmninistrador" extends="struts-default">
         
-        <action name="usuarioModificar">
-            <result>/Bizum/formBizum.jsp</result>
+        <action name="usuarioModificar" class="actionsAdm.obtenerEntidadAction" method="obtenerUsr">
+            <result>/vistasAdm/modificarUsr.jsp</result>
         </action>
         
-        <action name="cuentaModificar">
-            <result>/Transferencia/formTransferencia.jsp</result>
+        <action name="cuentaModificar" class="actionsAdm.obtenerEntidadAction" method="obtenerCuentaBancaria">
+            <result>/vistasAdm/modificarCuenta.jsp</result>
         </action>
         
-        <action name="solPresform">
-            <result>/Prestamo/formSolicitarPrestamo.jsp</result>
-        </action>
-        
-        <action name="tarjetaModificar">
-            <result>/Prestamo/formSolicitarPrestamo.jsp</result>
+        <action name="tarjetaModificar" class="actionsAdm.obtenerEntidadAction" method="obtenerTarjeta">
+            <result>/vistasAdm/modificartarjeta.jsp</result>
         </action>
         
         
     </package>
-    
-    
-    <package name="default" extends="struts-default">
+    <package name="modificarOperacionesAdministrador" extends="struts-default">
+        
+        <action name="modificarUsr" class="actionsAdm.modificarUsrAction" method="modificarUsr">
+            <result name="success">/vistasAdm/administracion.jsp</result>
+            <!--<result name="input">/vistasAdm/modificarUsr.jsp</result>-->
+        </action>
         
     </package>
-    
     
     
     
