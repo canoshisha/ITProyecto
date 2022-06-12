@@ -83,6 +83,9 @@ public class loginAction extends ActionSupport {
             addActionError("Contraseña incorrecta");
         }
         
+        if(session != null){
+            session.clear();
+        }
          
         actionContext = ActionContext.getContext();
         session = actionContext.getSession();
