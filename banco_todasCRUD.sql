@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-06-2022 a las 18:03:47
--- Versión del servidor: 10.4.19-MariaDB
--- Versión de PHP: 8.0.6
+-- Tiempo de generación: 12-06-2022 a las 20:39:01
+-- Versión del servidor: 10.4.24-MariaDB
+-- Versión de PHP: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,7 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `banco`
 --
+DROP DATABASE IF EXISTS `banco`;
 CREATE DATABASE IF NOT EXISTS `banco` DEFAULT CHARACTER SET utf8 COLLATE utf8_spanish2_ci;
 USE `banco`;
 
@@ -160,7 +161,7 @@ INSERT INTO `sucursal` (`id`, `direccion`, `nombre_banco`) VALUES
 --
 
 CREATE TABLE `tarjeta` (
-  `Numero_tarjeta` int(16) NOT NULL,
+  `Numero_tarjeta` bigint(16) NOT NULL,
   `caducidad` date NOT NULL,
   `cvv` int(3) NOT NULL,
   `IBAN` varchar(40) COLLATE utf8mb4_spanish2_ci NOT NULL
@@ -171,7 +172,8 @@ CREATE TABLE `tarjeta` (
 --
 
 INSERT INTO `tarjeta` (`Numero_tarjeta`, `caducidad`, `cvv`, `IBAN`) VALUES
-(658926547, '2026-06-02', 586, 'ES123456789');
+(7615478028201431, '2025-05-27', 210, 'ES123456789'),
+(8371248462833732, '2025-05-27', 380, 'ES123456789');
 
 -- --------------------------------------------------------
 
