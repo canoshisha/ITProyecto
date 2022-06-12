@@ -5,7 +5,7 @@
  */
 package Entidades.service;
 
-import Entidades.Tarjeta;
+import Entidades.Administrador;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -25,54 +25,54 @@ import javax.ws.rs.core.MediaType;
  * @author sergi
  */
 @Stateless
-@Path("entidades.tarjeta")
-public class TarjetaFacadeREST extends AbstractFacade<Tarjeta> {
+@Path("entidades.administrador")
+public class AdministradorFacadeREST extends AbstractFacade<Administrador> {
 
-    @PersistenceContext(unitName = "REST2.0PU")
+    @PersistenceContext(unitName = "REST-UPOBankPU")
     private EntityManager em;
 
-    public TarjetaFacadeREST() {
-        super(Tarjeta.class);
+    public AdministradorFacadeREST() {
+        super(Administrador.class);
     }
 
     @POST
     @Override
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public void create(Tarjeta entity) {
+    public void create(Administrador entity) {
         super.create(entity);
     }
 
     @PUT
     @Path("{id}")
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public void edit(@PathParam("id") Integer id, Tarjeta entity) {
+    public void edit(@PathParam("id") String id, Administrador entity) {
         super.edit(entity);
     }
 
     @DELETE
     @Path("{id}")
-    public void remove(@PathParam("id") Integer id) {
+    public void remove(@PathParam("id") String id) {
         super.remove(super.find(id));
     }
 
     @GET
     @Path("{id}")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public Tarjeta find(@PathParam("id") Integer id) {
+    public Administrador find(@PathParam("id") String id) {
         return super.find(id);
     }
 
     @GET
     @Override
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public List<Tarjeta> findAll() {
+    public List<Administrador> findAll() {
         return super.findAll();
     }
 
     @GET
     @Path("{from}/{to}")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public List<Tarjeta> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
+    public List<Administrador> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
         return super.findRange(new int[]{from, to});
     }
 

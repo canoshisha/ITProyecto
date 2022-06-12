@@ -5,7 +5,7 @@
  */
 package Entidades.service;
 
-import Entidades.Central;
+import Entidades.Transferencia;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -25,54 +25,54 @@ import javax.ws.rs.core.MediaType;
  * @author sergi
  */
 @Stateless
-@Path("entidades.central")
-public class CentralFacadeREST extends AbstractFacade<Central> {
+@Path("entidades.transferencia")
+public class TransferenciaFacadeREST extends AbstractFacade<Transferencia> {
 
-    @PersistenceContext(unitName = "REST2.0PU")
+    @PersistenceContext(unitName = "REST-UPOBankPU")
     private EntityManager em;
 
-    public CentralFacadeREST() {
-        super(Central.class);
+    public TransferenciaFacadeREST() {
+        super(Transferencia.class);
     }
 
     @POST
     @Override
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public void create(Central entity) {
+    public void create(Transferencia entity) {
         super.create(entity);
     }
 
     @PUT
     @Path("{id}")
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public void edit(@PathParam("id") String id, Central entity) {
+    public void edit(@PathParam("id") Integer id, Transferencia entity) {
         super.edit(entity);
     }
 
     @DELETE
     @Path("{id}")
-    public void remove(@PathParam("id") String id) {
+    public void remove(@PathParam("id") Integer id) {
         super.remove(super.find(id));
     }
 
     @GET
     @Path("{id}")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public Central find(@PathParam("id") String id) {
+    public Transferencia find(@PathParam("id") Integer id) {
         return super.find(id);
     }
 
     @GET
     @Override
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public List<Central> findAll() {
+    public List<Transferencia> findAll() {
         return super.findAll();
     }
 
     @GET
     @Path("{from}/{to}")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public List<Central> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
+    public List<Transferencia> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
         return super.findRange(new int[]{from, to});
     }
 

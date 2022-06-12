@@ -9,7 +9,6 @@ import javax.ws.rs.ClientErrorException;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.GenericType;
-
 /**
  * Jersey REST client generated for REST resource:TransferenciaFacadeREST
  * [entidades.transferencia]<br>
@@ -27,7 +26,7 @@ public class TransferenciaREST {
 
     private WebTarget webTarget;
     private Client client;
-    private static final String BASE_URI = "http://localhost:8080/REST2.0/webresources";
+    private static final String BASE_URI = "http://localhost:8080/REST-UPOBank/webresources";
 
     public TransferenciaREST() {
         client = javax.ws.rs.client.ClientBuilder.newClient();

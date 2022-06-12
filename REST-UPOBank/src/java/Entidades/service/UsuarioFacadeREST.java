@@ -5,7 +5,7 @@
  */
 package Entidades.service;
 
-import Entidades.Sucursal;
+import Entidades.Usuario;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -25,54 +25,54 @@ import javax.ws.rs.core.MediaType;
  * @author sergi
  */
 @Stateless
-@Path("entidades.sucursal")
-public class SucursalFacadeREST extends AbstractFacade<Sucursal> {
+@Path("entidades.usuario")
+public class UsuarioFacadeREST extends AbstractFacade<Usuario> {
 
-    @PersistenceContext(unitName = "REST2.0PU")
+    @PersistenceContext(unitName = "REST-UPOBankPU")
     private EntityManager em;
 
-    public SucursalFacadeREST() {
-        super(Sucursal.class);
+    public UsuarioFacadeREST() {
+        super(Usuario.class);
     }
 
     @POST
     @Override
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public void create(Sucursal entity) {
+    public void create(Usuario entity) {
         super.create(entity);
     }
 
     @PUT
     @Path("{id}")
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public void edit(@PathParam("id") Integer id, Sucursal entity) {
+    public void edit(@PathParam("id") String id, Usuario entity) {
         super.edit(entity);
     }
 
     @DELETE
     @Path("{id}")
-    public void remove(@PathParam("id") Integer id) {
+    public void remove(@PathParam("id") String id) {
         super.remove(super.find(id));
     }
 
     @GET
     @Path("{id}")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public Sucursal find(@PathParam("id") Integer id) {
+    public Usuario find(@PathParam("id") String id) {
         return super.find(id);
     }
 
     @GET
     @Override
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public List<Sucursal> findAll() {
+    public List<Usuario> findAll() {
         return super.findAll();
     }
 
     @GET
     @Path("{from}/{to}")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public List<Sucursal> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
+    public List<Usuario> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
         return super.findRange(new int[]{from, to});
     }
 

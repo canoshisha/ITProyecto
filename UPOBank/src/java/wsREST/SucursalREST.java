@@ -9,7 +9,6 @@ import javax.ws.rs.ClientErrorException;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.GenericType;
-
 /**
  * Jersey REST client generated for REST resource:SucursalFacadeREST
  * [entidades.sucursal]<br>
@@ -27,7 +26,7 @@ public class SucursalREST {
 
     private WebTarget webTarget;
     private Client client;
-    private static final String BASE_URI = "http://localhost:8080/REST2.0/webresources";
+    private static final String BASE_URI = "http://localhost:8080/REST-UPOBank/webresources";
 
     public SucursalREST() {
         client = javax.ws.rs.client.ClientBuilder.newClient();

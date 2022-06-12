@@ -5,7 +5,7 @@
  */
 package Entidades.service;
 
-import Entidades.Prestamo;
+import Entidades.Tarjeta;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -25,27 +25,27 @@ import javax.ws.rs.core.MediaType;
  * @author sergi
  */
 @Stateless
-@Path("entidades.prestamo")
-public class PrestamoFacadeREST extends AbstractFacade<Prestamo> {
+@Path("entidades.tarjeta")
+public class TarjetaFacadeREST extends AbstractFacade<Tarjeta> {
 
-    @PersistenceContext(unitName = "REST2.0PU")
+    @PersistenceContext(unitName = "REST-UPOBankPU")
     private EntityManager em;
 
-    public PrestamoFacadeREST() {
-        super(Prestamo.class);
+    public TarjetaFacadeREST() {
+        super(Tarjeta.class);
     }
 
     @POST
     @Override
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public void create(Prestamo entity) {
+    public void create(Tarjeta entity) {
         super.create(entity);
     }
 
     @PUT
     @Path("{id}")
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public void edit(@PathParam("id") Integer id, Prestamo entity) {
+    public void edit(@PathParam("id") Integer id, Tarjeta entity) {
         super.edit(entity);
     }
 
@@ -58,21 +58,21 @@ public class PrestamoFacadeREST extends AbstractFacade<Prestamo> {
     @GET
     @Path("{id}")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public Prestamo find(@PathParam("id") Integer id) {
+    public Tarjeta find(@PathParam("id") Integer id) {
         return super.find(id);
     }
 
     @GET
     @Override
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public List<Prestamo> findAll() {
+    public List<Tarjeta> findAll() {
         return super.findAll();
     }
 
     @GET
     @Path("{from}/{to}")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public List<Prestamo> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
+    public List<Tarjeta> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
         return super.findRange(new int[]{from, to});
     }
 

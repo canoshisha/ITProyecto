@@ -5,7 +5,7 @@
  */
 package Entidades.service;
 
-import Entidades.CuentaBancaria;
+import Entidades.Sucursal;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -25,54 +25,54 @@ import javax.ws.rs.core.MediaType;
  * @author sergi
  */
 @Stateless
-@Path("entidades.cuentabancaria")
-public class CuentaBancariaFacadeREST extends AbstractFacade<CuentaBancaria> {
+@Path("entidades.sucursal")
+public class SucursalFacadeREST extends AbstractFacade<Sucursal> {
 
-    @PersistenceContext(unitName = "REST2.0PU")
+    @PersistenceContext(unitName = "REST-UPOBankPU")
     private EntityManager em;
 
-    public CuentaBancariaFacadeREST() {
-        super(CuentaBancaria.class);
+    public SucursalFacadeREST() {
+        super(Sucursal.class);
     }
 
     @POST
     @Override
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public void create(CuentaBancaria entity) {
+    public void create(Sucursal entity) {
         super.create(entity);
     }
 
     @PUT
     @Path("{id}")
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public void edit(@PathParam("id") String id, CuentaBancaria entity) {
+    public void edit(@PathParam("id") Integer id, Sucursal entity) {
         super.edit(entity);
     }
 
     @DELETE
     @Path("{id}")
-    public void remove(@PathParam("id") String id) {
+    public void remove(@PathParam("id") Integer id) {
         super.remove(super.find(id));
     }
 
     @GET
     @Path("{id}")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public CuentaBancaria find(@PathParam("id") String id) {
+    public Sucursal find(@PathParam("id") Integer id) {
         return super.find(id);
     }
 
     @GET
     @Override
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public List<CuentaBancaria> findAll() {
+    public List<Sucursal> findAll() {
         return super.findAll();
     }
 
     @GET
     @Path("{from}/{to}")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public List<CuentaBancaria> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
+    public List<Sucursal> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
         return super.findRange(new int[]{from, to});
     }
 

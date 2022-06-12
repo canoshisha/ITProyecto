@@ -64,24 +64,5 @@ public class comprobarTarjeta {
 
     }
 
-    public boolean activarTarjeta() {
-        Tarjeta tarjeta =(Tarjeta) daoTarjeta.findAll_XML(genericType);
-        Tarjeta t = new Tarjeta(this.Numero_tarjeta, this.caducidad, this.cvv);
-        
-        if(t.equals(tarjeta)){
-            return true;
-        }
-        
-        return false;
 
-    }
-
-    public boolean bloquearTarjeta() {
-        Tarjeta tarjeta =(Tarjeta) daoTarjeta.findAll_XML(genericType);
-        
-        daoTarjeta.remove(tarjeta);     
-
-        return true;
-
-    }
 }

@@ -9,12 +9,13 @@ import javax.ws.rs.ClientErrorException;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.GenericType;
+
 /**
- * Jersey REST client generated for REST resource:CuentaBancariaFacadeREST
- * [entidades.cuentabancaria]<br>
+ * Jersey REST client generated for REST resource:AdministradorFacadeREST
+ * [entidades.administrador]<br>
  * USAGE:
  * <pre>
- *        CuentaBancariaREST client = new CuentaBancariaREST();
+ *        AdministradorREST client = new AdministradorREST();
  *        Object response = client.XXX(...);
  *        // do whatever with response
  *        client.close();
@@ -22,15 +23,15 @@ import javax.ws.rs.core.GenericType;
  *
  * @author sergi
  */
-public class CuentaBancariaREST {
+public class AdministradorREST {
 
     private WebTarget webTarget;
     private Client client;
     private static final String BASE_URI = "http://localhost:8080/REST-UPOBank/webresources";
 
-    public CuentaBancariaREST() {
+    public AdministradorREST() {
         client = javax.ws.rs.client.ClientBuilder.newClient();
-        webTarget = client.target(BASE_URI).path("entidades.cuentabancaria");
+        webTarget = client.target(BASE_URI).path("entidades.administrador");
     }
 
     public String countREST() throws ClientErrorException {
