@@ -82,6 +82,7 @@ public class loginAction extends ActionSupport {
         } else if (!usr.getPassword().equalsIgnoreCase(this.getPasswordUsuario())) {
             addActionError("Contraseña incorrecta");
         }
+        
          
         actionContext = ActionContext.getContext();
         session = actionContext.getSession();
@@ -91,12 +92,6 @@ public class loginAction extends ActionSupport {
         session.put("listaPrestamo", listaPrestamo);
 //        List<Prestamo> listaPrestamo = new ArrayList( (usr.getIban().getPrestamoCollection()));SI uso esto peta por si alguien lo mira mañana
 //        session.put("listaPrestamo", listaPrestamo);//si uso este no coge la lsta en el iterator porque es una coleccion
-        
-        
-        
-        
-        
-        
         
 
     }

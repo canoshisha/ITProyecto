@@ -15,13 +15,19 @@
             <result name="input">/vistasLogin/login.jsp</result>
         </action>
         
-        <action name="cerrarSesion" class="actions.loginAction" method="limpiarSession">
-            <result>/vistasLogin/login.jsp</result>
+        <action name="cerrarSesion" class="actions.logOutAction" method="logOutAction">
+            <result name = "success">/vistasLogin/login.jsp</result>
         </action>
         
     </package>
+<<<<<<< Updated upstream
     <package name="registrarUsr" extends="struts-default">
         <action name="regi" class="actions.SelectorDireccionesAction" method="obtenerDireccionesSucursal">
+=======
+    
+    <package name="registrarUsuario" extends="struts-default">
+        <action name="regi" class="actions.registrarAction" method="obtenerDireccionesSucursal">
+>>>>>>> Stashed changes
             <result name="success">/vistasLogin/registrar.jsp</result>
         </action>
         
