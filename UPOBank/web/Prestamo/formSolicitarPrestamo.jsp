@@ -16,8 +16,13 @@
         <s:form action="prestamoRegistrar" method="post">
             <s:textfield name="cantidad" label="Cantidad del préstamo"/>
             <s:checkbox name="hipoteca" fieldValue="true" label="Hipoteca"/>
-            <s:hidden name="IBAN" value="AQUI VA LA VARIABLE IBAN"/>
+            <s:hidden name="IBAN" value="%{#session.usuario.getIban().getIban()}"/>
             <s:submit name="nuevoPrestamo" value="Registrar Prestamo"/>
+        </s:form>
+        <s:form action="iniciarSesion" method="POST">
+            <s:hidden name="dniUsuario" value="%{#session.usuario.getDni()}"/>
+            <s:hidden name="passwordUsuario" value="%{#session.usuario.getPassword()}"/>
+            <s:submit value="Volver" /> 
         </s:form>
     </body>
 </html>

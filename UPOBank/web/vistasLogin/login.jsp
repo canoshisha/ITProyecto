@@ -21,7 +21,7 @@
         </s:if>
         <s:form action="iniciarSesion" method="post">
             <s:textfield name="dniUsuario" label="DNI"/>
-            <s:textfield name="passwordUsuario" label="Contraseña"/>
+            <s:password name="passwordUsuario" label="Contraseña"/>
             <s:submit name="iniciarSesion" value="Iniciar Sesión"/>
         </s:form>
         <p>¿Aún no te has registrado?</p>

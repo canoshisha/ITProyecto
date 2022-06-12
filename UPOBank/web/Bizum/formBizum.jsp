@@ -21,10 +21,18 @@
             </div>
         </s:if>
         <s:form action="bizumRegistrar" method="POST">
-            <s:label>Movil destinatario </s:label> <s:textfield name="movilDest"/>
-            <s:label>Cantidad </s:label> <s:textfield name="cantidad"  />
-            <s:label>Concepto </s:label> <s:textfield name="concepto"  />
-            <s:hidden name="IBAN" value="AQUI VA LA VARIABLE IBAN"/>
+            <s:textfield name="movilDest" label="Movil destinatario"/>
+            <s:textfield name="cantidad"  label="Cantidad"/>
+            <s:textfield name="concepto" label="Concepto" />
+            <s:hidden name="IBAN" value="%{#session.usuario.getIban().getIban()}"/>
+            <s:submit value="Realizar Bizum" />
         </s:form>
+        <s:form action="iniciarSesion" method="POST">
+             <s:hidden name="dniUsuario" value="%{#session.usuario.getDni()}"/>
+             <s:hidden name="passwordUsuario" value="%{#session.usuario.getPassword()}"/>
+             <s:submit value="Volver" /> 
+        </s:form>
+        
+        
     </body>
 </html>

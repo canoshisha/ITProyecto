@@ -166,27 +166,34 @@ public class registrarAction extends ActionSupport {
     
     public void validate() {
 
-//        Usuario usr = (Usuario) daoUsr.find_XML(genericType, dniUsuario);
+        Usuario usr = (Usuario) daoUsr.find_XML(genericType, this.getDniUsuario());
 
         if (this.getDniUsuario() == null || this.getDniUsuario() == "") {
             addFieldError("dniUsuario","El campo dni debe estar relleno");
         } else if (this.getDniUsuario().matches("(\\d{8})([-]?)([A-Z]{1})")) {
-            addFieldError("dniUsuario","Formato de DNI incorrecto, debe tener 8 números y una letra");
+            addFieldError("dniUsuario","Formato de DNI incorrecto, debe tener 8 números y una letra.");
         }
         if (this.getNombreCompleto()== null || this.getNombreCompleto()== "") {
-            addFieldError("nombreCompleto","El campo nombre completo debe estar relleno");
+            addFieldError("nombreCompleto","El campo nombre completo debe estar relleno.");
         }
         if(this.getPasswordUsuario() == null || this.getPasswordUsuario() == ""){
-            addFieldError("passwordUsuario","El campo password debe estar relleno");
+            addFieldError("passwordUsuario","El campo password debe estar relleno.");
         }else if(this.getPasswordUsuario().length() < 5){           
-            addFieldError("passwordUsuario","El password debe tener una longitud mínima de 5 caracteres");
+            addFieldError("passwordUsuario","El password debe tener una longitud mínima de 5 caracteres.");
         }
         if(this.getDireccionUsuario() == null || this.getDireccionUsuario() == ""){
-            addFieldError("direccionUsuario","El campo direccion Usuario debe estar relleno");
+            addFieldError("direccionUsuario","El campo direccion Usuario debe estar relleno.");
         }
         if(this.getMovilUsuario() == null || this.getMovilUsuario() == ""){
-            addFieldError("movilUsuario","El campo telefóno móvil debe estar relleno");
+            addFieldError("movilUsuario","El campo telefóno móvil debe estar relleno.");
+        }else if(this.getMovilUsuario().length() != 9){
+            addFieldError("movilUsuario","El telefóno móvil debe tener entre 9 dígitos.");
         }
+        
+        if(usr != null){
+            addActionError("El usuario ya existe");
+        }
+        
 
 
     }

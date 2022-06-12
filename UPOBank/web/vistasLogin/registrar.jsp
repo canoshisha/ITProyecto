@@ -13,7 +13,14 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Datos para registrarse</h1>       
+        <h1>Datos para registrarse</h1>    
+        
+        <s:if test="hasActionErrors()">
+            <div class="errors">
+                <s:actionerror/>
+            </div>
+        </s:if>
+        
         <s:form action="RegistrarUsuario" method="post">
             <s:textfield name="dniUsuario" label="DNI"/>
             <s:textfield name="nombreCompleto" label="Nombre Completo"/>

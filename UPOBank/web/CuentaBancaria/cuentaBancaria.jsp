@@ -13,8 +13,8 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Bienvenido <s:property value="#session.usuario.getNombreCompleto()"/></h1>
-        <h4>Tu sucursal es .... </h4>
+        <h1>Bienvenido <s:property value="#session.usuario.getNombreCompleto()"/> </h1>
+        <h4>Tu sucursal se encuentra en  <s:property value="#session.usuario.getIdSucursal().getDireccion()"/> </h4>
 
         <table border="1">
             <thead>
@@ -52,12 +52,10 @@
         </table>
         <br></br>
         <s:form action="bizumform" method="POST">
-            <s:hidden name="IBAN" value="AQUI PONERMOS EL VALOR DEL IBAN"/>
             <s:submit name="realizarBizum" value="Realizar Bizum"/>
         </s:form>
 
         <s:form action="transform" method="POST">
-            <s:hidden name="IBAN" value="AQUI PONERMOS EL VALOR DEL IBAN"/>
             <s:submit name="realizarTransferencia" value="Realizar transferencia"/>
         </s:form>
         
@@ -77,13 +75,15 @@
                 </tr>
             </thead>
             <tbody>
+                <s:iterator value="#session.listaPrestamo">
                 <tr>
-                    <td>..</td>
-                    <td>fecha inicio</td>
-                    <td>fecha fin</td>
-                    <td>..</td>
-                    <td></td>
+                    <td><s:property value="getInicio().toString()"/> </td>
+                    <td><s:property value="getFin().toString()"/></td>
+                    <td><s:property value="getMensualidad()"/></td>
+                    <td><s:property value="getHipoteca()"/></td>
+                    <td><s:property value="getCantidad()"/></td>
                 </tr>
+                </s:iterator>
             </tbody>
         </table>
         <br></br>
@@ -92,10 +92,12 @@
             <s:hidden name="IBAN" value="AQUI PONERMOS EL VALOR DEL IBAN"/>
             <s:submit name="solicitarPrestamo" value="Solicitar un prestamos"/>
         </s:form>
-        
-        <s:form action="Tarjetaform" method="POST">
+        <%-- 
+     <s:form action="Tarjetaform" method="POST">
             <s:submit name="verTarjetas" value="Tarjetas"/>
         </s:form>
+--%>
+       
         
     </body>
 </html>

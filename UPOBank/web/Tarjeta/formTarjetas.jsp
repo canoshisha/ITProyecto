@@ -16,7 +16,7 @@
         <h1>Opciones de tarjetas</h1>
         <s:form action="nuevaTarjeta" method="POST">
             <s:submit name="ComprobarTarjeta" value="Solicitar nueva tarjeta"/>
-             <s:hidden name="IBAN" value="AQUI VA LA VARIABLE IBAN"/>
+            <s:hidden name="IBAN" value="AQUI VA LA VARIABLE IBAN"/>
         </s:form>
 
         <h1>Mas opciones</h1>
@@ -25,7 +25,7 @@
             <s:textfield name="Numero_tarjeta" label="Numero de tarjeta"/>
             <s:textfield name="caducidad" label="Caducidad"  />
             <s:textfield name="cvv" label="Cvv"/>
-             <s:hidden name="IBAN" value="AQUI VA LA VARIABLE IBAN"/>
+            <s:hidden name="IBAN" value="AQUI VA LA VARIABLE IBAN"/>
             <s:submit name="ComprobarTarjeta" value="Activar tarjeta"/>
         </s:form>
 
@@ -46,11 +46,16 @@
                     <td>...</td>
                     <td><s:form action="bloquearTarjeta" method="POST">
                             <s:submit name="ComprobarTarjeta" value="Bloquear tarjeta"/>
-                             <s:hidden name="IBAN" value="AQUI VA LA VARIABLE IBAN"/>
+                            <s:hidden name="IBAN" value="AQUI VA LA VARIABLE IBAN"/>
                         </s:form></td>
                 </tr>
             </tbody>
         </table>
         <br>
+        <s:form action="iniciarSesion" method="POST">
+            <s:hidden name="dniUsuario" value="%{#session.usuario.getDni()}"/>
+            <s:hidden name="passwordUsuario" value="%{#session.usuario.getPassword()}"/>
+            <s:submit value="Volver" /> 
+        </s:form>
     </body>
 </html>

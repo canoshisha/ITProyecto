@@ -13,11 +13,17 @@
         <title>JSP Page</title>
     </head>
     <body>
-          <s:form action="transferenciaRegistrar" method="POST">
-              <s:label>IBAN destinatario </s:label> <s:textfield name="IBAN_dest"/>
-              <s:label>Cantidad </s:label> <s:textfield name="cantidad"  />
-              <s:label>Concepto </s:label> <s:textfield name="concepto"  />
-            <s:hidden name="IBAN" value="AQUI VA LA VARIABLE IBAN"/>
+        <s:form action="transferenciaRegistrar" method="POST">
+            <s:textfield name="IBAN_dest" label="IBAN destinatario "/>
+            <s:textfield name="cantidad"  label="Cantidad"/>
+            <s:textfield name="concepto" label="Concepto" />
+            <s:hidden name="IBAN" value="%{#session.usuario.getIban().getIban()}"/>
+            <s:submit value="Realizar transferencioa" />
+        </s:form>
+        <s:form action="iniciarSesion" method="POST">
+            <s:hidden name="dniUsuario" value="%{#session.usuario.getDni()}"/>
+            <s:hidden name="passwordUsuario" value="%{#session.usuario.getPassword()}"/>
+            <s:submit value="Volver" /> 
         </s:form>
     </body>
 </html>
