@@ -20,14 +20,8 @@
         </action>
         
     </package>
-<<<<<<< Updated upstream
     <package name="registrarUsr" extends="struts-default">
         <action name="regi" class="actions.SelectorDireccionesAction" method="obtenerDireccionesSucursal">
-=======
-    
-    <package name="registrarUsuario" extends="struts-default">
-        <action name="regi" class="actions.registrarAction" method="obtenerDireccionesSucursal">
->>>>>>> Stashed changes
             <result name="success">/vistasLogin/registrar.jsp</result>
         </action>
         
