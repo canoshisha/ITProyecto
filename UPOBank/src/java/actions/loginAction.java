@@ -6,6 +6,7 @@
 package actions;
 
 import Entidades_REST.Bizum;
+import Entidades_REST.CuentaBancaria;
 import Entidades_REST.Prestamo;
 import Entidades_REST.Transferencia;
 import Entidades_REST.Usuario;
@@ -41,7 +42,6 @@ public class loginAction extends ActionSupport {
     BizumREST daoBizum = new BizumREST();
     TransferenciaREST daoTransferencia = new TransferenciaREST();
     PrestamoREST daoPrestamo = new PrestamoREST();
-    
     ActionContext actionContext;
     
 
@@ -82,14 +82,12 @@ public class loginAction extends ActionSupport {
         } else if (!usr.getPassword().equalsIgnoreCase(this.getPasswordUsuario())) {
             addActionError("Contraseña incorrecta");
         }
-         if(session != null){
-            session.clear();
-        }
+         
         actionContext = ActionContext.getContext();
         session = actionContext.getSession();
         session.put("usuario", usr);
         session.put("listaBizum", listaBizum);
-        session.put("listaTranferencia", listaTranferencia);
+        session.put("listaTransferencia", listaTranferencia);
         session.put("listaPrestamo", listaPrestamo);
 //        List<Prestamo> listaPrestamo = new ArrayList( (usr.getIban().getPrestamoCollection()));SI uso esto peta por si alguien lo mira mañana
 //        session.put("listaPrestamo", listaPrestamo);//si uso este no coge la lsta en el iterator porque es una coleccion

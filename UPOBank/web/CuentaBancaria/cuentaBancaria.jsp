@@ -4,6 +4,11 @@
     Author     : sergi
 --%>
 
+<%@page import="Entidades_REST.Prestamo"%>
+<%@page import="Entidades_REST.Transferencia"%>
+<%@page import="Entidades_REST.Bizum"%>
+<%@page import="java.util.List"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="s" uri="/struts-tags"%> 
 <!DOCTYPE html>
@@ -36,18 +41,28 @@
             <thead>
                 <tr>
                     <th>Fecha</th>
-                    <th>Concepto</th>
                     <th>Bizum/Transferencia</th>
+                    <th>Concepto</th>
                     <th>Cantidad</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>..</td>
-                    <td>..</td>
-                    <td>..</td>
-                    <td>..</td>
-                </tr>
+                <s:iterator value="#session.listaBizum">
+                    <tr>
+                        <td><s:property value="getFecha()"/> </td>
+                        <td>Bizum</td>
+                        <td><s:property value="getConcepto()"/></td>
+                        <td><s:property value="getCantidad()"/></td>
+                    </tr>
+                </s:iterator>
+                <s:iterator value="#session.listaTransferencia">
+                    <tr>
+                        <td><s:property value="getFechaInicio()"/> </td>
+                        <td>Transferencia</td>
+                        <td><s:property value="getConcepto()"/></td>
+                        <td><s:property value="getCantidad()"/></td>
+                    </tr>
+                </s:iterator>
             </tbody>
         </table>
         <br></br>
@@ -58,11 +73,8 @@
         <s:form action="transform" method="POST">
             <s:submit name="realizarTransferencia" value="Realizar transferencia"/>
         </s:form>
-        
-        <h5>Ingresos en los ultimos 30 días: ..</h5>
-        <h5>Gastos en los ultimos 30 días: ..</h5>
-        <h5>Saldo Actual: .. </h5>
-        
+        <br>
+        <br>
         <h4>Ultimos prestamos</h4>
         <table border="1">
             <thead>
@@ -76,13 +88,13 @@
             </thead>
             <tbody>
                 <s:iterator value="#session.listaPrestamo">
-                <tr>
-                    <td><s:property value="getInicio().toString()"/> </td>
-                    <td><s:property value="getFin().toString()"/></td>
-                    <td><s:property value="getMensualidad()"/></td>
-                    <td><s:property value="getHipoteca()"/></td>
-                    <td><s:property value="getCantidad()"/></td>
-                </tr>
+                    <tr>
+                        <td><s:property value="getInicio()"/> </td>
+                        <td><s:property value="getFin()"/></td>
+                        <td><s:property value="getMensualidad()"/></td>
+                        <td><s:property value="getHipoteca()"/></td>
+                        <td><s:property value="getCantidad()"/></td>
+                    </tr>
                 </s:iterator>
             </tbody>
         </table>
@@ -96,8 +108,8 @@
      <s:form action="Tarjetaform" method="POST">
             <s:submit name="verTarjetas" value="Tarjetas"/>
         </s:form>
---%>
-       
-        
+        --%>
+
+
     </body>
 </html>

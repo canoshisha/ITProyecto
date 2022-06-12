@@ -7,11 +7,16 @@ package actions;
 
 import Entidades_REST.Bizum;
 import Entidades_REST.CuentaBancaria;
+import Entidades_REST.Usuario;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
 import javax.ws.rs.core.GenericType;
 import wsREST.BizumREST;
 import wsREST.CuentaBancariaREST;
+import wsREST.UsuarioREST;
 
 /**
  *
@@ -20,10 +25,16 @@ import wsREST.CuentaBancariaREST;
 public class realizarBizum extends ActionSupport {
     private String movilDest,cantidad,concepto,IBAN;
     
+    GenericType<List<Bizum>> genericTypeBizum = new GenericType<List<Bizum>>() {};
     GenericType<Bizum> genericType = new GenericType<Bizum>(){};
     GenericType<CuentaBancaria> genericTypeCuenta = new GenericType<CuentaBancaria>(){};
+    GenericType<Usuario> genericTypeUsuario = new GenericType<Usuario>(){};
+    UsuarioREST daoUsuario = new UsuarioREST();
     BizumREST daoBizum = new BizumREST();
     CuentaBancariaREST daoCuenta = new CuentaBancariaREST();
+    ActionContext actionContext ;
+    private Map session; 
+     
 
     public realizarBizum() {
     }
@@ -81,13 +92,21 @@ public class realizarBizum extends ActionSupport {
     
     @Override
     public String execute() throws Exception {
+        return SUCCESS;
+    }
+    public String nuevoBizum(){
+                actionContext = ActionContext.getContext();
+        session = actionContext.getSession();
         CuentaBancaria cuenta =(CuentaBancaria) daoCuenta.find_XML(genericTypeCuenta, this.IBAN);
+        Usuario usuario = (Usuario) session.get("usuario");
         float saldo = cuenta.getCantidad() - Float.parseFloat(this.cantidad);
         cuenta.setCantidad(saldo);
         daoCuenta.edit_XML(cuenta, this.IBAN);
+        Usuario user = (Usuario) daoUsuario.find_XML(genericTypeUsuario,usuario.getDni());
+        session.put("usuario", user);
+        
         
         Date date = new Date(); 
-        
         Bizum nuevoBizum = new Bizum();
         nuevoBizum.setCantidad(Float.parseFloat(this.cantidad));
         nuevoBizum.setConcepto(this.concepto);
@@ -97,7 +116,9 @@ public class realizarBizum extends ActionSupport {
         
         daoBizum.create_XML(nuevoBizum);
         
+        List<Bizum> listaBizum = (List<Bizum>) daoBizum.findAll_XML(genericTypeBizum) ;
         
+        session.put("listaBizum", listaBizum);
         return SUCCESS;
     }
     

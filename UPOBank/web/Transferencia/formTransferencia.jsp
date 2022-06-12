@@ -18,7 +18,7 @@
             <s:textfield name="cantidad"  label="Cantidad"/>
             <s:textfield name="concepto" label="Concepto" />
             <s:hidden name="IBAN" value="%{#session.usuario.getIban().getIban()}"/>
-            <s:submit value="Realizar transferencioa" />
+            <s:submit value="Realizar transferencia" />
         </s:form>
         <s:form action="iniciarSesion" method="POST">
             <s:hidden name="dniUsuario" value="%{#session.usuario.getDni()}"/>

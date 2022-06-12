@@ -49,12 +49,12 @@
     
     <package name="registrarOperacionesUsuario" extends="struts-default">
         
-        <action name="bizumRegistrar" class="actions.realizarBizum" method="execute">
+        <action name="bizumRegistrar" class="actions.realizarBizum" method="nuevoBizum">
             <result name="success">/CuentaBancaria/cuentaBancaria.jsp</result>
             <result name="input">/Bizum/formBizum.jsp</result>
         </action>
         
-        <action name="transferenciaRegistrar" class="actions.realizarTransferencia" method="execute">
+        <action name="transferenciaRegistrar" class="actions.realizarTransferencia" method="nuevaTransferencia">
             <result name="success">/CuentaBancaria/cuentaBancaria.jsp</result>
             <result name="input">/Transferencia/formTransferencia.jsp</result>
         </action>
