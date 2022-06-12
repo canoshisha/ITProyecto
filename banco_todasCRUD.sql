@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-06-2022 a las 12:37:35
+-- Tiempo de generación: 12-06-2022 a las 18:03:47
 -- Versión del servidor: 10.4.19-MariaDB
 -- Versión de PHP: 8.0.6
 
@@ -26,6 +26,27 @@ USE `banco`;
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `administrador`
+--
+
+CREATE TABLE `administrador` (
+  `DNI` varchar(9) COLLATE utf8_spanish2_ci NOT NULL,
+  `nombre_completo` varchar(40) COLLATE utf8_spanish2_ci NOT NULL,
+  `password` int(9) NOT NULL,
+  `direccion` text COLLATE utf8_spanish2_ci NOT NULL,
+  `movil` int(9) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+--
+-- Volcado de datos para la tabla `administrador`
+--
+
+INSERT INTO `administrador` (`DNI`, `nombre_completo`, `password`, `direccion`, `movil`) VALUES
+('20204545K', 'Federico Garcia Lorca', 55555, 'Calle Marqués de Toledo, 6', 695874321);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `bizum`
 --
 
@@ -33,7 +54,7 @@ CREATE TABLE `bizum` (
   `id` int(11) NOT NULL,
   `IBAN` varchar(40) COLLATE utf8mb4_spanish2_ci NOT NULL,
   `movil_destinatario` int(9) NOT NULL,
-  `fecha` datetime NOT NULL,
+  `fecha` date NOT NULL,
   `cantidad` float NOT NULL,
   `concepto` varchar(30) COLLATE utf8mb4_spanish2_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
@@ -43,7 +64,9 @@ CREATE TABLE `bizum` (
 --
 
 INSERT INTO `bizum` (`id`, `IBAN`, `movil_destinatario`, `fecha`, `cantidad`, `concepto`) VALUES
-(22, 'ES123456789', 689541236, '2022-06-01 10:49:58', 20, '');
+(28, 'ES123456789', 654745236, '2022-06-12', 10, 'Comida'),
+(29, 'ES123456789', 654123698, '2022-06-12', 10, 'Bebida'),
+(30, 'ES123456789', 658412365, '2022-06-12', 15, 'Camiseta nueva');
 
 -- --------------------------------------------------------
 
@@ -81,7 +104,7 @@ CREATE TABLE `cuenta bancaria` (
 --
 
 INSERT INTO `cuenta bancaria` (`IBAN`, `cantidad`) VALUES
-('ES123456789', 1500),
+('ES123456789', 2985),
 ('ES5487963247', 20000);
 
 -- --------------------------------------------------------
@@ -105,7 +128,9 @@ CREATE TABLE `prestamo` (
 --
 
 INSERT INTO `prestamo` (`id`, `IBAN`, `inicio`, `fin`, `mensualidad`, `hipoteca`, `cantidad`) VALUES
-(44, 'ES123456789', '2022-06-02', '2026-06-02', 300, 1, 15000);
+(44, 'ES123456789', '2022-06-02', '2026-06-02', 300, 1, 15000),
+(45, 'ES123456789', '2022-06-12', '2025-05-27', 555, 0, 20000),
+(46, 'ES123456789', '2022-06-12', '2025-05-27', 55, 0, 2000);
 
 -- --------------------------------------------------------
 
@@ -169,7 +194,8 @@ CREATE TABLE `transferencia` (
 --
 
 INSERT INTO `transferencia` (`id`, `IBAN`, `IBAN_destinatario`, `fecha_inicio`, `fecha_fin`, `cantidad`, `concepto`) VALUES
-(789, 'ES123456789', 'ES987654321', '2022-06-01', '2022-06-02', 250, '');
+(790, 'ES123456789', 'ES1236985478521456996356', '2022-06-12', '2022-06-15', 200, 'Prueba'),
+(791, 'ES123456789', 'ES1236547896541236589741', '2022-06-12', '2022-06-15', 140, 'Letra coche');
 
 -- --------------------------------------------------------
 
@@ -192,11 +218,17 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`DNI`, `nombre_completo`, `password`, `IBAN`, `direccion`, `id_sucursal`, `movil`) VALUES
-('22224568Y', 'Hilario de los Cementos', '1234', 'ES123456789', 'Calle Kirgyos 3', 6, 789654123);
+('22224568Y', 'Hilario de los Cementos', '12345', 'ES123456789', 'Calle Kirgyos 3', 6, 789654123);
 
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `administrador`
+--
+ALTER TABLE `administrador`
+  ADD PRIMARY KEY (`DNI`);
 
 --
 -- Indices de la tabla `bizum`
@@ -261,13 +293,13 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `bizum`
 --
 ALTER TABLE `bizum`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT de la tabla `prestamo`
 --
 ALTER TABLE `prestamo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT de la tabla `sucursal`
@@ -279,7 +311,7 @@ ALTER TABLE `sucursal`
 -- AUTO_INCREMENT de la tabla `transferencia`
 --
 ALTER TABLE `transferencia`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=790;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=792;
 
 --
 -- Restricciones para tablas volcadas
