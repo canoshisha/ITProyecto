@@ -95,7 +95,7 @@ public class realizarBizum extends ActionSupport {
         return SUCCESS;
     }
     public String nuevoBizum(){
-                actionContext = ActionContext.getContext();
+        actionContext = ActionContext.getContext();
         session = actionContext.getSession();
         CuentaBancaria cuenta =(CuentaBancaria) daoCuenta.find_XML(genericTypeCuenta, this.IBAN);
         Usuario usuario = (Usuario) session.get("usuario");

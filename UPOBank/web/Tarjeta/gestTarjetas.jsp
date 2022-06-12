@@ -5,27 +5,22 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="s" uri="/struts-tags"%> 
+
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <s:head/>
     </head>
     <body>
            <h1>Opciones de tarjetas</h1>
         <s:form action="createTarjeta" method="POST">
+            <s:hidden name="IBAN" value="%{#session.usuario.getIban().getIban()}"/>
+            <s:hidden name="dniUsuario" value="%{#session.usuario.getDni()}"/>
             <s:submit name="ComprobarTarjeta" value="Solicitar nueva tarjeta"/>
         </s:form>
-<%-- 
-        <h1>Mas opciones</h1>
-        <h4>Datos de la tarjeta </h4>
-        <s:form action="activarTarjeta" method="POST">
-            <s:textfield name="Numero_tarjeta" label="Numero de tarjeta"/>
-            <s:textfield name="caducidad" label="Caducidad"  />
-            <s:textfield name="cvv" label="CVV"/>
-            <s:submit name="ComprobarTarjeta" value="Activar tarjeta"/>
-        </s:form>
---%>
 
         <h2>Tarjetas disponibles</h2>
         <table border="1">
@@ -37,11 +32,15 @@
                 </tr>
             </thead>
             <tbody>
+                <s:iterator value="#session.listaTarjetas">
+                    <s:if test="getIban().getIban() == #session.usuario.getIban().getIban()"> 
                 <tr>
-                    <td>...</td>
-                    <td>...</td>
-                    <td>...</td>
+                    <td><s:property value="getNumerotarjeta()"/></td>
+                    <td><s:property value="getCaducidad()"/></td>
+                    <td><s:property value="getCvv()"/></td>
                 </tr>
+                     </s:if>
+                </s:iterator>
             </tbody>
         </table>
         <br>

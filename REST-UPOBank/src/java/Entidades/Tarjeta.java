@@ -40,7 +40,7 @@ public class Tarjeta implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "Numero_tarjeta")
-    private Integer numerotarjeta;
+    private Long numerotarjeta;
     @Basic(optional = false)
     @NotNull
     @Column(name = "caducidad")
@@ -57,21 +57,21 @@ public class Tarjeta implements Serializable {
     public Tarjeta() {
     }
 
-    public Tarjeta(Integer numerotarjeta) {
+    public Tarjeta(Long numerotarjeta) {
         this.numerotarjeta = numerotarjeta;
     }
 
-    public Tarjeta(Integer numerotarjeta, Date caducidad, int cvv) {
+    public Tarjeta(Long numerotarjeta, Date caducidad, int cvv) {
         this.numerotarjeta = numerotarjeta;
         this.caducidad = caducidad;
         this.cvv = cvv;
     }
 
-    public Integer getNumerotarjeta() {
+    public Long getNumerotarjeta() {
         return numerotarjeta;
     }
 
-    public void setNumerotarjeta(Integer numerotarjeta) {
+    public void setNumerotarjeta(Long numerotarjeta) {
         this.numerotarjeta = numerotarjeta;
     }
 
