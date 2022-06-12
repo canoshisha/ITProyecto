@@ -76,7 +76,7 @@ public class obtenerEntidadAction extends ActionSupport {
     
     
     public String execute() throws Exception {
-        return execute();
+        return SUCCESS;
     }
     
     public String obtenerUsr() throws Exception{

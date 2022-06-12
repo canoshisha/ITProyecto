@@ -15,11 +15,11 @@
     <body>
         <h4>Datos del Usuario a modificar</h4>
         
-        <s:property value="#usr.getDni()" />
-        <s:property value="#usr.getNombreCompleto()" />
-        <s:property value="#usr.getPassword()" />
-        <s:property value="#usr.getDireccion()" />
-        <s:property value="#usr.getMovil()" />
+        <s:property value="usr.getDni()" />
+        <s:property value="usr.getNombreCompleto()" />
+        <s:property value="usr.getPassword()" />
+        <s:property value="usr.getDireccion()" />
+        <s:property value="usr.getMovil()" />
         <br><br><br>
         
         <h4>Campo para modificar datos</h4>

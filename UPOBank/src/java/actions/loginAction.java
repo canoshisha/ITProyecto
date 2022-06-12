@@ -5,9 +5,11 @@
  */
 package actions;
 
+import Entidades_REST.Administrador;
 import Entidades_REST.Bizum;
 import Entidades_REST.CuentaBancaria;
 import Entidades_REST.Prestamo;
+import Entidades_REST.Tarjeta;
 import Entidades_REST.Transferencia;
 import Entidades_REST.Usuario;
 import com.opensymphony.xwork2.ActionContext;
@@ -18,8 +20,11 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import javax.ws.rs.core.GenericType;
+import wsREST.AdministradorREST;
 import wsREST.BizumREST;
+import wsREST.CuentaBancariaREST;
 import wsREST.PrestamoREST;
+import wsREST.TarjetaREST;
 import wsREST.TransferenciaREST;
 
 /**
@@ -28,22 +33,32 @@ import wsREST.TransferenciaREST;
  */
 public class loginAction extends ActionSupport {
 
-    String dniUsuario, passwordUsuario;
+    private String dniUsuario, passwordUsuario;
     GenericType<Usuario> genericType = new GenericType<Usuario>() {
     };
-     GenericType<List<Bizum>> genericTypeBizum = new GenericType<List<Bizum>>() {
+    GenericType<Administrador> genericTypeAdm = new GenericType<Administrador>() {
     };
-      GenericType<List<Transferencia>> genericTypeTranferencia = new GenericType<List<Transferencia>>() {
+    GenericType<List<Usuario>> genericTypeListUsr = new GenericType<List<Usuario>>() {
     };
-      GenericType<List<Prestamo>> genericTypePrestamo = new GenericType<List<Prestamo>>() {
+    GenericType<List<CuentaBancaria>> genericTypeListCB = new GenericType<List<CuentaBancaria>>() {
     };
-      
+    GenericType<List<Tarjeta>> genericTypeListTJ = new GenericType<List<Tarjeta>>() {
+    };
+    GenericType<List<Bizum>> genericTypeBizum = new GenericType<List<Bizum>>() {
+    };
+    GenericType<List<Transferencia>> genericTypeTranferencia = new GenericType<List<Transferencia>>() {
+    };
+    GenericType<List<Prestamo>> genericTypePrestamo = new GenericType<List<Prestamo>>() {
+    };
+
     UsuarioREST dao = new UsuarioREST();
+    CuentaBancariaREST daoCB = new CuentaBancariaREST();
+    AdministradorREST daoAdm = new AdministradorREST();
+    TarjetaREST daoTJ = new TarjetaREST();
     BizumREST daoBizum = new BizumREST();
     TransferenciaREST daoTransferencia = new TransferenciaREST();
     PrestamoREST daoPrestamo = new PrestamoREST();
     ActionContext actionContext;
-    
 
     private Map session;
 
@@ -67,44 +82,66 @@ public class loginAction extends ActionSupport {
     }
 
     public String execute() throws Exception {
-        return SUCCESS;
+        if (this.getDniUsuario().equalsIgnoreCase("20204545K")) {
+            return LOGIN;
+
+        } else {
+            return SUCCESS;
+        }
+
     }
 
     public void validate() {
 
-        Usuario usr = (Usuario) dao.find_XML(genericType, dniUsuario);
-        List<Bizum> listaBizum = (List<Bizum>) daoBizum.findAll_XML(genericTypeBizum) ;
+        Usuario usr = (Usuario) dao.find_XML(genericType, this.getDniUsuario());
+        Administrador adm = (Administrador) daoAdm.find_XML(genericTypeAdm, this.getDniUsuario());
+        List<Bizum> listaBizum = (List<Bizum>) daoBizum.findAll_XML(genericTypeBizum);
         List<Transferencia> listaTranferencia = (List<Transferencia>) daoTransferencia.findAll_XML(genericTypeTranferencia);
         List<Prestamo> listaPrestamo = (List<Prestamo>) daoPrestamo.findAll_XML(genericTypePrestamo);
+        List<Usuario> listaUsr = (List<Usuario>) dao.findAll_XML(genericTypeListUsr);
+        List<CuentaBancaria> listCuenta = (List<CuentaBancaria>) daoCB.findAll_XML(genericTypeListCB);
+        List<Tarjeta> listTJ = (List<Tarjeta>) daoTJ.findAll_XML(genericTypeListTJ);
 
-        if (usr == null) {
+        if (usr == null && adm == null) {
             addActionError("Usuario incorrecto");
-        } else if (!usr.getPassword().equalsIgnoreCase(this.getPasswordUsuario())) {
-            addActionError("Contraseña incorrecta");
         }
-        
-        if(session != null){
+        if (usr != null) {
+            if (!usr.getPassword().equalsIgnoreCase(this.getPasswordUsuario())) {
+                addActionError("Contraseña incorrecta");
+            }
+        }
+        if (adm != null) {
+            if (adm.getPassword() != Integer.parseInt(this.getPasswordUsuario())) {
+                addActionError("Contraseña incorrecta");
+            }
+        }
+
+        if (session != null) {
             session.clear();
         }
-         
+
         actionContext = ActionContext.getContext();
         session = actionContext.getSession();
         session.put("usuario", usr);
+        session.put("administrador", adm);
+        session.put("listaUsuarios", listaUsr);
+        session.put("listaCuentas", listCuenta);
         session.put("listaBizum", listaBizum);
         session.put("listaTransferencia", listaTranferencia);
         session.put("listaPrestamo", listaPrestamo);
+        session.put("listaTarjetas", listTJ);
 //        List<Prestamo> listaPrestamo = new ArrayList( (usr.getIban().getPrestamoCollection()));SI uso esto peta por si alguien lo mira mañana
 //        session.put("listaPrestamo", listaPrestamo);//si uso este no coge la lsta en el iterator porque es una coleccion
-        
 
     }
-    public String limpiarSession(){
+
+    public String limpiarSession() {
         actionContext = ActionContext.getContext();
         session = actionContext.getSession();
-        if(session != null){
+        if (session != null) {
             session.clear();
         }
-        
+
         return SUCCESS;
     }
 

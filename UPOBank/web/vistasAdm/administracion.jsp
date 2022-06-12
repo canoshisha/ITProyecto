@@ -18,11 +18,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Bienvenido <s:property value="#session.usuario.getNombreCompleto()"/> </h1>
-        <h4>Tu sucursal se encuentra en  <s:property value="#session.usuario.getIdSucursal().getDireccion()"/> </h4>
-
-        
-
+        <h1>Bienvenido <s:property value="#session.administrador.getNombreCompleto()"/> </h1>
         
         <h4>Lista de Usuarios de UPOBank</h4>
         <table border="1">
@@ -52,7 +48,7 @@
                         <td>
                             <s:form action="usuarioModificar" method="post">
                                 <s:hidden name="dniUsuario" value="%{getDni()}"/>
-                                <s:submit name="borrar" value="Modificar"/>
+                                <s:submit name="modificar" value="Modificar"/>
                             </s:form>
                             
                             <s:form action="usuarioBorrar" method="post">
@@ -203,7 +199,7 @@
                         <td><s:property value="getNumerotarjeta()"/> </td>
                         <td><s:property value="getCaducidad()"/>€</td>
                         <td><s:property value="getCvv()"/>€</td>
-                        <td><s:property value="getIban().getIban"/>€</td>
+                        <td><s:property value="getIban().getIban()"/></td>
                         <td>
                             <s:form action="tarjetaModificar" method="post">
                                 <s:hidden name="numeroTarjeta" value="%{getNumerotarjeta()}"/>

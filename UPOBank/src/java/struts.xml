@@ -12,6 +12,7 @@
          
         <action name="iniciarSesion" class="actions.loginAction">
             <result name="success">/CuentaBancaria/cuentaBancaria.jsp</result>
+            <result name="login">/vistasAdm/administracion.jsp</result>
             <result name="input">/vistasLogin/login.jsp</result>
         </action>
         
