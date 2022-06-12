@@ -51,12 +51,12 @@
                         
                         <td>
                             <s:form action="usuarioModificar" method="post">
-                                <s:hidden name="IBAN" value="%{getDni()}"/>
+                                <s:hidden name="dniUsuario" value="%{getDni()}"/>
                                 <s:submit name="borrar" value="Modificar"/>
                             </s:form>
                             
                             <s:form action="usuarioBorrar" method="post">
-                                <s:hidden name="IBAN" value="%{getDni()}"/>
+                                <s:hidden name="dniUsuario" value="%{getDni()}"/>
                                 <s:submit name="borrar" value="Eliminar"/>
                             </s:form>
                         </td>
@@ -126,7 +126,7 @@
                         <td><s:property value="getCantidad()"/></td>
                         <td>
                             <s:form action="bizumBorrar" method="post">
-                                <s:hidden name="IBAN" value="%{getId()}"/>
+                                <s:hidden name="idBizum" value="%{getId()}"/>
                                 <s:submit name="borrar" value="Eliminar"/>
                             </s:form>
                         </td>
@@ -142,7 +142,7 @@
                         <td><s:property value="getCantidad()"/></td>
                         <td>
                             <s:form action="transferenciaBorrar" method="post">
-                                <s:hidden name="IBAN" value="%{getId()}"/>
+                                <s:hidden name="idTransferencia" value="%{getId()}"/>
                                 <s:submit name="borrar" value="Eliminar"/>
                             </s:form>
                         </td>
@@ -150,14 +150,6 @@
                 </s:iterator>
             </tbody>
         </table>
-        <br></br>
-        <s:form action="bizumform" method="POST">
-            <s:submit name="realizarBizum" value="Realizar Bizum"/>
-        </s:form>
-
-        <s:form action="transform" method="POST">
-            <s:submit name="realizarTransferencia" value="Realizar transferencia"/>
-        </s:form>
         <br>
         <br>
         <h4>Ultimos prestamos de los Usuarios</h4>
@@ -184,7 +176,7 @@
                         <td><s:property value="getCantidad()"/></td>
                         <td>
                             <s:form action="prestamoBorrar" method="post">
-                                <s:hidden name="IBAN" value="%{getId()}"/>
+                                <s:hidden name="idPrestamo" value="%{getId()}"/>
                                 <s:submit name="borrar" value="Eliminar"/>
                             </s:form>
                         </td>
@@ -214,12 +206,12 @@
                         <td><s:property value="getIban().getIban"/>€</td>
                         <td>
                             <s:form action="tarjetaModificar" method="post">
-                                <s:hidden name="IBAN" value="%{getNumerotarjeta()}"/>
+                                <s:hidden name="numeroTarjeta" value="%{getNumerotarjeta()}"/>
                                 <s:submit name="borrar" value="Modificar"/>
                             </s:form>
                             
                             <s:form action="tarjetaBorrar" method="post">
-                                <s:hidden name="IBAN" value="%{getNumerotarjeta()}"/>
+                                <s:hidden name="numeroTarjeta" value="%{getNumerotarjeta()}"/>
                                 <s:submit name="borrar" value="Eliminar"/>
                             </s:form>
                         </td>
