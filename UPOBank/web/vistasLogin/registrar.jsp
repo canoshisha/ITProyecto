@@ -30,9 +30,9 @@
             <s:select label="Seleccione la dirección de la sucursal" 
                       headerValue="Direccion Sucursal"
                      list="listaDirecciones"
-
+                     headerKey="-1"
                       name="direccionSucursal"/>
-            <s:submit name="RegistrarUsuario" value="Registrar Usuario"/>
+            <s:submit name="registrarUsuario" value="Registrar Usuario"/>
         </s:form>
     </body>
 </html>

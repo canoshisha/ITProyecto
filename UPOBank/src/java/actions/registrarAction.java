@@ -104,15 +104,7 @@ public class registrarAction extends ActionSupport {
     public String execute() throws Exception {
         return SUCCESS;
     }
-    public String obtenerDireccionesSucursal(){
-        this.listaDirecciones =  new ArrayList<String>();
-        List <Sucursal> listaSucursales = (List<Sucursal>) daoSuc.findAll_XML(genericTypeSuc);
-        for (Sucursal sucursal : listaSucursales) {
-            this.listaDirecciones.add(sucursal.getDireccion());
-        }
-        daoSuc.close();
-        return SUCCESS;
-    }
+    
     
     public String registrarUsuario() throws Exception{
                
@@ -166,7 +158,7 @@ public class registrarAction extends ActionSupport {
     
     public void validate() {
 
-        Usuario usr = (Usuario) daoUsr.find_XML(genericType, this.getDniUsuario());
+        
 
         if (this.getDniUsuario() == null || this.getDniUsuario() == "") {
             addFieldError("dniUsuario","El campo dni debe estar relleno");
@@ -189,7 +181,7 @@ public class registrarAction extends ActionSupport {
         }else if(this.getMovilUsuario().length() != 9){
             addFieldError("movilUsuario","El telefóno móvil debe tener entre 9 dígitos.");
         }
-        
+        Usuario usr = (Usuario) daoUsr.find_XML(genericType, this.getDniUsuario());
         if(usr != null){
             addActionError("El usuario ya existe");
         }
