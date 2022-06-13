@@ -148,9 +148,6 @@ public class loginAction extends ActionSupport {
         session.put("listaTransferencia", listaTranferencia);
         session.put("listaPrestamo", listaPrestamo);
         session.put("listaTarjetas", listTJ);
-//        List<Prestamo> listaPrestamo = new ArrayList( (usr.getIban().getPrestamoCollection()));SI uso esto peta por si alguien lo mira mañana
-//        session.put("listaPrestamo", listaPrestamo);//si uso este no coge la lsta en el iterator porque es una coleccion
-
     }
 
     public String limpiarSession() {

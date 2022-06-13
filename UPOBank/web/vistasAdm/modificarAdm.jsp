@@ -39,8 +39,8 @@
         </s:form>
         
         <s:form action="iniciarSesion" method="POST">
-             <s:hidden name="dniAdministrador" value="%{#session.adm.getDni()}"/>
-             <s:hidden name="passwordAdministrador" value="%{#session.adm.getPassword()}"/>
+             <s:hidden name="dniUsuario" value="%{#session.adm.getDni()}"/>
+             <s:hidden name="passwordUsuario" value="%{#session.adm.getPassword()}"/>
              <s:submit value="Volver" /> 
         </s:form>
     </body>
