@@ -43,7 +43,7 @@
                         <td>
                             <s:form action="centralModificar" method="post">
                                 <s:hidden name="nombreCentral" value="%{getNombre()}"/>
-                                <s:submit name="modificar" value="Modificar"/>
+                                <s:submit cssClass="btn btn-light" name="modificar" value="Modificar"/>
                             </s:form>
                             <s:form action="centralBorrar" method="post">
                                 <s:hidden name="nombreCentral" value="%{getNombre()}"/>
@@ -54,11 +54,11 @@
                     </tr>               
                 </s:iterator>
                 <s:form action="centralCrear" method="post">
-                    <s:submit cssClass="btn btn-grey" name="crear" value="Nueva Central"/>
+                    <s:submit  cssClass="btn btn-dark" name="crear" value="Nueva Central"/>
                 </s:form>
             </tbody>
         </table>
-        
+                <br><br>
         
         <h4>Lista de Sucursales de UPOBank</h4>
         <table  class="table table-striped table-hover">  
@@ -89,11 +89,11 @@
                     </tr>               
                 </s:iterator>
                 <s:form action="sucursalCrear" method="post">
-                    <s:submit name="crear" value="Nueva Sucursal"/>
+                    <s:submit  cssClass="btn btn-dark" name="crear" value="Nueva Sucursal"/>
                 </s:form>
             </tbody>
         </table>
-        
+        <br><br>
         
         <h4>Lista de Administradores de UPOBank</h4>
         <table  class="table table-striped table-hover">  
@@ -131,10 +131,11 @@
                     </tr>               
                 </s:iterator>
                 <s:form action="administradorCrear" method="post">
-                    <s:submit name="crear" value="Nuevo administrador"/>
+                    <s:submit  cssClass="btn btn-dark" name="crear" value="Nuevo administrador"/>
                 </s:form>
             </tbody>
         </table>
+        <br><br>
         <h4>Lista de Usuarios de UPOBank</h4>
         <table  class="table table-striped table-hover">  
             <thead>
@@ -175,9 +176,6 @@
                 </s:iterator>
             </tbody>
         </table>
-        <br>
-
-
         <br><br>
         <h4>Cuentas Bancarias de Usuarios</h4>
         <table class="table table-striped table-hover">
@@ -203,8 +201,7 @@
             </tbody>
         </table>
 
-
-        <br>
+<br><br>
         <h4>Ultimos movimientos de los Usuarios</h4>
         <table  class="table table-striped table-hover">
             <thead>

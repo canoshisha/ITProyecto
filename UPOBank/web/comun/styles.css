@@ -328,22 +328,13 @@ footer table td {
     color: white;
     border: 1px solid #A90820;
 }
-.btn-grey {
-    background-color: black;
-    color: azure;
-    border: 1px solid #000000;
-}
-.btn-grey :hover {
-    background-color: black;
-    color: azure;
-    border: 1px solid #000000;
-}
 
 .btn-danger:hover {
     background-color: white;
     color: #A90820;
     border: 1px solid #A90820;
 }
+
 
 .btn-dark:hover {
     background-color: white;
