@@ -6,6 +6,7 @@
 package actionsAdm;
 
 import Entidades_REST.Bizum;
+import Entidades_REST.Central;
 import Entidades_REST.CuentaBancaria;
 import Entidades_REST.Prestamo;
 import Entidades_REST.Sucursal;
@@ -18,6 +19,7 @@ import java.util.List;
 import java.util.Map;
 import javax.ws.rs.core.GenericType;
 import wsREST.BizumREST;
+import wsREST.CentralREST;
 import wsREST.CuentaBancariaREST;
 import wsREST.PrestamoREST;
 import wsREST.SucursalREST;
@@ -31,7 +33,7 @@ import wsREST.UsuarioREST;
  */
 public class obtenerEntidadAction extends ActionSupport {
     
-    private String dniUsuario,IBAN,numeroTarjeta,idSucursal;
+    private String dniUsuario,IBAN,numeroTarjeta,idSucursal,nombreCentral;
     
     GenericType<Usuario> genericType = new GenericType<Usuario>() {
     };
@@ -42,16 +44,21 @@ public class obtenerEntidadAction extends ActionSupport {
       GenericType<Sucursal> genericTypeSucursal = new GenericType<Sucursal>() {
     };
     
+    GenericType<Central> genericTypeCentral = new GenericType<Central>() {
+    };
+      
     Usuario usr;
     CuentaBancaria cb;
     Tarjeta tj;
     Sucursal suc;
+    Central cl;
     
       
     UsuarioREST daoUsr = new UsuarioREST();
     CuentaBancariaREST daoCB = new CuentaBancariaREST();
     TarjetaREST daoTJ = new TarjetaREST();
     SucursalREST daoSuc = new SucursalREST();
+    CentralREST daoCL = new CentralREST();
     
     ActionContext actionContext;
 
@@ -92,6 +99,14 @@ public class obtenerEntidadAction extends ActionSupport {
     public void setIdSucursal(String idSucursal) {
         this.idSucursal = idSucursal;
     }
+
+    public String getNombreCentral() {
+        return nombreCentral;
+    }
+
+    public void setNombreCentral(String nombreCentral) {
+        this.nombreCentral = nombreCentral;
+    }
     
     
     
@@ -126,6 +141,13 @@ public class obtenerEntidadAction extends ActionSupport {
         actionContext = ActionContext.getContext();
         session = actionContext.getSession();
         session.put("suc", suc);
+        return execute();
+    }
+    public String obtenerCentral() throws Exception{
+        cl = (Central) daoCL.find_XML(genericTypeCentral, this.getNombreCentral());
+        actionContext = ActionContext.getContext();
+        session = actionContext.getSession();
+        session.put("cl", cl);
         return execute();
     }
     

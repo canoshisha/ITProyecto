@@ -85,6 +85,7 @@ public class crearAdmAction extends ActionSupport {
         actionContext = ActionContext.getContext();
         session = actionContext.getSession();
         session.put("listaAdministrador", listAdm);
+        daoAdm.close();
         return execute();
     }
     public void validate(){
