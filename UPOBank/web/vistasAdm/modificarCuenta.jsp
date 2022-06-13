@@ -4,14 +4,38 @@
     Author     : mater
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%> 
+<%@taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <s:head/>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h4>Datos de la cuenta a modificar</h4>
+        <h5>IBAN</h5>
+        <s:property value="#session.cb.getIban()" />
+        <br>
+        <h5>Cantidad de la cuenta</h5>
+        <s:property value="#session.cb.getCantidad()" />
+        <br><br><br>
+        
+        <h4>Campo para modificar datos</h4>
+        
+        <s:form action="modificarCB" method="post">
+            <s:textfield name="IBANnuevo" label="IBAN de la cuenta"/>
+            <s:textfield name="cantidad" label="Cantidad"/>
+            <s:hidden name="IBAN" value="%{#session.cb.getIban()}"/>
+            <s:submit name="modificarCantidad" value="Modificar Cantidad"/>
+        </s:form>
+        
+        <s:form action="iniciarSesion" method="POST">
+             <s:hidden name="dniUsuario" value="%{#session.usr.getDni()}"/>
+             <s:hidden name="passwordUsuario" value="%{#session.usr.getPassword()}"/>
+             <s:submit value="Volver" /> 
+        </s:form>
+        
     </body>
 </html>
