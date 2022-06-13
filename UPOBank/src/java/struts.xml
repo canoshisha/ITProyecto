@@ -90,12 +90,17 @@
             <result>/vistasAdm/modificarCentral.jsp</result>
         </action>
         
+               
         
         <action name="administradorCrear">
             <result>/vistasAdm/formAdministrador.jsp</result>
         </action>
         <action name="centralCrear">
             <result>/Central/formCentral.jsp</result>
+        </action>
+        
+        <action name="sucursalCrear" class="actions.SelectorNombresBanco" method="obtenerDireccionesSucursal">
+            <result name="success">/Sucursal/formSucursal.jsp</result>
         </action>
         
         
@@ -108,7 +113,9 @@
         <action name="modificarCentral" class="actionsAdm.modificarCentralAction" method="modificarCen">
             <result name="success">/vistasAdm/administracion.jsp</result>
         </action>
-        
+        <action name="sucursalModificar" class="actionsAdm.modificarSucursalAction" method="modificarSuc">
+            <result name="success">/vistasAdm/administracion.jsp</result>
+        </action>
         
     </package>
     
@@ -116,20 +123,32 @@
         
         <action name="usuarioBorrar" class="actionsAdm.eliminarUsrAction" >
             <result name="success">/vistasAdm/administracion.jsp</result>
-<!--            <result name="input">/vistasAdm/administracion.jsp</result>-->
         </action>
         <action name="bizumBorrar" class="actionsAdm.eliminarBizAction" method="eliminarBiz">
             <result name="success">/vistasAdm/administracion.jsp</result>
-            <!--<result name="input">/vistasAdm/modificarUsr.jsp</result>-->
         </action>
         <action name="transferenciaBorrar" class="actionsAdm.eliminarTraAction" method="eliminarTra">
             <result name="success">/vistasAdm/administracion.jsp</result>
-            <!--<result name="input">/vistasAdm/modificarUsr.jsp</result>-->
         </action>
         <action name="centralBorrar" class="actionsAdm.eliminarCentralAction" method="eliminarCentral">
             <result name="success">/vistasAdm/administracion.jsp</result>
-            <!--<result name="input">/vistasAdm/modificarUsr.jsp</result>-->
         </action>
+        
+        <action name="administradorBorrar" class="actionsAdm.eliminarAdmAction" >
+            <result name="success">/vistasAdm/administracion.jsp</result>
+            <result name="input">/vistasAdm/administracion.jsp</result>
+        </action>
+        
+        <action name="prestamoBorrar" class="actionsAdm.eliminarPreAction" method="eliminarPre">
+            <result name="success">/vistasAdm/administracion.jsp</result>
+        </action>
+        
+        <action name="sucursalBorrar" class="actionsAdm.eliminarSucursalAction" method="eliminarSucursal">
+            <result name="success">/vistasAdm/administracion.jsp</result>
+
+        </action>
+        
+        
         
     </package>
     
@@ -142,13 +161,13 @@
         </action>
         <action name="centralRegistrar" class="actionsAdm.crearCentralAction" method="insertarCentral">
             <result name="success">/vistasAdm/administracion.jsp</result>
-            <result name="input">/Central/formCentral.jsp</result>
-            
+            <result name="input">/Central/formCentral.jsp</result>            
         </action>
-        <action name="administradorBorrar" class="actionsAdm.eliminarAdmAction" >
+        <action name="sucursalRegistrar" class="actionsAdm.crearSucursalAction" method="insertarSucursal">
             <result name="success">/vistasAdm/administracion.jsp</result>
-            <result name="input">/vistasAdm/administracion.jsp</result>
+            <result name="input">/Sucursal/formSucursal.jsp</result>            
         </action>
+        
         
         
     </package>
