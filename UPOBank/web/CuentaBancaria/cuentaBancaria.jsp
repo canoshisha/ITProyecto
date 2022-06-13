@@ -73,7 +73,6 @@
                 </s:iterator>
             </tbody>
         </table>
-        <br>
         <s:form action="bizumform" method="POST"  style="margin-left: 25px">
             <s:submit style="margin-left: 25px" cssClass="btn btn-danger" name="realizarBizum" value="Realizar Bizum"/>
         </s:form>
@@ -107,7 +106,6 @@
                 </s:iterator>
             </tbody>
         </table>
-        <br>
 
         <s:form action="solPresform" method="POST"  style="margin-left: 25px">
             <s:submit style="margin-left: 25px" cssClass="btn btn-danger" value="Solicitar un prestamos"/>

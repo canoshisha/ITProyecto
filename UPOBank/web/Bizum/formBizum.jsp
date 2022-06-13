@@ -15,17 +15,17 @@
         <s:head/>
     </head>
     <body>
-        
+        <br>
         <s:if test="hasActionErrors()">
             <div class="errors">
                 <s:actionerror/>
             </div>
         </s:if>
-        <h1>Realizar Bizum</h1>
+        <h1 style="margin-left: 25px">Realizar Bizum</h1>
         <br>
         
         <div class="miCuenta-form" style="margin-left: 25px">
-            <s:form action="bizumRegistrar" method="POST">
+            <s:form action="bizumRegistrar" method="POST"style="margin-left: 25px">
             <s:textfield name="movilDest" label="Movil destinatario"/>
             <s:textfield name="cantidad"  label="Cantidad"/>
             <s:textfield name="concepto" label="Concepto" />
@@ -33,10 +33,10 @@
             <s:submit cssClass="btn btn-danger" value="Realizar Bizum" />
         </s:form>
             </div>
-        <s:form action="iniciarSesion" method="POST">
+        <s:form action="iniciarSesion" method="POST" style="margin-left: 25px">
             <s:hidden name="dniUsuario" value="%{#session.usuario.getDni()}"/>
             <s:hidden name="passwordUsuario" value="%{#session.usuario.getPassword()}"/>
-            <s:submit cssClass="btn btn-dark" value="Volver" /> 
+            <s:submit style="margin-left: 25px" cssClass="btn btn-dark" value="Volver" /> 
         </s:form>
         
         

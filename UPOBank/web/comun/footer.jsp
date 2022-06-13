@@ -19,5 +19,5 @@
         </tr>
     </table>
     <hr/>
-    <p style="margin-left: 50px">Copyright &copy; 2022 - UPOBank copyright</p>
+    <p style="margin-left: 25px">Copyright &copy; 2022 - UPOBank copyright</p>
 </footer>

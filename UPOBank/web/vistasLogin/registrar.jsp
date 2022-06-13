@@ -12,9 +12,11 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
         <s:head/>
+        <s:include value="/comun/headers.jsp"/>
     </head>
     <body>
-        <h1>Datos para registrarse</h1>    
+        <br>
+        <h1 style="margin-left: 25px">Datos para registrarse</h1>    
         
         <s:if test="hasActionErrors()">
             <div class="errors">
@@ -22,7 +24,7 @@
             </div>
         </s:if>
         
-        <s:form action="RegistrarUsuario" method="post">
+        <s:form action="RegistrarUsuario" method="post" style="margin-left: 25px">
             <s:textfield name="dniUsuario" label="DNI"/>
             <s:textfield name="nombreCompleto" label="Nombre Completo"/>
             <s:password name="passwordUsuario" label="Contraseña"/>
@@ -33,7 +35,7 @@
                      list="listaDirecciones"
                      headerKey="-1"
                       name="direccionSucursal"/>
-            <s:submit name="registrarUsuario" value="Registrar Usuario"/>
+            <s:submit style="margin-left: 25px" cssClass="btn btn-danger"  name="registrarUsuario" value="Registrar Usuario"/>
         </s:form>
     </body>
 </html>

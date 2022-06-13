@@ -16,13 +16,13 @@
         <s:head/>
     </head>
     <body>
-        
+        <br>
         <s:if test="hasActionErrors()">
             <div class="errors">
                 <s:actionerror/>
             </div>
         </s:if>
-        <h1>Tarjetas</h1>
+        <h1 style="margin-left: 25px">Tarjetas</h1>
         <br>
         
         <div class="miCuenta-form" style="margin-left: 25px">
@@ -35,8 +35,8 @@
            
 
 
-        <h2>Tarjetas disponibles</h2>
-        <table class="table table-striped table-hover">
+        <h2 style="margin-left: 25px">Tarjetas disponibles</h2>
+        <table style="margin-left: 25px" class="table table-striped table-hover">
             <thead>
                 <tr>
                     <th>Numero de la tarjeta</th>
@@ -57,10 +57,10 @@
             </tbody>
         </table>
         <br>
-        <s:form action="iniciarSesion" method="POST">
+        <s:form action="iniciarSesion" method="POST" style="margin-left: 25px">
             <s:hidden name="dniUsuario" value="%{#session.usuario.getDni()}"/>
             <s:hidden name="passwordUsuario" value="%{#session.usuario.getPassword()}"/>
-            <s:submit cssClass="btn btn-dark" value="Volver" /> 
+            <s:submit style="margin-left: 25px" cssClass="btn btn-dark" value="Volver" /> 
         </s:form>
         <s:include value="/comun/footer.jsp"/>
     </body>
