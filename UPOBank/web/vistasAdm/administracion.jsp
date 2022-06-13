@@ -192,18 +192,7 @@
                 <s:iterator value="#session.listaCuentas">
                     <tr>
                         <td><s:property value="getIban()"/> </td>
-                        <td><s:property value="getCantidad()"/>€</td>
-                        <td>
-                            <s:form action="cuentaModificar" method="post">
-                                <s:hidden name="IBAN" value="%{getIban()}"/>
-                                <s:submit name="borrar" value="Modificar"/>
-                            </s:form>
-
-                            <s:form action="cuentaBorrar" method="post">
-                                <s:hidden name="IBAN" value="%{getIban()}"/>
-                                <s:submit name="borrar" value="Eliminar"/>
-                            </s:form>
-                        </td>
+                        <td><s:property value="getCantidad()"/>€</td>                       
                     </tr>               
                 </s:iterator>
             </tbody>
