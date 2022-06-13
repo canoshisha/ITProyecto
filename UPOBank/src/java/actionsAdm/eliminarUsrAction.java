@@ -126,7 +126,7 @@ public class eliminarUsrAction extends ActionSupport {
     
     public void eliminarCB() throws Exception{
         usr =(Usuario) dao.find_XML(genericType, this.getDniUsuario());
-        daoCB.find_XML(genericTypeCB, usr.getIban().getIban());
+        daoCB.remove( usr.getIban().getIban());
         List<CuentaBancaria> listaCB = (List<CuentaBancaria>) daoCB.findAll_XML(genericTypeListaCB);
         actionContext = ActionContext.getContext();
         session = actionContext.getSession();
@@ -188,7 +188,7 @@ public class eliminarUsrAction extends ActionSupport {
          usr =(Usuario) dao.find_XML(genericType, this.getDniUsuario());
          for (Tarjeta tar : listaTarjetas) {
              if(tar.getIban().getIban().equalsIgnoreCase(usr.getIban().getIban())){
-                 daoTarjeta.remove(String.valueOf(tar.getNumerotarjeta()));
+                 daoTarjeta.remove(tar.getNumerotarjeta()+"");
              }
          }
         listaTarjetas= (List<Tarjeta>) daoTarjeta.findAll_XML(genericTypeListaTarjeta);

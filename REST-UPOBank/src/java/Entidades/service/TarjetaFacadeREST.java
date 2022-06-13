@@ -51,14 +51,14 @@ public class TarjetaFacadeREST extends AbstractFacade<Tarjeta> {
 
     @DELETE
     @Path("{id}")
-    public void remove(@PathParam("id") Integer id) {
+    public void remove(@PathParam("id") Long id) {
         super.remove(super.find(id));
     }
 
     @GET
     @Path("{id}")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public Tarjeta find(@PathParam("id") Integer id) {
+    public Tarjeta find(@PathParam("id") Long id) {
         return super.find(id);
     }
 
