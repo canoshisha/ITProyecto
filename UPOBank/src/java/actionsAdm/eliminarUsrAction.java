@@ -83,24 +83,24 @@ public class eliminarUsrAction extends ActionSupport {
     }
 
   
-     public void validate() {
-         List<Prestamo> listaPres = daoPrestamo.findAll_XML(genericTypeListaPres);
-         usr = dao.find_XML(genericType, this.getDniUsuario());
-         Date fecha = new Date();
-         boolean borrarOK = true;
-         for (Prestamo prestamo : listaPres) {
-             if(prestamo.getIban().getIban().equalsIgnoreCase(usr.getIban().getIban())){
-                 if(prestamo.getFin().after(fecha)){
-                     borrarOK = false;
-                 }
-             }
-         }
-         if(!borrarOK){
-             addActionError("El usuario tiene aun prestamos activos");
-         }
-         
-         
-     }
+//     public void validate() {
+//         List<Prestamo> listaPres = daoPrestamo.findAll_XML(genericTypeListaPres);
+//         usr =(Usuario) dao.find_XML(genericType, this.getDniUsuario());
+//         Date fecha = new Date();
+//         boolean borrarOK = true;
+//         for (Prestamo prestamo : listaPres) {
+//             if(prestamo.getIban().getIban().equalsIgnoreCase(usr.getIban().getIban())){
+//                 if(prestamo.getFin().after(fecha)){
+//                     borrarOK = false;
+//                 }
+//             }
+//         }
+//         if(!borrarOK){
+//             addActionError("El usuario tiene aun prestamos activos");
+//         }
+//         
+//         
+//     }
 
     public String execute() throws Exception {
         eliminarTarjeta();
@@ -125,78 +125,78 @@ public class eliminarUsrAction extends ActionSupport {
     }
     
     public void eliminarCB() throws Exception{
-        usr = dao.find_XML(genericType, this.getDniUsuario());
+        usr =(Usuario) dao.find_XML(genericType, this.getDniUsuario());
         daoCB.find_XML(genericTypeCB, usr.getIban().getIban());
-        List<CuentaBancaria> listaCB = (List<CuentaBancaria>) dao.findAll_XML(genericTypeListaCB);
+        List<CuentaBancaria> listaCB = (List<CuentaBancaria>) daoCB.findAll_XML(genericTypeListaCB);
         actionContext = ActionContext.getContext();
         session = actionContext.getSession();
         session.put("listaCuentas", listaCB);
 
-        dao.close();
+        daoCB.close();
     }
     public void eliminarPre() throws Exception{
-        List<Prestamo> listaPres = daoPrestamo.findAll_XML(genericTypeListaPres);
+        List<Prestamo> listaPres =(List<Prestamo>) daoPrestamo.findAll_XML(genericTypeListaPres);
          usr = dao.find_XML(genericType, this.getDniUsuario());
          for (Prestamo prestamo : listaPres) {
              if(prestamo.getIban().getIban().equalsIgnoreCase(usr.getIban().getIban())){
                  daoPrestamo.remove(String.valueOf(prestamo.getId()));
              }
          }
-         listaPres = daoPrestamo.findAll_XML(genericTypeListaPres);
+         listaPres = (List<Prestamo>) daoPrestamo.findAll_XML(genericTypeListaPres);
          actionContext = ActionContext.getContext();
         session = actionContext.getSession();
         session.put("listaPrestamo", listaPres);
 
-        dao.close();
+        daoPrestamo.close();
     }
     public void eliminarTrans() throws Exception{
-        List<Transferencia> listaTrans = daoTransferencia.findAll_XML(genericTypeListaTrans);
+        List<Transferencia> listaTrans =(List<Transferencia>) daoTransferencia.findAll_XML(genericTypeListaTrans);
         
-         usr = dao.find_XML(genericType, this.getDniUsuario());
+         usr =(Usuario) dao.find_XML(genericType, this.getDniUsuario());
          for (Transferencia trans : listaTrans) {
              if(trans.getIban().getIban().equalsIgnoreCase(usr.getIban().getIban())){
-                 daoPrestamo.remove(String.valueOf(trans.getId()));
+                 daoTransferencia.remove(String.valueOf(trans.getId()));
              }
          }
-        listaTrans = daoTransferencia.findAll_XML(genericTypeListaTrans);
+        listaTrans =(List<Transferencia>) daoTransferencia.findAll_XML(genericTypeListaTrans);
          actionContext = ActionContext.getContext();
         session = actionContext.getSession();
         session.put("listaTransferencia", listaTrans);
 
-        dao.close();
+        daoTransferencia.close();
     }
     public void eliminarBizum() throws Exception{
-        List<Bizum> listaBizum = daoBizum.findAll_XML(genericTypeListaBizum);
+        List<Bizum> listaBizum =(List<Bizum>) daoBizum.findAll_XML(genericTypeListaBizum);
         
-         usr = dao.find_XML(genericType, this.getDniUsuario());
+         usr =(Usuario) dao.find_XML(genericType, this.getDniUsuario());
          for (Bizum biz : listaBizum) {
              if(biz.getIban().getIban().equalsIgnoreCase(usr.getIban().getIban())){
-                 daoPrestamo.remove(String.valueOf(biz.getId()));
+                 daoBizum.remove(String.valueOf(biz.getId()));
              }
          }
-        listaBizum = daoBizum.findAll_XML(genericTypeListaBizum);
+        listaBizum =(List<Bizum>) daoBizum.findAll_XML(genericTypeListaBizum);
          actionContext = ActionContext.getContext();
         session = actionContext.getSession();
         session.put("listaBizum", listaBizum);
 
-        dao.close();
+        daoBizum.close();
     }
     
      public void eliminarTarjeta() throws Exception{
-        List<Tarjeta> listaTarjetas= daoTarjeta.findAll_XML(genericTypeListaTarjeta);
+        List<Tarjeta> listaTarjetas=(List<Tarjeta>) daoTarjeta.findAll_XML(genericTypeListaTarjeta);
         
-         usr = dao.find_XML(genericType, this.getDniUsuario());
+         usr =(Usuario) dao.find_XML(genericType, this.getDniUsuario());
          for (Tarjeta tar : listaTarjetas) {
              if(tar.getIban().getIban().equalsIgnoreCase(usr.getIban().getIban())){
-                 daoPrestamo.remove(String.valueOf(tar.getNumerotarjeta()));
+                 daoTarjeta.remove(String.valueOf(tar.getNumerotarjeta()));
              }
          }
-        listaTarjetas= daoTarjeta.findAll_XML(genericTypeListaTarjeta);
+        listaTarjetas= (List<Tarjeta>) daoTarjeta.findAll_XML(genericTypeListaTarjeta);
          actionContext = ActionContext.getContext();
         session = actionContext.getSession();
         session.put("listaTarjetas", listaTarjetas);
 
-        dao.close();
+        daoTarjeta.close();
     }
     
 }
