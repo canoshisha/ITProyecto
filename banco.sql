@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-06-2022 a las 20:39:01
--- Versión del servidor: 10.4.24-MariaDB
--- Versión de PHP: 8.1.6
+-- Tiempo de generación: 13-06-2022 a las 20:27:14
+-- Versión del servidor: 10.4.19-MariaDB
+-- Versión de PHP: 8.0.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,7 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `banco`
 --
-DROP DATABASE IF EXISTS `banco`;
 CREATE DATABASE IF NOT EXISTS `banco` DEFAULT CHARACTER SET utf8 COLLATE utf8_spanish2_ci;
 USE `banco`;
 
@@ -65,9 +64,9 @@ CREATE TABLE `bizum` (
 --
 
 INSERT INTO `bizum` (`id`, `IBAN`, `movil_destinatario`, `fecha`, `cantidad`, `concepto`) VALUES
-(28, 'ES123456789', 654745236, '2022-06-12', 10, 'Comida'),
-(29, 'ES123456789', 654123698, '2022-06-12', 10, 'Bebida'),
-(30, 'ES123456789', 658412365, '2022-06-12', 15, 'Camiseta nueva');
+(32, 'ES5247725325648447531817', 654789321, '2022-06-13', 10, 'Almuerzo '),
+(33, 'ES2475223144551335561584', 654147852, '2022-06-13', 3, 'Parking'),
+(34, 'ES0565817368232830408452', 657412856, '2022-06-13', 5, 'Bocadillo');
 
 -- --------------------------------------------------------
 
@@ -105,8 +104,9 @@ CREATE TABLE `cuenta bancaria` (
 --
 
 INSERT INTO `cuenta bancaria` (`IBAN`, `cantidad`) VALUES
-('ES123456789', 2985),
-('ES5487963247', 20000);
+('ES0565817368232830408452', 99695),
+('ES2475223144551335561584', 4324),
+('ES5247725325648447531817', 3484);
 
 -- --------------------------------------------------------
 
@@ -129,9 +129,9 @@ CREATE TABLE `prestamo` (
 --
 
 INSERT INTO `prestamo` (`id`, `IBAN`, `inicio`, `fin`, `mensualidad`, `hipoteca`, `cantidad`) VALUES
-(44, 'ES123456789', '2022-06-02', '2026-06-02', 300, 1, 15000),
-(45, 'ES123456789', '2022-06-12', '2025-05-27', 555, 0, 20000),
-(46, 'ES123456789', '2022-06-12', '2025-05-27', 55, 0, 2000);
+(47, 'ES5247725325648447531817', '2022-06-13', '2025-05-28', 83, 0, 3000),
+(48, 'ES2475223144551335561584', '2022-06-13', '2025-05-28', 125, 0, 4500),
+(49, 'ES0565817368232830408452', '2022-06-13', '2025-05-28', 2777, 1, 100000);
 
 -- --------------------------------------------------------
 
@@ -150,9 +150,9 @@ CREATE TABLE `sucursal` (
 --
 
 INSERT INTO `sucursal` (`id`, `direccion`, `nombre_banco`) VALUES
-(4, 'Calle Rojo 5', 'IberBank'),
 (6, 'Calle Verde 3', 'IberBank'),
-(9, 'Calle Azul 9', 'IberBank');
+(123456793, 'Calle Azul 9', 'IberBank'),
+(123456796, 'Calle Rojo 2', 'IberBank');
 
 -- --------------------------------------------------------
 
@@ -172,8 +172,10 @@ CREATE TABLE `tarjeta` (
 --
 
 INSERT INTO `tarjeta` (`Numero_tarjeta`, `caducidad`, `cvv`, `IBAN`) VALUES
-(7615478028201431, '2025-05-27', 210, 'ES123456789'),
-(8371248462833732, '2025-05-27', 380, 'ES123456789');
+(1822507217804047, '2025-05-28', 230, 'ES2475223144551335561584'),
+(7165747182028454, '2025-05-28', 190, 'ES2475223144551335561584'),
+(7483800443420011, '2025-05-28', 260, 'ES0565817368232830408452'),
+(7788377243013582, '2025-05-28', 170, 'ES5247725325648447531817');
 
 -- --------------------------------------------------------
 
@@ -196,8 +198,9 @@ CREATE TABLE `transferencia` (
 --
 
 INSERT INTO `transferencia` (`id`, `IBAN`, `IBAN_destinatario`, `fecha_inicio`, `fecha_fin`, `cantidad`, `concepto`) VALUES
-(790, 'ES123456789', 'ES1236985478521456996356', '2022-06-12', '2022-06-15', 200, 'Prueba'),
-(791, 'ES123456789', 'ES1236547896541236589741', '2022-06-12', '2022-06-15', 140, 'Letra coche');
+(793, 'ES5247725325648447531817', 'ES1452367896541236589654', '2022-06-13', '2022-06-16', 100, 'Mensualidad'),
+(794, 'ES2475223144551335561584', 'ES4521478965321451247896', '2022-06-13', '2022-06-16', 200, 'Cuota anual gimnasio'),
+(795, 'ES0565817368232830408452', 'ES1478521236547896541235', '2022-06-13', '2022-06-16', 500, 'Alquiler piso');
 
 -- --------------------------------------------------------
 
@@ -220,7 +223,8 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`DNI`, `nombre_completo`, `password`, `IBAN`, `direccion`, `id_sucursal`, `movil`) VALUES
-('22224568Y', 'Hilario de los Cementos', '12345', 'ES123456789', 'Calle Kirgyos 3', 6, 789654123);
+('21242523K', 'German Palomares Perez', '14253', 'ES0565817368232830408452', 'Calle Mirador de Montepinar 5', 6, 623145789),
+('25418639T', 'Cristobal Colón Ramírez', '15369', 'ES2475223144551335561584', 'Calle Santa Maria ,13', 6, 654123963);
 
 --
 -- Índices para tablas volcadas
@@ -295,25 +299,25 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `bizum`
 --
 ALTER TABLE `bizum`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT de la tabla `prestamo`
 --
 ALTER TABLE `prestamo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT de la tabla `sucursal`
 --
 ALTER TABLE `sucursal`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=123456792;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=123456797;
 
 --
 -- AUTO_INCREMENT de la tabla `transferencia`
 --
 ALTER TABLE `transferencia`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=792;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=796;
 
 --
 -- Restricciones para tablas volcadas
