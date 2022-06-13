@@ -15,8 +15,8 @@
         <s:head/>
     </head>
     <body>
-        <h4>Datos de la cuenta a modificar</h4>
-         <table class="table table-striped table-hover"> 
+        <h4 style="margin-left: 25px">Datos de la cuenta a modificar</h4>
+         <table style="margin-left: 25px" class="table table-striped table-hover"> 
               <thead>
               <th>IBAN</th>
               <th>Cantidad de la cuenta</th>
@@ -32,10 +32,10 @@
                   </tr>
               </tbody>
          </table>
-        <h4>Campo para modificar datos</h4>
+        <h4 style="margin-left: 25px">Campo para modificar datos</h4>
         <div class="miCuenta">
             <div class="miCuenta-form">
-                <s:form action="modificarCB" method="post">
+                <s:form action="modificarCB" method="post" style="margin-left: 25px">
                     <s:textfield name="IBANnuevo" label="IBAN de la cuenta"/>
                     <s:textfield name="cantidad" label="Cantidad"/>
                     <s:hidden name="IBAN" value="%{#session.cb.getIban()}"/>
@@ -45,10 +45,10 @@
         </div>
         <br>
 
-        <s:form action="iniciarSesion" method="POST">
+        <s:form action="iniciarSesion" method="POST" style="margin-left: 25px">
             <s:hidden name="dniUsuario" value="%{#session.adm.getDni()}"/>
             <s:hidden name="passwordUsuario" value="%{#session.adm.getPassword()}"/>
-            <s:submit cssClass="btn btn-dark" value="Volver" /> 
+            <s:submit style="margin-left: 25px" cssClass="btn btn-dark" value="Volver" /> 
         </s:form>
         <br><br>
         <s:include value="/comun/footer.jsp"/>

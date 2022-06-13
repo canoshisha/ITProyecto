@@ -15,6 +15,7 @@
         <s:include value="/comun/headers.jsp"/>
     </head>
     <body>
+        <br>
          <h4 style="margin-left: 25px">Datos del Administrador a modificar</h4>
         
           <table class="table table-striped table-hover"  style="margin-left: 25px"> 

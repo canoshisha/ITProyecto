@@ -15,9 +15,10 @@
         <s:include value="/comun/headers.jsp"/>
     </head>
     <body>
-        <h4>Datos del Usuario a modificar</h4>
+        <br>
+        <h4 style="margin-left: 25px">Datos del Usuario a modificar</h4>
 
-        <table class="table table-striped table-hover"> 
+        <table style="margin-left: 25px"class="table table-striped table-hover"> 
             <thead>
             <th>DNI</th>
             <th>Nombre Completo</th>
@@ -48,7 +49,7 @@
     </table>
 
 
-    <h4>Campo para modificar datos</h4>
+    <h4 style="margin-left: 25px">Campo para modificar datos</h4>
 
     <div class="miUsr">
         <div class="miUsr-form">
@@ -64,10 +65,10 @@
     </div>
     <div class="miInicioSesion">
         <div class="miInicioSesion-form">
-            <s:form action="iniciarSesion" method="POST">
+            <s:form action="iniciarSesion" method="POST" style="margin-left: 25px">
                 <s:hidden name="dniUsuario" value="%{#session.adm.getDni()}"/>
                 <s:hidden name="passwordUsuario" value="%{#session.adm.getPassword()}"/>
-                <s:submit cssClass="btn btn-dark" value="Volver" /> 
+                <s:submit style="margin-left: 25px" cssClass="btn btn-dark" value="Volver" /> 
             </s:form>
         </div>
     </div>

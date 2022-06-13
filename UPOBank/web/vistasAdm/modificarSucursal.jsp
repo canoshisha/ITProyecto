@@ -15,7 +15,7 @@
         <s:include value="/comun/headers.jsp"/>
     </head>
     <body>
-
+        <br>
         <h4 style="margin-left: 25px">Datos de la Sucursal a modificar</h4>
         <div class="modificarSucursal-form" style="margin-left: 25px" >
             Dirección de la Sucursal: <s:property  value="#session.suc.getDireccion()" />
