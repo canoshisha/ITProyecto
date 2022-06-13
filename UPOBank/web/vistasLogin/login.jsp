@@ -22,6 +22,9 @@
                             <s:actionerror/>
                         </div>
                     </s:if>
+                    <br><br>
+                    <h1>Bienvenido a UPOBANK</h1>
+                    <br>
                     <s:form action="iniciarSesion" method="post">
                         <s:textfield name="dniUsuario" label="DNI"/>
                         <s:password name="passwordUsuario" label="Contraseña"/>
