@@ -19,7 +19,7 @@ import wsREST.UsuarioREST;
  */
 public class eliminarUsrAction {
 
-    private String dniUsuario, nombreCompleto, passwordUsuario, direccionUsuario, direccionSucursal, movilUsuario;
+    private String dniUsuario;
     GenericType<Usuario> genericType = new GenericType<Usuario>() {
     };
     GenericType<List<Usuario>> genericTypeLista = new GenericType<List<Usuario>>() {
@@ -49,46 +49,6 @@ public class eliminarUsrAction {
 
     public void setDniUsuario(String dniUsuario) {
         this.dniUsuario = dniUsuario;
-    }
-
-    public String getNombreCompleto() {
-        return nombreCompleto;
-    }
-
-    public void setNombreCompleto(String nombreCompleto) {
-        this.nombreCompleto = nombreCompleto;
-    }
-
-    public String getPasswordUsuario() {
-        return passwordUsuario;
-    }
-
-    public void setPasswordUsuario(String passwordUsuario) {
-        this.passwordUsuario = passwordUsuario;
-    }
-
-    public String getDireccionUsuario() {
-        return direccionUsuario;
-    }
-
-    public void setDireccionUsuario(String direccionUsuario) {
-        this.direccionUsuario = direccionUsuario;
-    }
-
-    public String getDireccionSucursal() {
-        return direccionSucursal;
-    }
-
-    public void setDireccionSucursal(String direccionSucursal) {
-        this.direccionSucursal = direccionSucursal;
-    }
-
-    public String getMovilUsuario() {
-        return movilUsuario;
-    }
-
-    public void setMovilUsuario(String movilUsuario) {
-        this.movilUsuario = movilUsuario;
     }
 
     public String execute() throws Exception {

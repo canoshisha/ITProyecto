@@ -107,6 +107,10 @@
             <result name="success">/vistasAdm/administracion.jsp</result>
             <!--<result name="input">/vistasAdm/modificarUsr.jsp</result>-->
         </action>
+        <action name="bizumBorrar" class="actionsAdm.eliminarBizAction" method="eliminarBiz">
+            <result name="success">/vistasAdm/administracion.jsp</result>
+            <!--<result name="input">/vistasAdm/modificarUsr.jsp</result>-->
+        </action>
         
     </package>
     <package name="insertarAdministrador" extends="struts-default">
