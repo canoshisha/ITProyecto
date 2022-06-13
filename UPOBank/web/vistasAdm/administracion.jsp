@@ -15,14 +15,15 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Administracion</title>
+         <s:include value="/comun/headers.jsp"/>
         <s:head/>
     </head>
     <body>
         <h1>Bienvenido <s:property value="#session.administrador.getNombreCompleto()"/> </h1>
 
                 <h4>Lista de Centrales de UPOBank</h4>
-        <table border="1">  
+        <table  class="table table-striped table-hover">  
             <thead>
                 <tr>
                     <th>Nombre Banco</th>
@@ -44,10 +45,9 @@
                                 <s:hidden name="nombreCentral" value="%{getNombre()}"/>
                                 <s:submit name="modificar" value="Modificar"/>
                             </s:form>
-
                             <s:form action="centralBorrar" method="post">
                                 <s:hidden name="nombreCentral" value="%{getNombre()}"/>
-                                <s:submit name="borrar" value="Eliminar"/>
+                                <s:submit cssClass="btn btn-danger" name="borrar" value="Eliminar"/>
                             </s:form>
 
                         </td>
@@ -61,7 +61,7 @@
         
         
         <h4>Lista de Sucursales de UPOBank</h4>
-        <table border="1">  
+        <table  class="table table-striped table-hover">  
             <thead>
                 <tr>
                     <th>Nombre Banco</th>
@@ -77,12 +77,12 @@
                         <td>
                             <s:form action="sucursalModificar" method="post">
                                 <s:hidden name="idSucursal" value="%{getId()}"/>
-                                <s:submit name="modificar" value="Modificar"/>
+                                <s:submit name="modificar" cssClass="btn btn-light" value="Modificar"/>
                             </s:form>
 
                             <s:form action="sucursalBorrar" method="post">
                                 <s:hidden name="idSucursal" value="%{getId()}"/>
-                                <s:submit name="borrar" value="Eliminar"/>
+                                <s:submit cssClass="btn btn-danger" name="borrar" value="Eliminar"/>
                             </s:form>
 
                         </td>
@@ -96,7 +96,7 @@
         
         
         <h4>Lista de Administradores de UPOBank</h4>
-        <table border="1">  
+        <table  class="table table-striped table-hover">  
             <thead>
                 <tr>
                     <th>DNI</th>
@@ -118,13 +118,13 @@
 
                         <td>
                             <s:form action="administradorModificar" method="post">
-                                <s:hidden name="dniAdministrador" value="%{getDni()}"/>
-                                <s:submit name="modificar" value="Modificar"/>
+                                <s:hidden name="dniAdministrador"  value="%{getDni()}"/>
+                                <s:submit name="modificar" cssClass="btn btn-light" value="Modificar"/>
                             </s:form>
 
                             <s:form action="administradorBorrar" method="post">
                                 <s:hidden name="dniAdministrador" value="%{getDni()}"/>
-                                <s:submit name="borrar" value="Eliminar"/>
+                                <s:submit cssClass="btn btn-danger" name="borrar" value="Eliminar"/>
                             </s:form>
 
                         </td>
@@ -136,7 +136,7 @@
             </tbody>
         </table>
         <h4>Lista de Usuarios de UPOBank</h4>
-        <table border="1">  
+        <table  class="table table-striped table-hover">  
             <thead>
                 <tr>
                     <th>DNI</th>
@@ -162,13 +162,13 @@
 
                         <td>
                             <s:form action="usuarioModificar" method="post">
-                                <s:hidden name="dniUsuario" value="%{getDni()}"/>
-                                <s:submit name="modificar" value="Modificar"/>
+                                <s:hidden name="dniUsuario"  value="%{getDni()}"/>
+                                <s:submit name="modificar" cssClass="btn btn-light" value="Modificar"/>
                             </s:form>
 
                             <s:form action="usuarioBorrar" method="post">
                                 <s:hidden name="dniUsuario" value="%{getDni()}"/>
-                                <s:submit name="borrar" value="Eliminar"/>
+                                <s:submit cssClass="btn btn-danger" name="borrar" value="Eliminar"/>
                             </s:form>
                         </td>
                     </tr>               
@@ -180,7 +180,7 @@
 
         <br><br>
         <h4>Cuentas Bancarias de Usuarios</h4>
-        <table border="1">
+        <table class="table table-striped table-hover">
             <thead>
                 <tr>
                     <th>IBAN Usuarios</th>
@@ -192,13 +192,13 @@
                 <s:iterator value="#session.listaCuentas">
                     <tr>
                         <td><s:property value="getIban()"/> </td>
-                        <td><s:property value="getCantidad()"/>€</td>
+                        <td><s:property value="getCantidad()"/>€</td>                                 
                         <td><s:form action="cuentaModificar">
                                 <s:hidden name="IBAN" value="%{getIban()}"/>
-                                <s:submit value="Modificar"/>
+                                <s:submit cssClass="btn btn-danger" cssClass="btn btn-light" value="Modificar"/>
                             </s:form>
-                            </td>
-                    </tr>               
+                            </td> 
+                    </tr>             
                 </s:iterator>
             </tbody>
         </table>
@@ -206,7 +206,7 @@
 
         <br>
         <h4>Ultimos movimientos de los Usuarios</h4>
-        <table border="1">
+        <table  class="table table-striped table-hover">
             <thead>
                 <tr>
                     <th>IBAN Usuario</th>
@@ -228,7 +228,7 @@
                         <td>
                             <s:form action="bizumBorrar" method="post">
                                 <s:hidden name="idBizum" value="%{getId()}"/>
-                                <s:submit name="borrar" value="Eliminar"/>
+                                <s:submit cssClass="btn btn-danger" name="borrar" value="Eliminar"/>
                             </s:form>
                         </td>
                     </tr>
@@ -244,7 +244,7 @@
                         <td>
                             <s:form action="transferenciaBorrar" method="post">
                                 <s:hidden name="idTransferencia" value="%{getId()}"/>
-                                <s:submit name="borrar" value="Eliminar"/>
+                                <s:submit cssClass="btn btn-danger" name="borrar" value="Eliminar"/>
                             </s:form>
                         </td>
                     </tr>
@@ -254,7 +254,7 @@
         <br>
         <br>
         <h4>Ultimos prestamos de los Usuarios</h4>
-        <table border="1">
+        <table  class="table table-striped table-hover">
             <thead>
                 <tr>
                     <th>IBAN Usuario</th>
@@ -278,7 +278,7 @@
                         <td>
                             <s:form action="prestamoBorrar" method="post">
                                 <s:hidden name="idPrestamo" value="%{getId()}"/>
-                                <s:submit name="borrar" value="Eliminar"/>
+                                <s:submit cssClass="btn btn-danger" name="borrar" value="Eliminar"/>
                             </s:form>
                         </td>
                     </tr>
@@ -288,7 +288,7 @@
         <br></br>
 
         <h4>Tarjetas de Usuarios</h4>
-        <table border="1">
+        <table  class="table table-striped table-hover">
             <thead>
                 <tr>
                     <th>Número de Tarjeta</th>
@@ -308,12 +308,12 @@
                         <td>
                             <s:form action="tarjetaModificar" method="post">
                                 <s:hidden name="numeroTarjeta" value="%{getNumerotarjeta()}"/>
-                                <s:submit name="borrar" value="Modificar"/>
+                                <s:submit cssClass="btn btn-light" name="borrar" value="Modificar"/>
                             </s:form>
 
                             <s:form action="tarjetaBorrar" method="post">
                                 <s:hidden name="numeroTarjeta" value="%{getNumerotarjeta()}"/>
-                                <s:submit name="borrar" value="Eliminar"/>
+                                <s:submit cssClass="btn btn-danger" name="borrar" value="Eliminar"/>
                             </s:form>
                         </td>
                     </tr>               
@@ -326,8 +326,9 @@
 
         <br></br>
         <s:form action="cerrarSesion" method="POST">
-            <s:submit name="logOutAction" value="Cerrar Sesión"/>
+            <s:submit name="logOutAction" cssClass="btn btn-dark" value="Cerrar Sesión"/>
         </s:form>
-
+        <br><br>
+      <s:include value="/comun/footer.jsp"/>
     </body>
 </html>

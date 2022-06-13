@@ -11,22 +11,29 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>UPOBank</title>
-        <s:head/>
+        <s:include value="/comun/headers.jsp"/>
     </head>
     <body>
-        <s:if test="hasActionErrors()">
-            <div class="errors">
-                <s:actionerror/>
+        <div class="login">
+            <div class="container">
+                <div class="login-modal">
+                     <s:if test="hasActionErrors()">
+                    <div class="errors">
+                      <s:actionerror/>
+                    </div>
+                     </s:if>
+                    <s:form action="iniciarSesion" method="post">
+                        <s:textfield name="dniUsuario" label="DNI"/>
+                        <s:password name="passwordUsuario" label="Contraseña"/>
+                        <s:submit cssClass="btn btn-danger" name="iniciarSesion" value="Iniciar Sesión"/>
+                    </s:form>
+                    <p>¿Aún no te has registrado?</p>
+                    <s:form action="regi" method="post">
+                        <s:submit cssClass="btn btn-dark" name="registrar" value="Registrarse"/>            
+                    </s:form>
+               </div>
             </div>
-        </s:if>
-        <s:form action="iniciarSesion" method="post">
-            <s:textfield name="dniUsuario" label="DNI"/>
-            <s:password name="passwordUsuario" label="Contraseña"/>
-            <s:submit name="iniciarSesion" value="Iniciar Sesión"/>
-        </s:form>
-        <p>¿Aún no te has registrado?</p>
-        <s:form action="regi" method="post">
-            <s:submit name="registrar" value="Registrarse"/>            
-        </s:form>
+            <s:include value="/comun/footer_login.jsp"/>
+        </div>
     </body>
 </html>

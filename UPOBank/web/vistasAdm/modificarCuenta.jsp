@@ -11,6 +11,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <s:include value="/comun/headers.jsp"/>
         <s:head/>
     </head>
     <body>
@@ -23,19 +24,24 @@
         <br><br><br>
         
         <h4>Campo para modificar datos</h4>
-        
+        <div class="miCuenta">
+        <div class="miCuenta-form">
         <s:form action="modificarCB" method="post">
             <s:textfield name="IBANnuevo" label="IBAN de la cuenta"/>
             <s:textfield name="cantidad" label="Cantidad"/>
             <s:hidden name="IBAN" value="%{#session.cb.getIban()}"/>
             <s:submit name="modificarCantidad" value="Modificar Cantidad"/>
         </s:form>
+        </div>
+        </div>
+        <br>
         
         <s:form action="iniciarSesion" method="POST">
              <s:hidden name="dniUsuario" value="%{#session.adm.getDni()}"/>
              <s:hidden name="passwordUsuario" value="%{#session.adm.getPassword()}"/>
-             <s:submit value="Volver" /> 
+             <s:submit  value="Volver" /> 
         </s:form>
-        
+        <br><br>
+        <s:include value="/comun/footer.jsp"/>
     </body>
 </html>

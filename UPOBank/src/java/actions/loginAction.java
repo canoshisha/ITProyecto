@@ -121,12 +121,12 @@ public class loginAction extends ActionSupport {
             addActionError("Usuario incorrecto");
         }
         if (usr != null) {
-            if (!usr.getPassword().equalsIgnoreCase(this.getPasswordUsuario())) {
+            if (usr.getPassword()==null || !usr.getPassword().equalsIgnoreCase(this.getPasswordUsuario())) {
                 addActionError("Contraseña incorrecta");
             }
         }
         if (adm != null) {
-            if (adm.getPassword() != Integer.parseInt(this.getPasswordUsuario())) {
+            if (String.valueOf(adm.getPassword()) == null || adm.getPassword() != Integer.parseInt(this.getPasswordUsuario())) {
                 addActionError("Contraseña incorrecta");
             }
         }
