@@ -115,6 +115,10 @@
         <action name="modificarUsr" class="actionsAdm.modificarUsrAction" method="modificarUsr">
             <result name="success">/vistasAdm/administracion.jsp</result>
         </action>
+        <action name="modificarTar" class="actionsAdm.modificarTarAction" method="modificarTar">
+            <result name="success">/vistasAdm/administracion.jsp</result>
+        </action>
+        
         <action name="modificarCB" class="actionsAdm.modificarCB" >
             <result name="success">/vistasAdm/administracion.jsp</result>
         </action>

@@ -121,7 +121,7 @@ public class Tarjeta implements Serializable {
 
     @Override
     public String toString() {
-        return "Entidades_REST.Tarjeta[ numerotarjeta=" + numerotarjeta + " ]";
+        return "Entidades_REST.Tarjeta[ numerotarjeta=" + numerotarjeta +"  "+ cvv +" ]";
     }
     
 }
