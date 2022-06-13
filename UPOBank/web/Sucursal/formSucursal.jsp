@@ -10,28 +10,37 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <s:include value="/comun/headers.jsp"/>
         <s:head/>
     </head>
     <body>
 
-        <s:if test="hasActionErrors()">
+       <s:if test="hasActionErrors()">
             <div class="errors">
                 <s:actionerror/>
             </div>
         </s:if>
-        <s:form action="sucursalRegistrar" method="POST">
+        <h1>Nueva Sucursal</h1>
+        <br>
+        
+        <div class="miCuenta-form" style="margin-left: 25px">
+            <s:form action="sucursalRegistrar" method="POST">
             <s:textfield name="direccionSucursal" label="Direccion de la Sucursal"/>
             <s:select label="Seleccione la dirección del banco" 
                       headerValue="Direccion Central"
                      list="listaNombreCentral"
                      headerKey="-1"
                       name="nombreCentral"/>
-            <s:submit value="Registrar Sucursal" />
+            <s:submit cssClass="btn btn-danger" value="Registrar Sucursal" />
         </s:form>
+        </div>
+        
+        
         <s:form action="iniciarSesion" method="POST">
              <s:hidden name="dniUsuario" value="%{#session.usuario.getDni()}"/>
              <s:hidden name="passwordUsuario" value="%{#session.usuario.getPassword()}"/>
-             <s:submit value="Volver" /> 
+             <s:submit cssClass="btn btn-dark" value="Volver" /> 
         </s:form>
+        <s:include value="/comun/footer.jsp"/>
     </body>
 </html>
