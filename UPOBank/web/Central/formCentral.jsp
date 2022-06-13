@@ -11,6 +11,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <s:include value="/comun/headers.jsp"/>
         <s:head/>
     </head>
     <body>
@@ -19,19 +20,23 @@
                 <s:actionerror/>
             </div>
         </s:if>
-        <h4>Registrar una nueva Central</h4>
+        <h1>Nueva Central</h1>
+        <br>
         
-        <s:form action="centralRegistrar" method="POST">
-            <s:textfield name="nombreCentral" label="nombre de la Central"/>
+        <div class="miCuenta-form" style="margin-left: 25px">
+            <s:form action="centralRegistrar" method="POST">
+            <s:textfield name="nombreCentral" label="Nombre de la Central"/>
             <s:textfield name="direccionCentral"  label="Direccion de la Central"/>
             <s:textfield name="emailCentral" label="Email de la Central" />
             <s:textfield name="telefonoCentral" label="Teléfono de la Central" />
-            <s:submit value="Registrar Central" />
+            <s:submit cssClass="btn btn-danger" value="Registrar Central" />
         </s:form>
+        </div>
         <s:form action="iniciarSesion" method="POST">
              <s:hidden name="dniUsuario" value="%{#session.adm.getDni()}"/>
              <s:hidden name="passwordUsuario" value="%{#session.adm.getPassword()}"/>
-             <s:submit value="Volver" /> 
+             <s:submit cssClass="btn btn-dark" value="Volver" /> 
         </s:form>
+        <s:include value="/comun/footer.jsp"/>
     </body>
 </html>

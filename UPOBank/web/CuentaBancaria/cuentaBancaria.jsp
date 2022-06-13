@@ -15,13 +15,15 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Pagina Principal Usuarios</title>
+        <s:include value="/comun/headers.jsp"/>
+        <s:head/>
     </head>
     <body>
         <h1>Bienvenido <s:property value="#session.usuario.getNombreCompleto()"/> </h1>
         <h4>Tu sucursal se encuentra en  <s:property value="#session.usuario.getIdSucursal().getDireccion()"/> </h4>
 
-        <table border="1">
+        <table  class="table table-striped table-hover">
             <thead>
                 <tr>
                     <th>IBAN</th>
@@ -37,7 +39,7 @@
         </table>
         <br>
         <h4>Ultimos movimientos de la cuenta</h4>
-        <table border="1">
+        <table class="table table-striped table-hover">
             <thead>
                 <tr>
                     <th>Fecha</th>
@@ -49,39 +51,39 @@
             <tbody>
                 <s:iterator value="#session.listaBizum">
                     <s:if test="getIban().getIban() == #session.usuario.getIban().getIban()">
-                    <tr>
-                        <td><s:property value="getFecha()"/> </td>
-                        <td>Bizum</td>
-                        <td><s:property value="getConcepto()"/></td>
-                        <td><s:property value="getCantidad()"/></td>
-                    </tr>
+                        <tr>
+                            <td><s:property value="getFecha()"/> </td>
+                            <td>Bizum</td>
+                            <td><s:property value="getConcepto()"/></td>
+                            <td><s:property value="getCantidad()"/></td>
+                        </tr>
                     </s:if>
                 </s:iterator>
-                   
+
                 <s:iterator value="#session.listaTransferencia">
                     <s:if test="getIban().getIban() == #session.usuario.getIban().getIban()"> 
-                    <tr>
-                        <td><s:property value="getFechaInicio()"/> </td>
-                        <td>Transferencia</td>
-                        <td><s:property value="getConcepto()"/></td>
-                        <td><s:property value="getCantidad()"/></td>
-                    </tr>
+                        <tr>
+                            <td><s:property value="getFechaInicio()"/> </td>
+                            <td>Transferencia</td>
+                            <td><s:property value="getConcepto()"/></td>
+                            <td><s:property value="getCantidad()"/></td>
+                        </tr>
                     </s:if>
                 </s:iterator>
             </tbody>
         </table>
         <br></br>
         <s:form action="bizumform" method="POST">
-            <s:submit name="realizarBizum" value="Realizar Bizum"/>
+            <s:submit cssClass="btn btn-grey" name="realizarBizum" value="Realizar Bizum"/>
         </s:form>
 
         <s:form action="transform" method="POST">
-            <s:submit name="realizarTransferencia" value="Realizar transferencia"/>
+            <s:submit cssClass="btn btn-grey" name="realizarTransferencia" value="Realizar transferencia"/>
         </s:form>
         <br>
         <br>
         <h4>Ultimos prestamos</h4>
-        <table border="1">
+        <table class="table table-striped table-hover">
             <thead>
                 <tr>
                     <th>Inicio</th>
@@ -94,13 +96,13 @@
             <tbody>
                 <s:iterator value="#session.listaPrestamo">
                     <s:if test="getIban().getIban() == #session.usuario.getIban().getIban()">
-                    <tr>
-                        <td><s:property value="getInicio()"/> </td>
-                        <td><s:property value="getFin()"/></td>
-                        <td><s:property value="getMensualidad()"/></td>
-                        <td><s:property value="getHipoteca()"/></td>
-                        <td><s:property value="getCantidad()"/></td>
-                    </tr>
+                        <tr>
+                            <td><s:property value="getInicio()"/> </td>
+                            <td><s:property value="getFin()"/></td>
+                            <td><s:property value="getMensualidad()"/></td>
+                            <td><s:property value="getHipoteca()"/></td>
+                            <td><s:property value="getCantidad()"/></td>
+                        </tr>
                     </s:if>
                 </s:iterator>
             </tbody>
@@ -108,18 +110,18 @@
         <br></br>
 
         <s:form action="solPresform" method="POST">
-            <s:submit name="solicitarPrestamo" value="Solicitar un prestamos"/>
+            <s:submit cssClass="btn btn-grey" value="Solicitar un prestamos"/>
         </s:form>
         <h4>Gestionar tarjetas</h4>
         <s:form action="gesTarjetas" method="POST">
-             <s:submit name="gestionarTarjetas" value="Gestionar tarjetas"/>
-        </s:form>
-        
-        
-        <br></br>
-         <s:form action="cerrarSesion" method="POST">
-            <s:submit name="logOutAction" value="Cerrar Sesión"/>
+            <s:submit cssClass="btn btn-grey" name="gestionarTarjetas" value="Gestionar tarjetas"/>
         </s:form>
 
+
+        <br></br>
+        <s:form action="cerrarSesion" method="POST">
+            <s:submit cssClass="btn btn-dark" name="logOutAction" value="Cerrar Sesión"/>
+        </s:form>
+        <s:include value="/comun/footer.jsp"/>
     </body>
 </html>

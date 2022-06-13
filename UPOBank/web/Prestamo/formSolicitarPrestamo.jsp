@@ -11,18 +11,32 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+         <s:include value="/comun/headers.jsp"/>
+        <s:head/>
     </head>
     <body>
-        <s:form action="prestamoRegistrar" method="post">
+        <s:if test="hasActionErrors()">
+            <div class="errors">
+                <s:actionerror/>
+            </div>
+        </s:if>
+        <h1>Solicitar prestamo</h1>
+        <br>
+        
+        <div class="miCuenta-form" style="margin-left: 25px">
+            <s:form action="prestamoRegistrar" method="post">
             <s:textfield name="cantidad" label="Cantidad del préstamo"/>
             <s:checkbox name="hipoteca" fieldValue="true" label="Hipoteca"/>
             <s:hidden name="IBAN" value="%{#session.usuario.getIban().getIban()}"/>
-            <s:submit name="nuevoPrestamo" value="Registrar Prestamo"/>
+            <s:submit cssClass="btn btn-danger" name="nuevoPrestamo" value="Registrar Prestamo"/>
         </s:form>
+        </div>
+        
         <s:form action="iniciarSesion" method="POST">
             <s:hidden name="dniUsuario" value="%{#session.usuario.getDni()}"/>
             <s:hidden name="passwordUsuario" value="%{#session.usuario.getPassword()}"/>
-            <s:submit value="Volver" /> 
+            <s:submit cssClass="btn btn-dark" value="Volver" /> 
         </s:form>
+         <s:include value="/comun/footer.jsp"/>
     </body>
 </html>

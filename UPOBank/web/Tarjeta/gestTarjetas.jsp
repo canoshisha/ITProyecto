@@ -12,18 +12,31 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <s:include value="/comun/headers.jsp"/>
         <s:head/>
     </head>
     <body>
-           <h1>Opciones de tarjetas</h1>
-        <s:form action="createTarjeta" method="POST">
+        
+        <s:if test="hasActionErrors()">
+            <div class="errors">
+                <s:actionerror/>
+            </div>
+        </s:if>
+        <h1>Tarjetas</h1>
+        <br>
+        
+        <div class="miCuenta-form" style="margin-left: 25px">
+            <s:form action="createTarjeta" method="POST">
             <s:hidden name="IBAN" value="%{#session.usuario.getIban().getIban()}"/>
             <s:hidden name="dniUsuario" value="%{#session.usuario.getDni()}"/>
-            <s:submit name="ComprobarTarjeta" value="Solicitar nueva tarjeta"/>
+            <s:submit cssClass="btn btn-danger" name="ComprobarTarjeta" value="Solicitar nueva tarjeta"/>
         </s:form>
+        </div>
+           
+
 
         <h2>Tarjetas disponibles</h2>
-        <table border="1">
+        <table class="table table-striped table-hover">
             <thead>
                 <tr>
                     <th>Numero de la tarjeta</th>
@@ -47,7 +60,8 @@
         <s:form action="iniciarSesion" method="POST">
             <s:hidden name="dniUsuario" value="%{#session.usuario.getDni()}"/>
             <s:hidden name="passwordUsuario" value="%{#session.usuario.getPassword()}"/>
-            <s:submit value="Volver" /> 
+            <s:submit cssClass="btn btn-dark" value="Volver" /> 
         </s:form>
+        <s:include value="/comun/footer.jsp"/>
     </body>
 </html>
