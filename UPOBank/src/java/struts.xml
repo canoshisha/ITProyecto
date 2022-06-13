@@ -111,7 +111,10 @@
             <result name="success">/vistasAdm/administracion.jsp</result>
             <!--<result name="input">/vistasAdm/modificarUsr.jsp</result>-->
         </action>
-        
+                <action name="transferenciaBorrar" class="actionsAdm.eliminarTraAction" method="eliminarTra">
+            <result name="success">/vistasAdm/administracion.jsp</result>
+            <!--<result name="input">/vistasAdm/modificarUsr.jsp</result>-->
+        </action>
     </package>
     <package name="insertarAdministrador" extends="struts-default">
         <action name="RegistrarAdm" class="actionsAdm.crearAdmAction" method="insertarAdm">

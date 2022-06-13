@@ -8,17 +8,17 @@ package actionsAdm;
 import Entidades_REST.Bizum;
 import static com.opensymphony.xwork2.Action.SUCCESS;
 import com.opensymphony.xwork2.ActionContext;
+import com.opensymphony.xwork2.ActionSupport;
 import java.util.List;
 import java.util.Map;
 import javax.ws.rs.core.GenericType;
 import wsREST.BizumREST;
-import wsREST.UsuarioREST;
 
 /**
  *
  * @author Carlos Herrera
  */
-public class eliminarBizAction {
+public class eliminarBizAction extends ActionSupport{
     
     private String idBizum;
      GenericType<Bizum> genericType = new GenericType<Bizum>() {
