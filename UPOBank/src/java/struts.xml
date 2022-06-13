@@ -100,6 +100,15 @@
         </action>
         
     </package>
+    
+    <package name="eliminarOperacionesAdministrador" extends="struts-default">
+        
+        <action name="usuarioBorrar" class="actionsAdm.eliminarUsrAction" method="eliminarUsr">
+            <result name="success">/vistasAdm/administracion.jsp</result>
+            <!--<result name="input">/vistasAdm/modificarUsr.jsp</result>-->
+        </action>
+        
+    </package>
     <package name="insertarAdministrador" extends="struts-default">
         <action name="RegistrarAdm" class="actionsAdm.crearAdmAction" method="insertarAdm">
             <result name="success">/vistasAdm/administracion.jsp</result>
