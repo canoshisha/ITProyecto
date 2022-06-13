@@ -121,7 +121,7 @@ public class loginAction extends ActionSupport {
             addActionError("Usuario incorrecto");
         }
         if (usr != null) {
-            if (usr.getPassword()==null || !usr.getPassword().equalsIgnoreCase(this.getPasswordUsuario())) {
+            if (usr.getPassword()== null || !usr.getPassword().equalsIgnoreCase(this.getPasswordUsuario())) {
                 addActionError("Contraseña incorrecta");
             }
         }
@@ -138,7 +138,7 @@ public class loginAction extends ActionSupport {
         actionContext = ActionContext.getContext();
         session = actionContext.getSession();
         session.put("usuario", usr);
-        session.put("administrador", adm);
+        session.put("adm", adm);
         session.put("listaUsuarios", listaUsr);
         session.put("listaAdministrador", listaAdministrador);
         session.put("listaSucursal", listaSucursal);

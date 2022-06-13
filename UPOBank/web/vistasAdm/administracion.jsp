@@ -20,8 +20,8 @@
         <s:head/>
     </head>
     <body>
-        <h1>Bienvenido <s:property value="#session.administrador.getNombreCompleto()"/> </h1>
-
+        <h1>Bienvenido <s:property value="#session.adm.getNombreCompleto()"/> </h1>
+        <br>
                 <h4>Lista de Centrales de UPOBank</h4>
         <table  class="table table-striped table-hover">  
             <thead>
@@ -54,7 +54,7 @@
                     </tr>               
                 </s:iterator>
                 <s:form action="centralCrear" method="post">
-                    <s:submit name="crear" value="Nueva Central"/>
+                    <s:submit cssClass="btn btn-grey" name="crear" value="Nueva Central"/>
                 </s:form>
             </tbody>
         </table>

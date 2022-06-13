@@ -17,11 +17,11 @@
         <div class="login">
             <div class="container">
                 <div class="login-modal">
-                     <s:if test="hasActionErrors()">
-                    <div class="errors">
-                      <s:actionerror/>
-                    </div>
-                     </s:if>
+                    <s:if test="hasActionErrors()">
+                        <div class="errors">
+                            <s:actionerror/>
+                        </div>
+                    </s:if>
                     <s:form action="iniciarSesion" method="post">
                         <s:textfield name="dniUsuario" label="DNI"/>
                         <s:password name="passwordUsuario" label="Contraseña"/>
@@ -31,7 +31,7 @@
                     <s:form action="regi" method="post">
                         <s:submit cssClass="btn btn-dark" name="registrar" value="Registrarse"/>            
                     </s:form>
-               </div>
+                </div>
             </div>
             <s:include value="/comun/footer_login.jsp"/>
         </div>

@@ -16,30 +16,39 @@
     </head>
     <body>
         <h4>Datos de la cuenta a modificar</h4>
-        <h5>IBAN</h5>
-        <s:property value="#session.cb.getIban()" />
-        <br>
-        <h5>Cantidad de la cuenta</h5>
-        <s:property value="#session.cb.getCantidad()" />
-        <br><br><br>
-        
+         <table class="table table-striped table-hover"> 
+              <thead>
+              <th>IBAN</th>
+              <th>Cantidad de la cuenta</th>
+              </thead>
+              <tbody>
+                  <tr>
+                      <td>
+                           <s:property value="#session.cb.getIban()" />
+                      </td>
+                      <td>
+                          <s:property value="#session.cb.getCantidad()" />
+                      </td>
+                  </tr>
+              </tbody>
+         </table>
         <h4>Campo para modificar datos</h4>
         <div class="miCuenta">
-        <div class="miCuenta-form">
-        <s:form action="modificarCB" method="post">
-            <s:textfield name="IBANnuevo" label="IBAN de la cuenta"/>
-            <s:textfield name="cantidad" label="Cantidad"/>
-            <s:hidden name="IBAN" value="%{#session.cb.getIban()}"/>
-            <s:submit name="modificarCantidad" value="Modificar Cantidad"/>
-        </s:form>
-        </div>
+            <div class="miCuenta-form">
+                <s:form action="modificarCB" method="post">
+                    <s:textfield name="IBANnuevo" label="IBAN de la cuenta"/>
+                    <s:textfield name="cantidad" label="Cantidad"/>
+                    <s:hidden name="IBAN" value="%{#session.cb.getIban()}"/>
+                    <s:submit cssClass="btn btn-danger"  name="modificarCantidad" value="Modificar Cantidad"/>
+                </s:form>
+            </div>
         </div>
         <br>
-        
+
         <s:form action="iniciarSesion" method="POST">
-             <s:hidden name="dniUsuario" value="%{#session.adm.getDni()}"/>
-             <s:hidden name="passwordUsuario" value="%{#session.adm.getPassword()}"/>
-             <s:submit  value="Volver" /> 
+            <s:hidden name="dniUsuario" value="%{#session.adm.getDni()}"/>
+            <s:hidden name="passwordUsuario" value="%{#session.adm.getPassword()}"/>
+            <s:submit cssClass="btn btn-dark" value="Volver" /> 
         </s:form>
         <br><br>
         <s:include value="/comun/footer.jsp"/>
