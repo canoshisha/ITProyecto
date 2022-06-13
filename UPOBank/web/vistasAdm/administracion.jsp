@@ -20,8 +20,48 @@
     <body>
         <h1>Bienvenido <s:property value="#session.administrador.getNombreCompleto()"/> </h1>
         
+        <h4>Lista de Administradores de UPOBank</h4>
+        <table border="1">  
+            <thead>
+                <tr>
+                    <th>DNI</th>
+                    <th>Nombre Completo</th>
+                    <th>Contraseña</th>
+                    <th>Direccion Usuario</th>
+                    <th>IBAN Usuario</th>
+                    <th>Direccion Sucursal</th>
+                    <th>Teléfono Móvil</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <s:iterator value="#session.listaUsuarios">
+                    <tr>
+                        <td><s:property value="getDni()"/> </td>
+                        <td><s:property value="getNombreCompleto()"/> </td>
+                        <td><s:property value="getPassword()"/> </td>
+                        <td><s:property value="getDireccion()"/> </td>
+                        <td><s:property value="getIban().getIban()"/> </td>
+                        <td><s:property value="getIdSucursal().getDireccion()"/> </td>
+                        <td><s:property value="getMovil()"/>€</td>
+                        
+                        <td>
+                            <s:form action="usuarioModificar" method="post">
+                                <s:hidden name="dniUsuario" value="%{getDni()}"/>
+                                <s:submit name="modificar" value="Modificar"/>
+                            </s:form>
+                            
+                            <s:form action="usuarioBorrar" method="post">
+                                <s:hidden name="dniUsuario" value="%{getDni()}"/>
+                                <s:submit name="borrar" value="Eliminar"/>
+                            </s:form>
+                        </td>
+                    </tr>               
+                </s:iterator>
+            </tbody>
+        </table>
         <h4>Lista de Usuarios de UPOBank</h4>
-        <table border="1">
+        <table border="1">  
             <thead>
                 <tr>
                     <th>DNI</th>

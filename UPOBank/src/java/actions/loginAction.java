@@ -7,8 +7,10 @@ package actions;
 
 import Entidades_REST.Administrador;
 import Entidades_REST.Bizum;
+import Entidades_REST.Central;
 import Entidades_REST.CuentaBancaria;
 import Entidades_REST.Prestamo;
+import Entidades_REST.Sucursal;
 import Entidades_REST.Tarjeta;
 import Entidades_REST.Transferencia;
 import Entidades_REST.Usuario;
@@ -22,8 +24,10 @@ import java.util.Map;
 import javax.ws.rs.core.GenericType;
 import wsREST.AdministradorREST;
 import wsREST.BizumREST;
+import wsREST.CentralREST;
 import wsREST.CuentaBancariaREST;
 import wsREST.PrestamoREST;
+import wsREST.SucursalREST;
 import wsREST.TarjetaREST;
 import wsREST.TransferenciaREST;
 
@@ -40,6 +44,12 @@ public class loginAction extends ActionSupport {
     };
     GenericType<List<Usuario>> genericTypeListUsr = new GenericType<List<Usuario>>() {
     };
+    GenericType<List<Sucursal>> genericTypeListSuc = new GenericType<List<Sucursal>>() {
+    };
+    GenericType<List<Central>> genericTypeListCen = new GenericType<List<Central>>() {
+    };
+    GenericType<List<Administrador>> genericTypeListAdm = new GenericType<List<Administrador>>() {
+    };
     GenericType<List<CuentaBancaria>> genericTypeListCB = new GenericType<List<CuentaBancaria>>() {
     };
     GenericType<List<Tarjeta>> genericTypeListTJ = new GenericType<List<Tarjeta>>() {
@@ -52,6 +62,8 @@ public class loginAction extends ActionSupport {
     };
 
     UsuarioREST dao = new UsuarioREST();
+    SucursalREST daoSuc = new SucursalREST();
+    CentralREST daoCen = new CentralREST();
     CuentaBancariaREST daoCB = new CuentaBancariaREST();
     AdministradorREST daoAdm = new AdministradorREST();
     TarjetaREST daoTJ = new TarjetaREST();
@@ -96,6 +108,9 @@ public class loginAction extends ActionSupport {
         Usuario usr = (Usuario) dao.find_XML(genericType, this.getDniUsuario());
         Administrador adm = (Administrador) daoAdm.find_XML(genericTypeAdm, this.getDniUsuario());
         List<Bizum> listaBizum = (List<Bizum>) daoBizum.findAll_XML(genericTypeBizum);
+        List<Sucursal> listaSucursal = (List<Sucursal>) daoSuc.findAll_XML(genericTypeListSuc);
+        List<Central> listaCentral = (List<Central>) daoCen.findAll_XML(genericTypeListCen);
+        List<Administrador> listaAdministrador = (List<Administrador>) daoAdm.findAll_XML(genericTypeListAdm);
         List<Transferencia> listaTranferencia = (List<Transferencia>) daoTransferencia.findAll_XML(genericTypeTranferencia);
         List<Prestamo> listaPrestamo = (List<Prestamo>) daoPrestamo.findAll_XML(genericTypePrestamo);
         List<Usuario> listaUsr = (List<Usuario>) dao.findAll_XML(genericTypeListUsr);
@@ -125,6 +140,9 @@ public class loginAction extends ActionSupport {
         session.put("usuario", usr);
         session.put("administrador", adm);
         session.put("listaUsuarios", listaUsr);
+        session.put("listaAdministrador", listaAdministrador);
+        session.put("listaSucursal", listaSucursal);
+        session.put("listaCentral", listaCentral);
         session.put("listaCuentas", listCuenta);
         session.put("listaBizum", listaBizum);
         session.put("listaTransferencia", listaTranferencia);
