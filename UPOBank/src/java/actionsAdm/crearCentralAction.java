@@ -110,7 +110,7 @@ public class crearCentralAction extends ActionSupport {
             
 
         }else{
-            if (Integer.parseInt(this.getTelefonoCentral()) < 000000000 || Integer.parseInt(this.getTelefonoCentral()) > 999999999) {
+            if (this.getTelefonoCentral().length() != 9) {
                 addFieldError("telefonoCentral", "El campo telefono de la central debe tener ser de 9 dígitos.");
             }
         }
