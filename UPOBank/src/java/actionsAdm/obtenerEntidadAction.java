@@ -8,6 +8,7 @@ package actionsAdm;
 import Entidades_REST.Bizum;
 import Entidades_REST.CuentaBancaria;
 import Entidades_REST.Prestamo;
+import Entidades_REST.Sucursal;
 import Entidades_REST.Tarjeta;
 import Entidades_REST.Transferencia;
 import Entidades_REST.Usuario;
@@ -19,6 +20,7 @@ import javax.ws.rs.core.GenericType;
 import wsREST.BizumREST;
 import wsREST.CuentaBancariaREST;
 import wsREST.PrestamoREST;
+import wsREST.SucursalREST;
 import wsREST.TarjetaREST;
 import wsREST.TransferenciaREST;
 import wsREST.UsuarioREST;
@@ -29,7 +31,7 @@ import wsREST.UsuarioREST;
  */
 public class obtenerEntidadAction extends ActionSupport {
     
-    private String dniUsuario,IBAN,numeroTarjeta;
+    private String dniUsuario,IBAN,numeroTarjeta,idSucursal;
     
     GenericType<Usuario> genericType = new GenericType<Usuario>() {
     };
@@ -37,15 +39,19 @@ public class obtenerEntidadAction extends ActionSupport {
     };
       GenericType<Tarjeta> genericTypeTarjeta = new GenericType<Tarjeta>() {
     };
+      GenericType<Sucursal> genericTypeSucursal = new GenericType<Sucursal>() {
+    };
     
     Usuario usr;
     CuentaBancaria cb;
     Tarjeta tj;
+    Sucursal suc;
     
       
     UsuarioREST daoUsr = new UsuarioREST();
     CuentaBancariaREST daoCB = new CuentaBancariaREST();
     TarjetaREST daoTJ = new TarjetaREST();
+    SucursalREST daoSuc = new SucursalREST();
     
     ActionContext actionContext;
 
@@ -78,6 +84,15 @@ public class obtenerEntidadAction extends ActionSupport {
     public void setNumeroTarjeta(String numeroTarjeta) {
         this.numeroTarjeta = numeroTarjeta;
     }
+
+    public String getIdSucursal() {
+        return idSucursal;
+    }
+
+    public void setIdSucursal(String idSucursal) {
+        this.idSucursal = idSucursal;
+    }
+    
     
     
     
@@ -104,6 +119,13 @@ public class obtenerEntidadAction extends ActionSupport {
         actionContext = ActionContext.getContext();
         session = actionContext.getSession();
         session.put("tj", tj);
+        return execute();
+    }
+    public String obtenerSucursal() throws Exception{
+        suc = (Sucursal) daoTJ.find_XML(genericTypeSucursal, this.getIdSucursal());
+        actionContext = ActionContext.getContext();
+        session = actionContext.getSession();
+        session.put("suc", suc);
         return execute();
     }
     
