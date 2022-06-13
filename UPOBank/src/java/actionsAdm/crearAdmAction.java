@@ -6,7 +6,10 @@
 package actionsAdm;
 
 import Entidades_REST.Administrador;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import java.util.List;
+import java.util.Map;
 import javax.ws.rs.core.GenericType;
 import wsREST.AdministradorREST;
 
@@ -18,8 +21,14 @@ public class crearAdmAction extends ActionSupport {
     private String dniAdm,nombreCompleto,passwordAdm,direccionAdm,movilAdm;
     GenericType<Administrador> genericTypeAdm = new GenericType<Administrador>() {
     };
+    GenericType<List<Administrador>> genericTypeListAdm = new GenericType<List<Administrador>>() {
+    };
     
     AdministradorREST daoAdm = new AdministradorREST();
+    
+    ActionContext actionContext;
+
+    private Map session;
     
     public crearAdmAction() {
     }
@@ -71,6 +80,11 @@ public class crearAdmAction extends ActionSupport {
     public String insertarAdm() throws Exception{
         Administrador adm = new Administrador(this.getDniAdm(), this.getNombreCompleto(), Integer.parseInt(this.getPasswordAdm()), this.getDireccionAdm(), Integer.parseInt(this.getMovilAdm()));
         daoAdm.create_XML(adm);
+        
+        List<Administrador> listAdm = (List<Administrador>) daoAdm.findAll_XML(genericTypeListAdm);
+        actionContext = ActionContext.getContext();
+        session = actionContext.getSession();
+        session.put("listaAdministrador", listAdm);
         return execute();
     }
     public void validate(){
