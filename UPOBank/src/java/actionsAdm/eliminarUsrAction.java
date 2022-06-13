@@ -83,24 +83,24 @@ public class eliminarUsrAction extends ActionSupport {
     }
 
   
-//     public void validate() {
-//         List<Prestamo> listaPres = daoPrestamo.findAll_XML(genericTypeListaPres);
-//         usr =(Usuario) dao.find_XML(genericType, this.getDniUsuario());
-//         Date fecha = new Date();
-//         boolean borrarOK = true;
-//         for (Prestamo prestamo : listaPres) {
-//             if(prestamo.getIban().getIban().equalsIgnoreCase(usr.getIban().getIban())){
-//                 if(prestamo.getFin().after(fecha)){
-//                     borrarOK = false;
-//                 }
-//             }
-//         }
-//         if(!borrarOK){
-//             addActionError("El usuario tiene aun prestamos activos");
-//         }
-//         
-//         
-//     }
+     public void validate() {
+         List<Prestamo> listaPres = daoPrestamo.findAll_XML(genericTypeListaPres);
+         usr =(Usuario) dao.find_XML(genericType, this.getDniUsuario());
+         Date fecha = new Date();
+         boolean borrarOK = true;
+         for (Prestamo prestamo : listaPres) {
+             if(prestamo.getIban().getIban().equalsIgnoreCase(usr.getIban().getIban())){
+                 if(prestamo.getFin().after(fecha)){
+                     borrarOK = false;
+                 }
+             }
+         }
+         if(!borrarOK){
+             addActionError("El usuario tiene aun prestamos activos");
+         }
+         
+         
+     }
 
     public String execute() throws Exception {
         eliminarTarjeta();

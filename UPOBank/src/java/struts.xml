@@ -78,7 +78,6 @@
         <action name="usuarioModificar" class="actionsAdm.obtenerEntidadAction" method="obtenerUsr">
             <result>/vistasAdm/modificarUsr.jsp</result>
         </action>
-        
         <action name="administradorModificar" class="actionsAdm.obtenerEntidadAction" method="obtenerAdm">
             <result>/vistasAdm/modificarAdm.jsp</result>
         </action>
@@ -116,6 +115,9 @@
         <action name="modificarUsr" class="actionsAdm.modificarUsrAction" method="modificarUsr">
             <result name="success">/vistasAdm/administracion.jsp</result>
         </action>
+        <action name="modificarCB" class="actionsAdm.modificarCB" >
+            <result name="success">/vistasAdm/administracion.jsp</result>
+        </action>
         <action name="modificarCentral" class="actionsAdm.modificarCentralAction" method="modificarCen">
             <result name="success">/vistasAdm/administracion.jsp</result>
         </action>
@@ -125,12 +127,14 @@
         <action name="modificarAdm" class="actionsAdm.modificarAdmAction" method="modificarAdm">
             <result name="success">/vistasAdm/administracion.jsp</result>
         </action>
+        
     </package>
     
     <package name="eliminarOperacionesAdministrador" extends="struts-default">
         
         <action name="usuarioBorrar" class="actionsAdm.eliminarUsrAction" >
             <result name="success">/vistasAdm/administracion.jsp</result>
+            <result name="input">/vistasAdm/administracion.jsp</result>
         </action>
         <action name="bizumBorrar" class="actionsAdm.eliminarBizAction" method="eliminarBiz">
             <result name="success">/vistasAdm/administracion.jsp</result>

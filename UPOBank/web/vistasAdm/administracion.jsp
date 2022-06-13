@@ -192,7 +192,12 @@
                 <s:iterator value="#session.listaCuentas">
                     <tr>
                         <td><s:property value="getIban()"/> </td>
-                        <td><s:property value="getCantidad()"/>€</td>                       
+                        <td><s:property value="getCantidad()"/>€</td>
+                        <td><s:form action="cuentaModificar">
+                                <s:hidden name="IBAN" value="%{getIban()}"/>
+                                <s:submit value="Modificar"/>
+                            </s:form>
+                            </td>
                     </tr>               
                 </s:iterator>
             </tbody>
