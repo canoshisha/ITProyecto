@@ -12,38 +12,66 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
         <s:head/>
+        <s:include value="/comun/headers.jsp"/>
     </head>
     <body>
         <h4>Datos del Usuario a modificar</h4>
-        
-        <s:property value="#session.usr.getDni()" />
-        <br>
-        <s:property value="#session.usr.getNombreCompleto()" />
-        <br>
-        <s:property value="#session.usr.getPassword()" />
-        <br>
-        <s:property value="#session.usr.getDireccion()" />
-        <br>
-        <s:property value="#session.usr.getMovil()" />
-        <br><br><br>
-        
-        <h4>Campo para modificar datos</h4>
-        
-        <s:form action="modificarUsr" method="post">
-            <s:hidden name="dniUsuario" value="%{#session.usr.getDni()}"/>
-            <s:textfield name="nombreCompleto" label="Nombre Completo"/>
-            <s:password name="passwordUsuario" label="Contraseña"/>
-            <s:textfield name="direccionUsuario" label="Dirección Usuario"/>
-            <s:textfield name="movilUsuario" label="Teléfono móvil"/> 
-            <s:submit name="modificarUsuario" value="Modificar Usuario"/>
-        </s:form>
-        
-        <s:form action="iniciarSesion" method="POST">
-             <s:hidden name="dniUsuario" value="%{#session.adm.getDni()}"/>
-             <s:hidden name="passwordUsuario" value="%{#session.adm.getPassword()}"/>
-             <s:submit value="Volver" /> 
-        </s:form>
-        
-        
-    </body>
+
+        <table class="table table-striped table-hover"> 
+            <thead>
+            <th>DNI</th>
+            <th>Nombre Completo</th>
+            <th>Password</th>
+            <th>Direccion</th>
+            <th>Movil</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <s:property value="#session.usr.getDni()" />
+                </td>
+                <td>
+                    <s:property value="#session.usr.getNombreCompleto()" />
+                </td>
+                <td>
+                    <s:property value="#session.usr.getPassword()" />
+                </td>
+                <td>
+                    <s:property value="#session.usr.getDireccion()" />
+                </td>
+                <td>
+                    <s:property value="#session.usr.getMovil()" />
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+
+
+    <h4>Campo para modificar datos</h4>
+
+    <div class="miUsr">
+        <div class="miUsr-form">
+            <s:form action="modificarUsr" method="post" style="margin-left: 25px">
+                <s:hidden name="dniUsuario" value="%{#session.usr.getDni()}"/>
+                <s:textfield name="nombreCompleto" label="Nombre Completo"/>
+                <s:password name="passwordUsuario" label="Contraseña"/>
+                <s:textfield name="direccionUsuario" label="Dirección Usuario"/>
+                <s:textfield name="movilUsuario" label="Teléfono móvil"/> 
+                <s:submit name="modificarUsuario" value="Modificar Usuario"/>
+            </s:form>
+        </div>
+    </div>
+    <div class="miInicioSesion">
+        <div class="miInicioSesion-form">
+            <s:form action="iniciarSesion" method="POST">
+                <s:hidden name="dniUsuario" value="%{#session.adm.getDni()}"/>
+                <s:hidden name="passwordUsuario" value="%{#session.adm.getPassword()}"/>
+                <s:submit cssClass="btn btn-dark" value="Volver" /> 
+            </s:form>
+        </div>
+    </div>
+    <s:include value="/comun/footer.jsp"/>
+
+</body>
 </html>

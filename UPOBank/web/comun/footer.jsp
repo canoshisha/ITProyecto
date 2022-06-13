@@ -1,9 +1,10 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="s" uri="/struts-tags"%>
 <footer>
-    <h5>Redes</h5>
+    <br>
+    <h5 style="margin-left: 25px">Redes</h5>
     <hr/>
-    <table>
+    <table style="margin-left: 25px">
         <tr>
             <td><a href="https://www.instagram.com/sergiocanosilva/?utm_medium=copy_link">Sergio Cano Silva</a></td>
         </tr>
@@ -18,5 +19,5 @@
         </tr>
     </table>
     <hr/>
-    <p>Copyright &copy; 2022 - UPOBank copyright</p>
+    <p style="margin-left: 50px">Copyright &copy; 2022 - UPOBank copyright</p>
 </footer>

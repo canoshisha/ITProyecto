@@ -6,6 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="s" uri="/struts-tags"%> 
+<s:include value="/comun/headers.jsp"/>
 <!DOCTYPE html>
 <html>
     <head>
@@ -14,15 +15,16 @@
         <s:head/>
     </head>
     <body>
-        <h1>Datos para registrarse</h1>    
-        
+        <br>
+        <h1 style="margin-left: 25px">Datos para registrarse</h1>    
+
         <s:if test="hasActionErrors()">
             <div class="errors">
                 <s:actionerror/>
             </div>
         </s:if>
-        
-        <s:form action="RegistrarAdm" method="post">
+
+        <s:form action="RegistrarAdm" method="post" style="margin-left: 25px">
             <s:textfield name="dniAdm" label="DNI"/>
             <s:textfield name="nombreCompleto" label="Nombre Completo"/>
             <s:password name="passwordAdm" label="Contraseña"/>
@@ -30,5 +32,6 @@
             <s:textfield name="movilAdm" label="Teléfono móvil"/> 
             <s:submit name="registrarAdm" value="Registrar Administrador"/>
         </s:form>
+        <s:include value="/comun/footer.jsp"/>
     </body>
 </html>

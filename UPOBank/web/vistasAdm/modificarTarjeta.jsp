@@ -43,18 +43,22 @@
 
     <h4>Campo para modificar datos</h4>
 
-    <s:form action="modificarTar" method="post">
-        <s:hidden name="numeroTarjeta" value="%{#session.tj.getNumerotarjeta()}"/>
-        <s:hidden name="caducidadTarjeta" label="%{#session.tj.getCaducidad()}"/>
-        <s:textfield name="cvv" label="CVV"/>
-        <s:submit name="modificarTarjeta" value="Modificar Tarjeta"/>
-    </s:form>
+    <div class="miTarjeta">
+        <div class="miTarjeta-form">
+            <s:form action="modificarTar" method="post" style="margin-left: 25px">
+                <s:hidden name="numeroTarjeta" value="%{#session.tj.getNumerotarjeta()}"/>
+                <s:hidden name="caducidadTarjeta" label="%{#session.tj.getCaducidad()}"/>
+                <s:textfield name="cvv" label="CVV"/>
+                <s:submit cssClass="btn btn-danger"  name="modificarTarjeta" value="Modificar Tarjeta"/>
+            </s:form>
+            </div>
+        </div>
 
-    <s:form action="iniciarSesion" method="POST">
-        <s:hidden name="dniUsuario" value="%{#session.adm.getDni()}"/>
-        <s:hidden name="passwordUsuario" value="%{#session.adm.getPassword()}"/>
-        <s:submit value="Volver" /> 
-    </s:form>
-    <s:include value="/comun/footer.jsp"/>
+        <s:form action="iniciarSesion" method="POST">
+            <s:hidden name="dniUsuario" value="%{#session.adm.getDni()}"/>
+            <s:hidden name="passwordUsuario" value="%{#session.adm.getPassword()}"/>
+            <s:submit value="Volver" /> 
+        </s:form>
+        <s:include value="/comun/footer.jsp"/>
 </body>
 </html>

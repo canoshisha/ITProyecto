@@ -20,10 +20,11 @@
         <s:head/>
     </head>
     <body>
-        <h1>Bienvenido <s:property value="#session.adm.getNombreCompleto()"/> </h1>
         <br>
-                <h4>Lista de Centrales de UPOBank</h4>
-        <table  class="table table-striped table-hover">  
+        <h1 style="margin-left: 25px">Bienvenido <s:property value="#session.adm.getNombreCompleto()"/> </h1>
+        <br>
+                <h4 style="margin-left: 25px">Lista de Centrales de UPOBank</h4>
+        <table  style="margin-left: 25px" class="table table-striped table-hover">  
             <thead>
                 <tr>
                     <th>Nombre Banco</th>
@@ -54,14 +55,14 @@
                     </tr>               
                 </s:iterator>
                 <s:form action="centralCrear" method="post">
-                    <s:submit  cssClass="btn btn-dark" name="crear" value="Nueva Central"/>
+                    <s:submit style="margin-left: 25px" cssClass="btn btn-dark" name="crear" value="Nueva Central"/>
                 </s:form>
             </tbody>
         </table>
                 <br><br>
         
-        <h4>Lista de Sucursales de UPOBank</h4>
-        <table  class="table table-striped table-hover">  
+        <h4 style="margin-left: 25px" >Lista de Sucursales de UPOBank</h4>
+        <table  style="margin-left: 25px" class="table table-striped table-hover">  
             <thead>
                 <tr>
                     <th>Nombre Banco</th>
@@ -88,15 +89,15 @@
                         </td>
                     </tr>               
                 </s:iterator>
-                <s:form action="sucursalCrear" method="post">
-                    <s:submit  cssClass="btn btn-dark" name="crear" value="Nueva Sucursal"/>
+                <s:form action="sucursalCrear" method="post" style="margin-left: 25px">
+                    <s:submit  style="margin-left: 25px" cssClass="btn btn-dark" name="crear" value="Nueva Sucursal"/>
                 </s:form>
             </tbody>
         </table>
         <br><br>
         
-        <h4>Lista de Administradores de UPOBank</h4>
-        <table  class="table table-striped table-hover">  
+        <h4 style="margin-left: 25px" >Lista de Administradores de UPOBank</h4>
+        <table  style="margin-left: 25px" class="table table-striped table-hover">  
             <thead>
                 <tr>
                     <th>DNI</th>
@@ -131,13 +132,13 @@
                     </tr>               
                 </s:iterator>
                 <s:form action="administradorCrear" method="post">
-                    <s:submit  cssClass="btn btn-dark" name="crear" value="Nuevo administrador"/>
+                    <s:submit  style="margin-left: 25px" cssClass="btn btn-dark" name="crear" value="Nuevo administrador"/>
                 </s:form>
             </tbody>
         </table>
         <br><br>
-        <h4>Lista de Usuarios de UPOBank</h4>
-        <table  class="table table-striped table-hover">  
+        <h4 style="margin-left: 25px" >Lista de Usuarios de UPOBank</h4>
+        <table style="margin-left: 25px" class="table table-striped table-hover">  
             <thead>
                 <tr>
                     <th>DNI</th>
@@ -177,8 +178,8 @@
             </tbody>
         </table>
         <br><br>
-        <h4>Cuentas Bancarias de Usuarios</h4>
-        <table class="table table-striped table-hover">
+        <h4 style="margin-left: 25px">Cuentas Bancarias de Usuarios</h4>
+        <table style="margin-left: 25px" class="table table-striped table-hover">
             <thead>
                 <tr>
                     <th>IBAN Usuarios</th>
@@ -202,8 +203,8 @@
         </table>
 
 <br><br>
-        <h4>Ultimos movimientos de los Usuarios</h4>
-        <table  class="table table-striped table-hover">
+        <h4 style="margin-left: 25px">Ultimos movimientos de los Usuarios</h4>
+        <table style="margin-left: 25px" class="table table-striped table-hover">
             <thead>
                 <tr>
                     <th>IBAN Usuario</th>
@@ -250,8 +251,8 @@
         </table>
         <br>
         <br>
-        <h4>Ultimos prestamos de los Usuarios</h4>
-        <table  class="table table-striped table-hover">
+        <h4 style="margin-left: 25px">Ultimos prestamos de los Usuarios</h4>
+        <table style="margin-left: 25px" class="table table-striped table-hover">
             <thead>
                 <tr>
                     <th>IBAN Usuario</th>
@@ -284,8 +285,8 @@
         </table>
         <br></br>
 
-        <h4>Tarjetas de Usuarios</h4>
-        <table  class="table table-striped table-hover">
+        <h4 style="margin-left: 25px">Tarjetas de Usuarios</h4>
+        <table style="margin-left: 25px" class="table table-striped table-hover">
             <thead>
                 <tr>
                     <th>Número de Tarjeta</th>
@@ -322,7 +323,7 @@
 
 
         <br></br>
-        <s:form action="cerrarSesion" method="POST">
+        <s:form action="cerrarSesion" method="POST" style="margin-left: 25px">
             <s:submit name="logOutAction" cssClass="btn btn-dark" value="Cerrar Sesión"/>
         </s:form>
         <br><br>
