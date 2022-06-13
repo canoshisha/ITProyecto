@@ -86,8 +86,16 @@
         <action name="tarjetaModificar" class="actionsAdm.obtenerEntidadAction" method="obtenerTarjeta">
             <result>/vistasAdm/modificarTarjeta.jsp</result>
         </action>
+        <action name="centralModificar" class="actionsAdm.obtenerEntidadAction" method="obtenerCentral">
+            <result>/vistasAdm/modificarCentral.jsp</result>
+        </action>
+        
+        
         <action name="administradorCrear">
             <result>/vistasAdm/formAdministrador.jsp</result>
+        </action>
+        <action name="centralCrear">
+            <result>/Central/formCentral.jsp</result>
         </action>
         
         
@@ -96,8 +104,11 @@
         
         <action name="modificarUsr" class="actionsAdm.modificarUsrAction" method="modificarUsr">
             <result name="success">/vistasAdm/administracion.jsp</result>
-            <!--<result name="input">/vistasAdm/modificarUsr.jsp</result>-->
         </action>
+        <action name="modificarCentral" class="actionsAdm.modificarCentralAction" method="modificarCen">
+            <result name="success">/vistasAdm/administracion.jsp</result>
+        </action>
+        
         
     </package>
     
@@ -111,17 +122,31 @@
             <result name="success">/vistasAdm/administracion.jsp</result>
             <!--<result name="input">/vistasAdm/modificarUsr.jsp</result>-->
         </action>
-                <action name="transferenciaBorrar" class="actionsAdm.eliminarTraAction" method="eliminarTra">
+        <action name="transferenciaBorrar" class="actionsAdm.eliminarTraAction" method="eliminarTra">
             <result name="success">/vistasAdm/administracion.jsp</result>
             <!--<result name="input">/vistasAdm/modificarUsr.jsp</result>-->
         </action>
+        <action name="centralBorrar" class="actionsAdm.eliminarCentralAction" method="eliminarCentral">
+            <result name="success">/vistasAdm/administracion.jsp</result>
+            <!--<result name="input">/vistasAdm/modificarUsr.jsp</result>-->
+        </action>
+        
     </package>
-    <package name="insertarAdministrador" extends="struts-default">
+    
+    
+    <package name="insertarOperacionesAdministrador" extends="struts-default">
         <action name="RegistrarAdm" class="actionsAdm.crearAdmAction" method="insertarAdm">
             <result name="success">/vistasAdm/administracion.jsp</result>
             <result name="input">/vistasAdm/formAdministrador.jsp</result>
             
         </action>
+        <action name="centralRegistrar" class="actionsAdm.crearCentralAction" method="insertarCentral">
+            <result name="success">/vistasAdm/administracion.jsp</result>
+            <result name="input">/Central/formCentral.jsp</result>
+            
+        </action>
+        
+        
     </package>
     
     

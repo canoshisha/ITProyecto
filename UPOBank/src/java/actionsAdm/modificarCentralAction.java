@@ -21,7 +21,7 @@ import wsREST.CentralREST;
  */
 public class modificarCentralAction extends ActionSupport {
 
-    private String nombre, direccion, email, telefono;
+    private String nombreCentral, direccionCentral, emailCentral, telefonoCentral;
 
     GenericType<Central> genericTypeCL = new GenericType<Central>() {
     };
@@ -37,63 +37,64 @@ public class modificarCentralAction extends ActionSupport {
     public modificarCentralAction() {
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getNombreCentral() {
+        return nombreCentral;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setNombreCentral(String nombreCentral) {
+        this.nombreCentral = nombreCentral;
     }
 
-    public String getDireccion() {
-        return direccion;
+    public String getDireccionCentral() {
+        return direccionCentral;
     }
 
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
+    public void setDireccionCentral(String direccionCentral) {
+        this.direccionCentral = direccionCentral;
     }
 
-    public String getEmail() {
-        return email;
+    public String getEmailCentral() {
+        return emailCentral;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setEmailCentral(String emailCentral) {
+        this.emailCentral = emailCentral;
     }
 
-    public String getTelefono() {
-        return telefono;
+    public String getTelefonoCentral() {
+        return telefonoCentral;
     }
 
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
+    public void setTelefonoCentral(String telefonoCentral) {
+        this.telefonoCentral = telefonoCentral;
     }
 
+   
     public String execute() throws Exception {
         return SUCCESS;
     }
 
     public String modificarCen() throws Exception {
-        cl = (Central) daoCL.find_XML(genericTypeCL, this.getNombre());
-        if (this.getDireccion() != null && !this.getDireccion().equalsIgnoreCase("")) {
-            cl.setDireccion(this.getDireccion());
+        cl = (Central) daoCL.find_XML(genericTypeCL, this.getNombreCentral());
+        if (this.getDireccionCentral()!= null && !this.getDireccionCentral().equalsIgnoreCase("")) {
+            cl.setDireccion(this.getDireccionCentral());
         }
-        if (this.getEmail() != null && !this.getEmail().equalsIgnoreCase("")) {
+        if (this.getEmailCentral()!= null && !this.getEmailCentral().equalsIgnoreCase("")) {
             String regx = "^[A-Za-z0-9+_.-]+@(.+)$";
             Pattern pattern = Pattern.compile(regx);
-            Matcher matcher = pattern.matcher(this.getEmail());
+            Matcher matcher = pattern.matcher(this.getEmailCentral());
             if (matcher.matches()) {
-                cl.setEmail(this.getEmail());
+                cl.setEmail(this.getEmailCentral());
             }
 
         }
-        if (this.getTelefono()!= null && !this.getTelefono().equalsIgnoreCase("")) {
-            if(Integer.parseInt(this.getTelefono()) > 000000000 && Integer.parseInt(this.getTelefono()) < 999999999){
-                cl.setTelefono(Integer.parseInt(this.getTelefono()));
+        if (this.getTelefonoCentral()!= null && !this.getTelefonoCentral().equalsIgnoreCase("")) {
+            if(Integer.parseInt(this.getTelefonoCentral()) > 000000000 && Integer.parseInt(this.getTelefonoCentral()) < 999999999){
+                cl.setTelefono(Integer.parseInt(this.getTelefonoCentral()));
             }
             
         }
-        daoCL.edit_XML(cl, this.getNombre());
+        daoCL.edit_XML(cl, this.getNombreCentral());
 
         List<Central> listaCL = (List<Central>) daoCL.findAll_XML(genericTypeListCL);
 

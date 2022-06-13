@@ -76,7 +76,7 @@ public class crearCentralAction extends ActionSupport {
     public String insertarCentral() throws Exception {
         Central cl = new Central(this.getNombreCentral(), this.getDireccionCentral(), this.getEmailCentral(), Integer.parseInt(this.getTelefonoCentral()));
         daoCL.create_XML(cl);
-        List<Central> listCL = (List<Central>) daoCL.findAll_XML(genericTypeCL);
+        List<Central> listCL = (List<Central>) daoCL.findAll_XML(genericTypeListCL);
         actionContext = ActionContext.getContext();
         session = actionContext.getSession();
         session.put("listaCentral", listCL);
