@@ -5,6 +5,7 @@
  */
 package actionsAdm;
 
+import Entidades_REST.Administrador;
 import Entidades_REST.Bizum;
 import Entidades_REST.Central;
 import Entidades_REST.CuentaBancaria;
@@ -18,6 +19,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import java.util.List;
 import java.util.Map;
 import javax.ws.rs.core.GenericType;
+import wsREST.AdministradorREST;
 import wsREST.BizumREST;
 import wsREST.CentralREST;
 import wsREST.CuentaBancariaREST;
@@ -33,9 +35,11 @@ import wsREST.UsuarioREST;
  */
 public class obtenerEntidadAction extends ActionSupport {
     
-    private String dniUsuario,IBAN,numeroTarjeta,idSucursal,nombreCentral;
+    private String dniAdministrador,dniUsuario,IBAN,numeroTarjeta,idSucursal,nombreCentral;
     
     GenericType<Usuario> genericType = new GenericType<Usuario>() {
+    };
+        GenericType<Administrador> genericTypeAdm = new GenericType<Administrador>() {
     };
      GenericType<CuentaBancaria> genericTypeCuentaBancaria = new GenericType<CuentaBancaria>() {
     };
@@ -48,6 +52,7 @@ public class obtenerEntidadAction extends ActionSupport {
     };
       
     Usuario usr;
+    Administrador adm;
     CuentaBancaria cb;
     Tarjeta tj;
     Sucursal suc;
@@ -55,6 +60,7 @@ public class obtenerEntidadAction extends ActionSupport {
     
       
     UsuarioREST daoUsr = new UsuarioREST();
+    AdministradorREST daoAdm = new AdministradorREST();
     CuentaBancariaREST daoCB = new CuentaBancariaREST();
     TarjetaREST daoTJ = new TarjetaREST();
     SucursalREST daoSuc = new SucursalREST();
@@ -63,6 +69,14 @@ public class obtenerEntidadAction extends ActionSupport {
     ActionContext actionContext;
 
     private Map session;
+
+    public String getDniAdministrador() {
+        return dniAdministrador;
+    }
+
+    public void setDniAdministrador(String dniAdministrador) {
+        this.dniAdministrador = dniAdministrador;
+    }
     
     public obtenerEntidadAction() {
     }
@@ -120,6 +134,13 @@ public class obtenerEntidadAction extends ActionSupport {
         actionContext = ActionContext.getContext();
         session = actionContext.getSession();
         session.put("usr", usr);
+        return execute();
+    }
+        public String obtenerAdm() throws Exception{
+        adm = (Administrador) daoAdm.find_XML(genericTypeAdm, this.getDniAdministrador());
+        actionContext = ActionContext.getContext();
+        session = actionContext.getSession();
+        session.put("adm", adm);
         return execute();
     }
     public String obtenerCuentaBancaria() throws Exception{

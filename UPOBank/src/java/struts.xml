@@ -79,6 +79,11 @@
             <result>/vistasAdm/modificarUsr.jsp</result>
         </action>
         
+        <action name="administradorModificar" class="actionsAdm.obtenerEntidadAction" method="obtenerAdm">
+            <result>/vistasAdm/modificarAdm.jsp</result>
+        </action>
+        
+        
         <action name="cuentaModificar" class="actionsAdm.obtenerEntidadAction" method="obtenerCuentaBancaria">
             <result>/vistasAdm/modificarCuenta.jsp</result>
         </action>
@@ -121,6 +126,9 @@
             <result name="success">/vistasAdm/administracion.jsp</result>
         </action>
         
+        <action name="modificarAdm" class="actionsAdm.modificarAdmAction" method="modificarAdm">
+            <result name="success">/vistasAdm/administracion.jsp</result>
+        </action>
     </package>
     
     <package name="eliminarOperacionesAdministrador" extends="struts-default">
