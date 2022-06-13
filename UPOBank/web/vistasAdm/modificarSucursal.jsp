@@ -21,9 +21,9 @@
         
         <h4>Campo para modificar datos</h4>
         
-        <s:form action="modificarUsr" method="post">
+        <s:form action="modificarSucursal" method="post">
             <s:hidden name="idSucursal" value="%{#session.suc.getId()}"/>
-            <s:textfield name="nombreCompleto" label="Nombre Completo"/>
+            <s:textfield name="direccionSucursal" label="Direccion de la Sucursal"/>
             <s:submit name="modificarSucursal" value="Modificar Sucursal"/>
         </s:form>
         

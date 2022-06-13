@@ -90,6 +90,10 @@
             <result>/vistasAdm/modificarCentral.jsp</result>
         </action>
         
+        <action name="sucursalModificar" class="actionsAdm.obtenerEntidadAction" method="obtenerSucursal">
+            <result>/vistasAdm/modificarSucursal.jsp</result>
+        </action>
+        
                
         
         <action name="administradorCrear">
@@ -113,7 +117,7 @@
         <action name="modificarCentral" class="actionsAdm.modificarCentralAction" method="modificarCen">
             <result name="success">/vistasAdm/administracion.jsp</result>
         </action>
-        <action name="sucursalModificar" class="actionsAdm.modificarSucursalAction" method="modificarSuc">
+        <action name="modificarSucursal" class="actionsAdm.modificarSucursalAction" method="modificarSuc">
             <result name="success">/vistasAdm/administracion.jsp</result>
         </action>
         

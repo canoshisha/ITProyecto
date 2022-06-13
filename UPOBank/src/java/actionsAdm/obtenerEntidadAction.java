@@ -137,10 +137,11 @@ public class obtenerEntidadAction extends ActionSupport {
         return execute();
     }
     public String obtenerSucursal() throws Exception{
-        suc = (Sucursal) daoTJ.find_XML(genericTypeSucursal, this.getIdSucursal());
+        suc = (Sucursal) daoSuc.find_XML(genericTypeSucursal, this.getIdSucursal());
         actionContext = ActionContext.getContext();
         session = actionContext.getSession();
         session.put("suc", suc);
+        
         return execute();
     }
     public String obtenerCentral() throws Exception{
