@@ -83,7 +83,6 @@
             <result>/vistasAdm/modificarAdm.jsp</result>
         </action>
         
-        
         <action name="cuentaModificar" class="actionsAdm.obtenerEntidadAction" method="obtenerCuentaBancaria">
             <result>/vistasAdm/modificarCuenta.jsp</result>
         </action>
@@ -98,8 +97,6 @@
         <action name="sucursalModificar" class="actionsAdm.obtenerEntidadAction" method="obtenerSucursal">
             <result>/vistasAdm/modificarSucursal.jsp</result>
         </action>
-        
-               
         
         <action name="administradorCrear">
             <result>/vistasAdm/formAdministrador.jsp</result>
@@ -125,7 +122,6 @@
         <action name="modificarSucursal" class="actionsAdm.modificarSucursalAction" method="modificarSuc">
             <result name="success">/vistasAdm/administracion.jsp</result>
         </action>
-        
         <action name="modificarAdm" class="actionsAdm.modificarAdmAction" method="modificarAdm">
             <result name="success">/vistasAdm/administracion.jsp</result>
         </action>

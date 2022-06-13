@@ -85,7 +85,7 @@ public class modificarAdmAction extends ActionSupport {
     }
     
     public String execute() throws Exception {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return SUCCESS;
     }
     
     public String modificarAdm() throws Exception{
