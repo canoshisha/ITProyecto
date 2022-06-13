@@ -160,6 +160,10 @@
 
         </action>
         
+        <action name ="tarjetaBorrar" class="actionsAdm.eliminarTarjetaAction" method="eliminarTarjeta">
+            <result name="success">/vistasAdm/administracion.jsp</result>
+        </action>
+        
         
         
     </package>
