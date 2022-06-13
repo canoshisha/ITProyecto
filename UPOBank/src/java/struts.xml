@@ -145,6 +145,10 @@
             <result name="input">/Central/formCentral.jsp</result>
             
         </action>
+        <action name="administradorBorrar" class="actionsAdm.eliminarAdmAction" >
+            <result name="success">/vistasAdm/administracion.jsp</result>
+            <result name="input">/vistasAdm/administracion.jsp</result>
+        </action>
         
         
     </package>
