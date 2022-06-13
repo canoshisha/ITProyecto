@@ -20,10 +20,11 @@
         <s:head/>
     </head>
     <body>
-        <h1>Bienvenido <s:property value="#session.usuario.getNombreCompleto()"/> </h1>
-        <h4>Tu sucursal se encuentra en  <s:property value="#session.usuario.getIdSucursal().getDireccion()"/> </h4>
+        <br>
+        <h1 style="margin-left: 25px">Bienvenido <s:property value="#session.usuario.getNombreCompleto()"/> </h1>
+        <h4 style="margin-left: 25px">Tu sucursal se encuentra en  <s:property value="#session.usuario.getIdSucursal().getDireccion()"/> </h4>
 
-        <table  class="table table-striped table-hover">
+        <table   style="margin-left: 25px" class="table table-striped table-hover">
             <thead>
                 <tr>
                     <th>IBAN</th>
@@ -38,8 +39,8 @@
             </tbody>
         </table>
         <br>
-        <h4>Ultimos movimientos de la cuenta</h4>
-        <table class="table table-striped table-hover">
+        <h4  style="margin-left: 25px">Ultimos movimientos de la cuenta</h4>
+        <table  style="margin-left: 25px" class="table table-striped table-hover">
             <thead>
                 <tr>
                     <th>Fecha</th>
@@ -72,18 +73,17 @@
                 </s:iterator>
             </tbody>
         </table>
-        <br></br>
-        <s:form action="bizumform" method="POST">
-            <s:submit cssClass="btn btn-grey" name="realizarBizum" value="Realizar Bizum"/>
+        <br>
+        <s:form action="bizumform" method="POST"  style="margin-left: 25px">
+            <s:submit style="margin-left: 25px" cssClass="btn btn-danger" name="realizarBizum" value="Realizar Bizum"/>
         </s:form>
 
-        <s:form action="transform" method="POST">
-            <s:submit cssClass="btn btn-grey" name="realizarTransferencia" value="Realizar transferencia"/>
+        <s:form action="transform" method="POST"  style="margin-left: 25px">
+            <s:submit style="margin-left: 25px" cssClass="btn btn-danger" name="realizarTransferencia" value="Realizar transferencia"/>
         </s:form>
         <br>
-        <br>
-        <h4>Ultimos prestamos</h4>
-        <table class="table table-striped table-hover">
+        <h4  style="margin-left: 25px">Ultimos prestamos</h4>
+        <table class="table table-striped table-hover"  style="margin-left: 25px">
             <thead>
                 <tr>
                     <th>Inicio</th>
@@ -107,20 +107,21 @@
                 </s:iterator>
             </tbody>
         </table>
-        <br></br>
+        <br>
 
-        <s:form action="solPresform" method="POST">
-            <s:submit cssClass="btn btn-grey" value="Solicitar un prestamos"/>
+        <s:form action="solPresform" method="POST"  style="margin-left: 25px">
+            <s:submit style="margin-left: 25px" cssClass="btn btn-danger" value="Solicitar un prestamos"/>
         </s:form>
-        <h4>Gestionar tarjetas</h4>
-        <s:form action="gesTarjetas" method="POST">
-            <s:submit cssClass="btn btn-grey" name="gestionarTarjetas" value="Gestionar tarjetas"/>
+        <br>
+        <h4 style="margin-left: 25px">Gestionar tarjetas</h4>
+        <s:form action="gesTarjetas" method="POST"  style="margin-left: 25px">
+            <s:submit style="margin-left: 25px" cssClass="btn btn-danger" name="gestionarTarjetas" value="Gestionar tarjetas"/>
         </s:form>
 
 
         <br></br>
-        <s:form action="cerrarSesion" method="POST">
-            <s:submit cssClass="btn btn-dark" name="logOutAction" value="Cerrar Sesión"/>
+        <s:form action="cerrarSesion" method="POST"  style="margin-left: 25px">
+            <s:submit  style="margin-left: 25px" cssClass="btn btn-dark" name="logOutAction" value="Cerrar Sesión"/>
         </s:form>
         <s:include value="/comun/footer.jsp"/>
     </body>
