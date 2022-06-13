@@ -114,9 +114,9 @@
     
     <package name="eliminarOperacionesAdministrador" extends="struts-default">
         
-        <action name="usuarioBorrar" class="actionsAdm.eliminarUsrAction" method="eliminarUsr">
+        <action name="usuarioBorrar" class="actionsAdm.eliminarUsrAction" >
             <result name="success">/vistasAdm/administracion.jsp</result>
-            <!--<result name="input">/vistasAdm/modificarUsr.jsp</result>-->
+            <result name="input">/vistasAdm/administracion.jsp</result>
         </action>
         <action name="bizumBorrar" class="actionsAdm.eliminarBizAction" method="eliminarBiz">
             <result name="success">/vistasAdm/administracion.jsp</result>

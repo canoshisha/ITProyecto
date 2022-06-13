@@ -89,7 +89,7 @@ public class eliminarUsrAction extends ActionSupport {
          Date fecha = new Date();
          boolean borrarOK = true;
          for (Prestamo prestamo : listaPres) {
-             if(prestamo.getIban().getIban() == usr.getIban().getIban()){
+             if(prestamo.getIban().getIban().equalsIgnoreCase(usr.getIban().getIban())){
                  if(prestamo.getFin().after(fecha)){
                      borrarOK = false;
                  }
@@ -138,7 +138,7 @@ public class eliminarUsrAction extends ActionSupport {
         List<Prestamo> listaPres = daoPrestamo.findAll_XML(genericTypeListaPres);
          usr = dao.find_XML(genericType, this.getDniUsuario());
          for (Prestamo prestamo : listaPres) {
-             if(prestamo.getIban().getIban() == usr.getIban().getIban()){
+             if(prestamo.getIban().getIban().equalsIgnoreCase(usr.getIban().getIban())){
                  daoPrestamo.remove(String.valueOf(prestamo.getId()));
              }
          }
@@ -154,7 +154,7 @@ public class eliminarUsrAction extends ActionSupport {
         
          usr = dao.find_XML(genericType, this.getDniUsuario());
          for (Transferencia trans : listaTrans) {
-             if(trans.getIban().getIban() == usr.getIban().getIban()){
+             if(trans.getIban().getIban().equalsIgnoreCase(usr.getIban().getIban())){
                  daoPrestamo.remove(String.valueOf(trans.getId()));
              }
          }
@@ -170,7 +170,7 @@ public class eliminarUsrAction extends ActionSupport {
         
          usr = dao.find_XML(genericType, this.getDniUsuario());
          for (Bizum biz : listaBizum) {
-             if(biz.getIban().getIban() == usr.getIban().getIban()){
+             if(biz.getIban().getIban().equalsIgnoreCase(usr.getIban().getIban())){
                  daoPrestamo.remove(String.valueOf(biz.getId()));
              }
          }
@@ -187,7 +187,7 @@ public class eliminarUsrAction extends ActionSupport {
         
          usr = dao.find_XML(genericType, this.getDniUsuario());
          for (Tarjeta tar : listaTarjetas) {
-             if(tar.getIban().getIban() == usr.getIban().getIban()){
+             if(tar.getIban().getIban().equalsIgnoreCase(usr.getIban().getIban())){
                  daoPrestamo.remove(String.valueOf(tar.getNumerotarjeta()));
              }
          }
