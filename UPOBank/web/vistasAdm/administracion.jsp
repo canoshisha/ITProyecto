@@ -16,6 +16,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <s:head/>
     </head>
     <body>
         <h1>Bienvenido <s:property value="#session.administrador.getNombreCompleto()"/> </h1>
@@ -175,10 +176,6 @@
             </tbody>
         </table>
         <br>
-        <s:form action="filtrarUsuario" method="POST">
-            <s:textfield name="dniUsuario" label="DNI usuario"/>
-            <s:submit name="filtrar" value="Buscar Usuario"/>
-        </s:form>
 
 
         <br><br>

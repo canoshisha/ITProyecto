@@ -11,8 +11,10 @@ import Entidades_REST.Prestamo;
 import Entidades_REST.Tarjeta;
 import Entidades_REST.Transferencia;
 import Entidades_REST.Usuario;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.List;
+import java.util.Map;
 import javax.ws.rs.core.GenericType;
 import wsREST.BizumREST;
 import wsREST.CuentaBancariaREST;
@@ -44,6 +46,10 @@ public class obtenerEntidadAction extends ActionSupport {
     UsuarioREST daoUsr = new UsuarioREST();
     CuentaBancariaREST daoCB = new CuentaBancariaREST();
     TarjetaREST daoTJ = new TarjetaREST();
+    
+    ActionContext actionContext;
+
+    private Map session;
     
     public obtenerEntidadAction() {
     }
@@ -81,17 +87,23 @@ public class obtenerEntidadAction extends ActionSupport {
     
     public String obtenerUsr() throws Exception{
         usr = (Usuario) daoUsr.find_XML(genericType, this.getDniUsuario());
-        
+        actionContext = ActionContext.getContext();
+        session = actionContext.getSession();
+        session.put("usr", usr);
         return execute();
     }
     public String obtenerCuentaBancaria() throws Exception{
         cb = (CuentaBancaria) daoCB.find_XML(genericTypeCuentaBancaria, this.getIBAN());
-        
+        actionContext = ActionContext.getContext();
+        session = actionContext.getSession();
+        session.put("cb", cb);
         return execute();
     }
     public String obtenerTarjeta() throws Exception{
         tj = (Tarjeta) daoTJ.find_XML(genericTypeTarjeta, this.getNumeroTarjeta());
-        
+        actionContext = ActionContext.getContext();
+        session = actionContext.getSession();
+        session.put("tj", tj);
         return execute();
     }
     

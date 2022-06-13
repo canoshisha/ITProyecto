@@ -11,21 +11,26 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <s:head/>
     </head>
     <body>
         <h4>Datos del Usuario a modificar</h4>
         
-        <s:property value="usr.getDni()" />
-        <s:property value="usr.getNombreCompleto()" />
-        <s:property value="usr.getPassword()" />
-        <s:property value="usr.getDireccion()" />
-        <s:property value="usr.getMovil()" />
+        <s:property value="#session.usr.getDni()" />
+        <br>
+        <s:property value="#session.usr.getNombreCompleto()" />
+        <br>
+        <s:property value="#session.usr.getPassword()" />
+        <br>
+        <s:property value="#session.usr.getDireccion()" />
+        <br>
+        <s:property value="#session.usr.getMovil()" />
         <br><br><br>
         
         <h4>Campo para modificar datos</h4>
         
         <s:form action="modificarUsr" method="post">
-            <s:hidden name="dniUsuario" value="%{#usr.getDni()}"/>
+            <s:hidden name="dniUsuario" value="%{#session.usr.getDni()}"/>
             <s:textfield name="nombreCompleto" label="Nombre Completo"/>
             <s:password name="passwordUsuario" label="Contraseña"/>
             <s:textfield name="direccionUsuario" label="Dirección Usuario"/>
@@ -34,8 +39,8 @@
         </s:form>
         
         <s:form action="iniciarSesion" method="POST">
-             <s:hidden name="dniUsuario" value="%{#session.usuario.getDni()}"/>
-             <s:hidden name="passwordUsuario" value="%{#session.usuario.getPassword()}"/>
+             <s:hidden name="dniUsuario" value="%{#session.usr.getDni()}"/>
+             <s:hidden name="passwordUsuario" value="%{#session.usr.getPassword()}"/>
              <s:submit value="Volver" /> 
         </s:form>
         

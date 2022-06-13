@@ -84,7 +84,7 @@
         </action>
         
         <action name="tarjetaModificar" class="actionsAdm.obtenerEntidadAction" method="obtenerTarjeta">
-            <result>/vistasAdm/modificartarjeta.jsp</result>
+            <result>/vistasAdm/modificarTarjeta.jsp</result>
         </action>
         <action name="administradorCrear">
             <result>/vistasAdm/formAdministrador.jsp</result>
@@ -101,7 +101,7 @@
         
     </package>
     <package name="insertarAdministrador" extends="struts-default">
-        <action name="RegistrarAdm" class="actions.crearAdmAction" method="insertarAdm">
+        <action name="RegistrarAdm" class="actionsAdm.crearAdmAction" method="insertarAdm">
             <result name="success">/vistasAdm/administracion.jsp</result>
             <result name="input">/vistasAdm/formAdministrador.jsp</result>
             
